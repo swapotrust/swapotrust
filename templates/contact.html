@@ -1,28 +1,38 @@
 {% extends "base.html" %}
-{% from "_macros.html" import t, icon with context %}
+{% from "_macros.html" import t, icon, page_hero with context %}
 {% set title = "Contact" %}
 {% block main %}
-<header class="page-head">
-  <div class="wrap">
-    <p class="eyebrow">{{ t('Contact', 'संपर्क') }}</p>
-    <h1>{{ t('We would love to hear from you.', 'हमें आपसे बात करके खुशी होगी।') }}</h1>
-  </div>
-</header>
+{{ page_hero('Contact', 'संपर्क', 'We would be glad to hear from you', 'हमें आपसे बात करके खुशी होगी', '', asset, 'संपर्क') }}
 <section class="section">
   <div class="wrap contact-grid">
     <div class="contact-cards">
       <a class="cc" href="tel:+{{ site.phone_raw }}">{{ icon('phone') }}<span><b>{{ t('Call', 'कॉल करें') }}</b>{{ site.phone }}</span></a>
       <a class="cc" href="https://wa.me/{{ site.phone_raw }}" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span><b>WhatsApp</b>{{ site.phone }}</span></a>
       <a class="cc" href="mailto:{{ site.email }}">{{ icon('mail') }}<span><b>{{ t('Email', 'ईमेल') }}</b>{{ site.email }}</span></a>
-      <div class="cc">{{ icon('pin') }}<span><b>{{ t('Head office', 'मुख्य कार्यालय') }}</b>{{ t(site.address_en, site.address_hi) }}</span></div>
-      <div class="cc">{{ icon('users') }}<span><b>{{ t(site.founder, site.founder_hi) }}</b>{{ t(site.founder_role_en, site.founder_role_hi) }}</span></div>
-      {% if site.facebook %}<a class="cc" href="{{ site.facebook }}" target="_blank" rel="noopener">{{ icon('facebook') }}<span><b>Facebook</b>{{ t('Follow our daily updates', 'हमारी दैनिक गतिविधियाँ देखें') }}</span></a>{% endif %}
+      <div class="cc">{{ icon('pin') }}<span><b>{{ t('Head office', 'मुख्य कार्यालय') }}</b>{{ t(site.address_en, site.address_hi) }}<a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query={{ 'City Plaza, Sadabad Gate, Hathras, Uttar Pradesh 204101'|urlencode }}" target="_blank" rel="noopener">{{ t('Get directions', 'रास्ता देखें') }} {{ icon('arrow') }}</a></span></div>
+      <div class="cc">{{ icon('users') }}<span><b>{{ t(team.founder.name_en, team.founder.name_hi) }}</b>{{ t(team.founder.role_en, team.founder.role_hi) }}</span></div>
+      <div class="cc social">
+        {% if site.facebook %}<a href="{{ site.facebook }}" target="_blank" rel="noopener">{{ icon('facebook') }} Facebook</a>{% endif %}
+        {% if site.instagram %}<a href="{{ site.instagram }}" target="_blank" rel="noopener">{{ icon('camera') }} Instagram</a>{% endif %}
+        {% if site.linkedin %}<a href="{{ site.linkedin }}" target="_blank" rel="noopener">{{ icon('linkedin') }} LinkedIn</a>{% endif %}
+      </div>
     </div>
-    <div class="map-box map-lg" data-map data-places='{{ site.places[:1]|tojson }}'></div>
+    <div class="gmap">
+      <iframe title="Map: SWAPO Trust, City Plaza, Sadabad Gate, Hathras" src="https://maps.google.com/maps?q={{ 'City Plaza, Sadabad Gate, Hathras, Uttar Pradesh 204101, India'|urlencode }}&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
   </div>
 </section>
-{% endblock %}
-{% block scripts %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ t('Branches', 'शाखाएँ') }}</p><h2>{{ t('Find us in your city', 'अपने शहर में हमें खोजें') }}</h2></div>
+    <div class="branches row3">
+      {% for b in team.branches %}
+      <a class="branch" href="{{ url('about/team/') }}#{{ b.id }}">
+        <span class="branch-pin">{{ icon('pin') }}</span>
+        <span><b>{{ t(b.name_en, b.name_hi) }}</b>{{ t(b.state_en, b.state_hi) }}{% if b.members %}<br>{{ t(b.members[0].name_en ~ ', ' ~ b.members[0].role_en, b.members[0].name_hi ~ ', ' ~ b.members[0].role_hi) }}{% endif %}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 {% endblock %}

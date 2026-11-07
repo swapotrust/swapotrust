@@ -25,11 +25,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Mukta:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 {% block head %}{% endblock %}
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"NGO","name":"SWAPO Trust (Social Welfare and Peace Organisation)","url":"{{ absolute('') }}","email":"{{ site.email }}","telephone":"{{ site.phone }}","founder":{"@type":"Person","name":"{{ site.founder }}"},"address":{"@type":"PostalAddress","streetAddress":"City Plaza, Sadabad Gate","addressLocality":"Hathras","postalCode":"204101","addressRegion":"Uttar Pradesh","addressCountry":"IN"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NGO","name":"SWAPO Trust (Social Welfare and Peace Organisation)","url":"{{ absolute('') }}","email":"{{ site.email }}","telephone":"{{ site.phone }}","founder":{"@type":"Person","name":"{{ site.founder }}"},"sameAs":["{{ site.facebook }}","{{ site.linkedin }}"],"address":{"@type":"PostalAddress","streetAddress":"City Plaza, Sadabad Gate","addressLocality":"Hathras","postalCode":"204101","addressRegion":"Uttar Pradesh","addressCountry":"IN"}}</script>
 </head>
 <body class="{{ body_class }}">
 {% include "_icons.svg" %}
 <a class="skip" href="#main">Skip to content</a>
+
+<div class="ticker" aria-label="How you can help">
+  <span class="ticker-lbl">{{ t('You can help', 'सहयोग करें') }}</span>
+  <div class="ticker-win"><div class="ticker-track">
+    {% for pass in [1, 2] %}{% for it in site.ticker %}<a href="{{ url(it.link) }}"{% if pass == 2 %} aria-hidden="true" tabindex="-1"{% endif %}>{{ t(it.en, it.hi) }}</a><span class="ticker-dot" aria-hidden="true">✦</span>{% endfor %}{% endfor %}
+  </div></div>
+</div>
 
 <div class="topbar">
   <div class="wrap topbar-row">
@@ -39,8 +46,11 @@
       <span class="tb-reg">{{ icon('shield') }} {{ t('Registered Trust · Hathras, U.P.', 'पंजीकृत न्यास · हाथरस, उ.प्र.') }}</span>
     </div>
     <div class="tb-right">
-      {% if site.facebook %}<a href="{{ site.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{{ icon('facebook') }} <span class="tb-hide">Facebook</span></a>{% endif %}
-      <a href="https://wa.me/{{ site.phone_raw }}" target="_blank" rel="noopener" aria-label="WhatsApp">{{ icon('whatsapp') }} <span class="tb-hide">WhatsApp</span></a>
+      <span class="tb-motto" lang="hi">परहित सरिस धर्म नहिं भाई</span>
+      {% if site.facebook %}<a href="{{ site.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{{ icon('facebook') }}</a>{% endif %}
+      {% if site.instagram %}<a href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{{ icon('camera') }}</a>{% endif %}
+      {% if site.linkedin %}<a href="{{ site.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{{ icon('linkedin') }}</a>{% endif %}
+      <a href="https://wa.me/{{ site.phone_raw }}" target="_blank" rel="noopener" aria-label="WhatsApp">{{ icon('whatsapp') }}</a>
       <button class="tb-lang" type="button" data-lang-toggle aria-label="Switch language / भाषा बदलें">{{ icon('globe') }} <span class="l-en" lang="hi">हिंदी</span><span class="l-hi" lang="en">English</span></button>
     </div>
   </div>
@@ -48,18 +58,21 @@
 
 {% set nav = [
   ('home', '', 'Home', 'मुख्य पृष्ठ', []),
-  ('about', 'about/', 'About', 'हमारे बारे में', [
-    ('about/#story', 'Our story', 'हमारी कहानी'), ('about/#mission', 'Mission & vision', 'उद्देश्य एवं दृष्टि'),
-    ('about/#objectives', 'Objectives', 'लक्ष्य'), ('about/#founder', 'Our founder', 'संस्थापक'),
+  ('about', 'about/', 'About', 'परिचय', [
+    ('about/', 'Our story', 'हमारी कहानी'), ('about/founder/', 'Our founder', 'संस्थापक'),
+    ('about/team/', 'Team & branches', 'टीम एवं शाखाएँ'), ('about/#mission', 'Mission & vision', 'उद्देश्य एवं दृष्टि'),
     ('about/#transparency', 'Transparency', 'पारदर्शिता')]),
-  ('work', 'work/', 'Our Work', 'हमारा कार्य', [('work/tb-nutrition/', '★ TB Nutrition Mission', '★ टीबी पोषाहार मिशन')] + pillar_links),
-  ('impact', 'impact/', 'Impact', 'प्रभाव', []),
-  ('times', 'times/', 'SWAPO Times', 'स्वापो टाइम्स', [
-    ('times/', 'Latest news', 'ताज़ा समाचार'), ('times/epaper/', 'Monthly e-paper', 'मासिक ई-पेपर'),
-    ('times/press/', 'Press coverage', 'समाचार पत्रों में'), ('times/gallery/', 'Photo gallery', 'फ़ोटो गैलरी')]),
+  ('work', 'work/', 'Our Work', 'हमारा कार्य', [('work/tb-nutrition/', '★ TB Nutrition Mission', '★ टीबी पोषण पोटली मिशन')] + pillar_links),
+  ('impact', 'impact/', 'Impact', 'प्रभाव', [
+    ('impact/', 'Impact & stories', 'प्रभाव एवं कहानियाँ'), ('voices/', 'Voices', 'आवाज़ें'),
+    ('impact/#goals', 'UN goals', 'संयुक्त राष्ट्र लक्ष्य')]),
+  ('times', 'samachar/', 'SWAPO Samachar', 'स्वापो समाचार', [
+    ('samachar/', 'Announcements', 'सूचनाएँ'), ('samachar/in-the-news/', 'In the news', 'मीडिया में स्वापो'),
+    ('samachar/monthly/', 'Monthly edition', 'मासिक अंक'), ('samachar/gallery/', 'Photo gallery', 'फ़ोटो गैलरी')]),
   ('involved', 'get-involved/', 'Get Involved', 'जुड़ें', [
-    ('get-involved/#volunteer', 'Volunteer', 'स्वयंसेवक बनें'), ('get-involved/#member', 'Membership', 'सदस्यता'),
-    ('get-involved/#partner', 'Partner with us', 'साझेदारी'), ('get-involved/#contribute', 'Contribute', 'सहयोग करें')]),
+    ('get-involved/#sky', 'Become a SKY member', 'स्काई सदस्य बनें'), ('get-involved/#students', 'Students & youth', 'विद्यार्थी एवं युवा'),
+    ('get-involved/#professionals', 'Doctors & professionals', 'चिकित्सक एवं विशेषज्ञ'), ('get-involved/#partner', 'Companies & institutions', 'कंपनियाँ एवं संस्थान'),
+    ('get-involved/#branch', 'Start a branch', 'शाखा खोलें')]),
   ('contact', 'contact/', 'Contact', 'संपर्क', []),
 ] %}
 
@@ -90,7 +103,7 @@
       <button class="lang-btn" type="button" data-lang-toggle aria-label="Switch language / भाषा बदलें">
         <span class="l-en" lang="hi">हिंदी</span><span class="l-hi" lang="en">EN</span>
       </button>
-      <a class="btn btn-gold btn-sm head-cta" href="{{ url('get-involved/') }}#contribute">{{ icon('heart') }} {{ t('Contribute', 'सहयोग करें') }}</a>
+      <a class="btn btn-gold btn-sm head-cta" href="{{ url('donate/') }}">{{ icon('heart') }} {{ t('Contribute', 'सहयोग करें') }}</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" data-menu>
         {{ icon('menu') }}<span class="sr">Menu</span>
       </button>
@@ -120,7 +133,7 @@
     {% endfor %}
     </ul>
     <button class="btn btn-ghost-dark btn-block" type="button" data-lang-toggle>{{ icon('globe') }} <span class="l-en" lang="hi">हिंदी में देखें</span><span class="l-hi" lang="en">View in English</span></button>
-    <a class="btn btn-gold btn-block" href="{{ url('get-involved/') }}#contribute">{{ t('Contribute', 'सहयोग करें') }}</a>
+    <a class="btn btn-gold btn-block" href="{{ url('donate/') }}">{{ icon('heart') }} {{ t('Contribute', 'सहयोग करें') }}</a>
     <p class="drawer-contact"><a href="tel:+{{ site.phone_raw }}">{{ icon('phone') }} {{ site.phone }}</a><br><a href="mailto:{{ site.email }}">{{ icon('mail') }} {{ site.email }}</a></p>
   </div>
 </div>
@@ -139,7 +152,8 @@
       <img class="foot-logo" src="{{ asset('img/logo-192.png') }}" alt="SWAPO Trust logo" width="88" height="88">
       <p class="foot-name">{{ t('SWAPO Trust (Regd.)', 'स्वापो ट्रस्ट (पंजी.)') }}</p>
       <p>{{ t(site.full_en, site.full_hi) }}</p>
-      <p class="foot-tag">{{ t(site.tagline_en, site.tagline_hi) }}</p>
+      <p class="foot-motto" lang="hi">परहित सरिस धर्म नहिं भाई</p>
+      <p class="foot-tag">{{ t('There is no duty greater than doing good for others.', 'दूसरों के हित से बड़ा कोई धर्म नहीं।') }}</p>
       {% if site.registration_no or site.reg_12a or site.reg_80g or site.darpan_id %}
       <ul class="foot-reg">
         {% if site.registration_no %}<li>{{ t('Registration No.', 'पंजीकरण सं.') }} {{ site.registration_no }}</li>{% endif %}
@@ -152,20 +166,23 @@
     <div>
       <h2 class="foot-h">{{ t('Explore', 'देखें') }}</h2>
       <ul class="foot-links">
-        <li><a href="{{ url('about/') }}">{{ t('About us', 'हमारे बारे में') }}</a></li>
+        <li><a href="{{ url('about/') }}">{{ t('Our story', 'हमारी कहानी') }}</a></li>
+        <li><a href="{{ url('about/founder/') }}">{{ t('Our founder', 'संस्थापक') }}</a></li>
+        <li><a href="{{ url('about/team/') }}">{{ t('Team & branches', 'टीम एवं शाखाएँ') }}</a></li>
         <li><a href="{{ url('work/') }}">{{ t('Our work', 'हमारा कार्य') }}</a></li>
-        <li><a href="{{ url('work/tb-nutrition/') }}">{{ t('TB Nutrition Mission', 'टीबी पोषाहार मिशन') }}</a></li>
-        <li><a href="{{ url('impact/') }}">{{ t('Impact', 'प्रभाव') }}</a></li>
-        <li><a href="{{ url('about/') }}#transparency">{{ t('Transparency', 'पारदर्शिता') }}</a></li>
+        <li><a href="{{ url('impact/') }}">{{ t('Impact & stories', 'प्रभाव एवं कहानियाँ') }}</a></li>
+        <li><a href="{{ url('voices/') }}">{{ t('Voices', 'आवाज़ें') }}</a></li>
       </ul>
     </div>
     <div>
-      <h2 class="foot-h">{{ t('SWAPO Times', 'स्वापो टाइम्स') }}</h2>
+      <h2 class="foot-h">{{ t('Join & support', 'जुड़ें एवं सहयोग करें') }}</h2>
       <ul class="foot-links">
-        <li><a href="{{ url('times/') }}">{{ t('Latest news', 'ताज़ा समाचार') }}</a></li>
-        <li><a href="{{ url('times/epaper/') }}">{{ t('Monthly e-paper', 'मासिक ई-पेपर') }}</a></li>
-        <li><a href="{{ url('times/press/') }}">{{ t('Press coverage', 'समाचार पत्रों में') }}</a></li>
-        <li><a href="{{ url('times/gallery/') }}">{{ t('Photo gallery', 'फ़ोटो गैलरी') }}</a></li>
+        <li><a href="{{ url('donate/') }}">{{ t('Contribute', 'सहयोग करें') }}</a></li>
+        <li><a href="{{ url('get-involved/') }}#sky">{{ t('Become a SKY', 'स्काई बनें') }}</a></li>
+        <li><a href="{{ url('get-involved/') }}#students">{{ t('Volunteer', 'स्वयंसेवा') }}</a></li>
+        <li><a href="{{ url('samachar/') }}">{{ t('SWAPO Samachar', 'स्वापो समाचार') }}</a></li>
+        <li><a href="{{ url('samachar/in-the-news/') }}">{{ t('In the news', 'मीडिया में स्वापो') }}</a></li>
+        <li><a href="{{ url('about/') }}#transparency">{{ t('Transparency', 'पारदर्शिता') }}</a></li>
       </ul>
     </div>
     <div>
@@ -178,10 +195,12 @@
         {% if site.facebook %}<li><a href="{{ site.facebook }}" target="_blank" rel="noopener">{{ icon('facebook') }} Facebook</a></li>{% endif %}
         {% if site.youtube %}<li><a href="{{ site.youtube }}" target="_blank" rel="noopener">{{ icon('play') }} YouTube</a></li>{% endif %}
         {% if site.instagram %}<li><a href="{{ site.instagram }}" target="_blank" rel="noopener">{{ icon('camera') }} Instagram</a></li>{% endif %}
+        {% if site.linkedin %}<li><a href="{{ site.linkedin }}" target="_blank" rel="noopener">{{ icon('linkedin') }} LinkedIn</a></li>{% endif %}
       </ul>
     </div>
   </div>
   <div class="wrap foot-base">
+    <p class="foot-satya" lang="hi">सत्यमेव जयते</p>
     <p>© {{ year }} SWAPO Trust (Regd.), Hathras. {{ t('All rights reserved.', 'सर्वाधिकार सुरक्षित।') }}</p>
     <p>{{ t('We work without discrimination of caste, creed, religion, politics or wealth.', 'हम जाति, संप्रदाय, धर्म, राजनीति या आर्थिक स्थिति के भेदभाव के बिना कार्य करते हैं।') }}</p>
   </div>
@@ -192,8 +211,8 @@
 <nav class="bottom-bar" aria-label="Quick links">
   <a href="{{ url('') }}"{% if active == 'home' %} aria-current="page"{% endif %}>{{ icon('home') }}<span>{{ t('Home', 'होम') }}</span></a>
   <a href="{{ url('work/') }}"{% if active == 'work' %} aria-current="page"{% endif %}>{{ icon('seva') }}<span>{{ t('Work', 'कार्य') }}</span></a>
-  <a href="{{ url('times/') }}"{% if active == 'times' %} aria-current="page"{% endif %}>{{ icon('paper') }}<span>{{ t('News', 'समाचार') }}</span></a>
-  <a href="{{ url('get-involved/') }}"{% if active == 'involved' %} aria-current="page"{% endif %}>{{ icon('heart') }}<span>{{ t('Help', 'सहयोग') }}</span></a>
+  <a href="{{ url('samachar/') }}"{% if active == 'times' %} aria-current="page"{% endif %}>{{ icon('paper') }}<span>{{ t('News', 'समाचार') }}</span></a>
+  <a href="{{ url('donate/') }}"{% if active in ('involved','donate') %} aria-current="page"{% endif %}>{{ icon('heart') }}<span>{{ t('Help', 'सहयोग') }}</span></a>
   <a href="tel:+{{ site.phone_raw }}">{{ icon('phone') }}<span>{{ t('Call', 'कॉल') }}</span></a>
 </nav>
 

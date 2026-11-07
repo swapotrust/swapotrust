@@ -1,0 +1,11 @@
+{% from "_macros.html" import t with context %}
+<nav class="tabs" aria-label="About sections">
+  <div class="wrap tabs-row">
+    <a href="{{ url('about/') }}"{% if sub == 'story' %} aria-current="page"{% endif %}>{{ t('Our story', 'हमारी कहानी') }}</a>
+    <a href="{{ url('about/founder/') }}"{% if sub == 'founder' %} aria-current="page"{% endif %}>{{ t('Founder', 'संस्थापक') }}</a>
+    <a href="{{ url('about/team/') }}"{% if sub == 'team' %} aria-current="page"{% endif %}>{{ t('Team & branches', 'टीम एवं शाखाएँ') }}</a>
+    <a href="{{ url('about/') }}#mission">{{ t('Mission', 'उद्देश्य') }}</a>
+    <a href="{{ url('about/') }}#objectives">{{ t('Objectives', 'लक्ष्य') }}</a>
+    <a href="{{ url('about/') }}#transparency">{{ t('Transparency', 'पारदर्शिता') }}</a>
+  </div>
+</nav>

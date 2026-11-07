@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, tr, icon, sdg, page_hero, news_card, privacy_note with context %}
+{% set title = pillar.title_en %}
+{% set p = pillar %}
+{% set cover = (p.programmes|selectattr('photos')|map(attribute='photos')|first or [''])[0] %}
+{% block main %}
+{{ page_hero('Our work · Pillar ' ~ (pillars.index(p) + 1), 'हमारा कार्य · स्तंभ ' ~ (pillars.index(p) + 1), p.title_en, p.title_hi, cover, asset, p.title_hi.split(' ')[0], p.intro_en, p.intro_hi) }}
+
+<nav class="tabs" aria-label="Programmes" style="--pc: {{ p.color }}">
+  <div class="wrap tabs-row">
+    {% for g in p.programmes %}<a href="{{ url('work/tb-nutrition/') if g.id == 'tb-nutrition' else '#' ~ g.id }}">{{ t(g.title_en, g.title_hi) }}</a>{% endfor %}
+  </div>
+</nav>
+
+<section class="section pillar-top" style="--pc: {{ p.color }}">
+  <div class="wrap pt-grid">
+    <div>
+      <p class="eyebrow">{{ t('UN Sustainable Development Goals', 'संयुक्त राष्ट्र सतत विकास लक्ष्य') }}</p>
+      <div class="sdgs">{% for n in p.sdgs %}{{ sdg(n) }}{% endfor %}</div>
+    </div>
+    <ul class="pt-stats">
+      <li><b>{{ p.programmes|length }}</b>{{ t('programmes', 'कार्यक्रम') }}</li>
+      <li><b>{{ p.sdgs|length }}</b>{{ t('UN goals served', 'संयुक्त राष्ट्र लक्ष्य') }}</li>
+      <li><b>{{ pstories|length }}</b>{{ t('impact stories', 'प्रभाव कहानियाँ') }}</li>
+    </ul>
+  </div>
+</section>
+
+{% for g in p.programmes %}
+<section class="prog-sec{% if loop.index is even %} tint{% endif %}" id="{{ g.id }}" style="--pc: {{ p.color }}">
+  <div class="wrap prog-sec-grid{% if not g.photos %} no-photo{% endif %}">
+    <div class="prog-sec-copy">
+      <p class="kicker">
+        {% if g.status == 'flagship' %}<span class="badge">{{ t('Flagship', 'प्रमुख कार्यक्रम') }}</span>
+        {% elif g.status == 'building' %}<span class="badge badge-build">{{ t('Ongoing work · being built', 'जारी कार्य · निर्माणाधीन') }}</span>
+        {% else %}<span class="badge badge-on">{{ t('Ongoing', 'जारी') }}</span>{% endif %}
+        {% if g.since %}<span>{{ t('Since ' ~ g.since, g.since ~ ' से') }}</span>{% endif %}
+      </p>
+      <h2>{{ t(g.title_en, g.title_hi) }}</h2>
+      <p class="prog-lede">{{ t(g.text_en, g.text_hi) }}</p>
+      <p>{{ t(g.detail_en, g.detail_hi) }}</p>
+      <div class="btn-row">
+        {% if g.id == 'tb-nutrition' %}<a class="btn btn-teal btn-sm" href="{{ url('work/tb-nutrition/') }}">{{ t('Full programme page', 'पूरा कार्यक्रम पृष्ठ') }} {{ icon('arrow') }}</a>{% endif %}
+        <a class="btn btn-gold btn-sm" href="{{ url('donate/') }}?for={{ g.id }}#programmes">{{ icon('heart') }} {{ t('Support this', 'इसमें सहयोग करें') }}</a>
+        <a class="btn btn-ghost-dark btn-sm" href="{{ url('get-involved/') }}">{{ t('Volunteer', 'स्वयंसेवा') }}</a>
+      </div>
+    </div>
+    {% if g.photos %}
+    <div class="prog-photos n{{ [g.photos|length, 3]|min }}">
+      {% for ph in g.photos[:3] %}<img src="{{ asset(ph) }}" alt="" loading="lazy" data-lightbox>{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% for st in pstories if st.programme == g.id %}
+  <div class="wrap">
+    <article class="inline-story" id="story-{{ st.id }}">
+      {% if st.photo %}<img src="{{ asset(st.photo) }}" alt="" loading="lazy">{% endif %}
+      <div>
+        <p class="kicker">{{ t('Impact story', 'प्रभाव कहानी') }} · {{ t(st.date_en, st.date_hi) }}</p>
+        <h3>{{ t(st.title_en, st.title_hi) }}</h3>
+        {% for para in st.paras_en %}<p class="l-en">{{ para }}</p>{% endfor %}
+        {% for para in st.paras_hi %}<p class="l-hi">{{ para }}</p>{% endfor %}
+        {% if st.kind == 'representative' %}{{ privacy_note() }}{% endif %}
+      </div>
+    </article>
+  </div>
+  {% endfor %}
+</section>
+{% endfor %}
+
+{% if pposts %}
+<section class="section tint">
+  <div class="wrap">
+    <h2 class="mini-h">{{ icon('paper') }} {{ t('From SWAPO Samachar', 'स्वापो समाचार से') }}</h2>
+    <div class="news-row">{% for q in pposts[:3] %}{{ news_card(q, url, asset, 'ncard-sm') }}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section">
+  <div class="wrap other-pillars">
+    <h2 class="mini-h">{{ t('Other pillars', 'अन्य स्तंभ') }}</h2>
+    <div class="op-row">
+      {% for q in pillars if q.id != p.id %}<a href="{{ url('work/' ~ q.id ~ '/') }}" style="--pc: {{ q.color }}">{{ icon(q.icon) }} {{ t(q.title_en, q.title_hi) }}</a>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

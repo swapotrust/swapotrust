@@ -1,45 +1,50 @@
 {% extends "base.html" %}
-{% from "_macros.html" import t, icon, sdg, news_card with context %}
+{% from "_macros.html" import t, icon, sdg, page_hero with context %}
 {% set title = "Our work" %}
 {% block main %}
-<header class="page-head">
-  <div class="wrap">
-    <p class="eyebrow">{{ t('Our work', 'हमारा कार्य') }}</p>
-    <h1>{{ t('Six pillars. More than twenty programmes. One commitment.', 'छह स्तंभ। बीस से अधिक कार्यक्रम। एक संकल्प।') }}</h1>
-    <nav class="subnav pills" aria-label="Pillars">
-      {% for p in pillars %}<a href="#{{ p.id }}" style="--pc: {{ p.color }}">{{ icon(p.icon) }} {{ t(p.title_en, p.title_hi) }}</a>{% endfor %}
-    </nav>
+{{ page_hero('Our work', 'हमारा कार्य', 'Six pillars. ' ~ n_prog ~ ' programmes. One commitment.', 'छह स्तंभ। ' ~ n_prog ~ ' कार्यक्रम। एक संकल्प।', 'uploads/photos/tb-nikshay-mitra-campaign.jpg', asset, 'सेवा') }}
+
+<section class="section">
+  <div class="wrap work-intro">
+    <div class="hub-wrap small">{% include "_hub.svg.html" %}</div>
+    <div>
+      <p class="eyebrow">{{ t('How our work is organised', 'हमारा कार्य कैसे बँटा है') }}</p>
+      <h2>{{ t('Tap a pillar to see every programme under it', 'किसी स्तंभ पर टैप करें और उसके सभी कार्यक्रम देखें') }}</h2>
+      <p class="sec-sub">{{ t('Each programme page shows what we do, since when, photos from the ground, related news and how you can support it.', 'हर कार्यक्रम पृष्ठ पर बताया गया है कि हम क्या करते हैं, कब से, ज़मीन की तस्वीरें, संबंधित समाचार और आप कैसे सहयोग कर सकते हैं।') }}</p>
+      <a class="flag-link" href="{{ url('work/tb-nutrition/') }}">
+        <img src="{{ asset('uploads/photos/tb-poshan-potli.jpg') }}" alt="" loading="lazy">
+        <span><small>{{ t('Flagship programme', 'प्रमुख कार्यक्रम') }}</small><b>{{ t('TB Nutrition Mission', 'टीबी पोषण पोटली मिशन') }}</b>{{ t('Every month since July 2016', 'जुलाई 2016 से हर माह') }}</span>
+        {{ icon('arrow') }}
+      </a>
+    </div>
   </div>
-</header>
+</section>
 
 {% for p in pillars %}
-<section class="section pillar-sec{% if loop.index is even %} tint{% endif %}" id="{{ p.id }}" style="--pc: {{ p.color }}">
+<section class="section pillar-sec{% if loop.index is odd %} tint{% endif %}" id="{{ p.id }}" style="--pc: {{ p.color }}">
   <div class="wrap">
     <div class="ps-head">
       <span class="ps-num">0{{ loop.index }}</span>
-      <div>
+      <div class="ps-head-main">
         <h2>{{ icon(p.icon, 'ico ps-ico') }} {{ t(p.title_en, p.title_hi) }}</h2>
         <p class="sec-sub">{{ t(p.intro_en, p.intro_hi) }}</p>
-        <div class="sdgs" aria-label="UN Sustainable Development Goals">{% for n in p.sdgs %}{{ sdg(n) }}{% endfor %}</div>
+        <div class="sdgs">{% for n in p.sdgs %}{{ sdg(n) }}{% endfor %}</div>
       </div>
+      <a class="btn btn-ghost-dark btn-sm" href="{{ url('work/' ~ p.id ~ '/') }}">{{ t('Open pillar', 'स्तंभ खोलें') }} {{ icon('arrow') }}</a>
     </div>
     <div class="prog-grid">
       {% for g in p.programmes %}
-      <article class="prog{% if g.flagship %} prog-flag{% endif %}">
-        {% if g.flagship %}<span class="badge">{{ t('Flagship', 'प्रमुख कार्य') }}</span>{% endif %}
-        <h3>{{ t(g.title_en, g.title_hi) }}</h3>
-        <p>{{ t(g.text_en, g.text_hi) }}</p>
-        {% if g.flagship %}<a class="link-arrow" href="{{ url('work/tb-nutrition/') }}">{{ t('Read the full story', 'पूरी कहानी पढ़ें') }} {{ icon('arrow') }}</a>{% endif %}
-      </article>
+      <a class="prog{% if g.status == 'flagship' %} prog-flag{% endif %}" href="{{ url('work/tb-nutrition/') if g.id == 'tb-nutrition' else url('work/' ~ p.id ~ '/') ~ '#' ~ g.id }}">
+        <div class="prog-img">{% if g.photos %}<img src="{{ asset(g.photos[0]) }}" alt="" loading="lazy">{% else %}<span class="prog-ph">{{ icon(p.icon) }}</span>{% endif %}
+          {% if g.status == 'flagship' %}<span class="badge">{{ t('Flagship', 'प्रमुख') }}</span>{% elif g.status == 'building' %}<span class="badge badge-build">{{ t('Being built', 'निर्माणाधीन') }}</span>{% endif %}
+        </div>
+        <div class="prog-body">
+          <h3>{{ t(g.title_en, g.title_hi) }}</h3>
+          <p>{{ t(g.text_en, g.text_hi) }}</p>
+        </div>
+      </a>
       {% endfor %}
     </div>
-    {% set rel = posts|selectattr('pillar', 'equalto', p.id)|list %}
-    {% if rel %}
-    <div class="ps-news">
-      <h3 class="mini-h">{{ icon('paper') }} {{ t('Recent news', 'हाल के समाचार') }}</h3>
-      <div class="news-row">{% for q in rel[:3] %}{{ news_card(q, url, asset, 'ncard-sm') }}{% endfor %}</div>
-    </div>
-    {% endif %}
   </div>
 </section>
 {% endfor %}

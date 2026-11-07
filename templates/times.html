@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 {% from "_macros.html" import t, icon, news_card with context %}
-{% set title = "SWAPO Times" %}
-{% set description = "SWAPO Times – news, photos and the monthly e-paper of SWAPO Trust, Hathras." %}
+{% set title = "SWAPO Samachar" %}
+{% set description = "SWAPO Samachar: announcements, news coverage, photos and the monthly edition of SWAPO Trust, Hathras." %}
+{% set sec = "latest" %}
 {% block main %}
 <header class="times-head">
   <div class="wrap">
     <div class="th-top">
       <span>{{ t('Hathras · Uttar Pradesh', 'हाथरस · उत्तर प्रदेश') }}</span>
-      <span>{{ t('News of seva, from the ground', 'सेवा के समाचार, ज़मीन से') }}</span>
+      <span>{{ t('Announcements from the Trust', 'ट्रस्ट की ओर से सूचनाएँ') }}</span>
     </div>
-    <h1 class="th-title">SWAPO Times</h1>
-    <p class="th-sub" lang="hi">स्वापो टाइम्स</p>
-    <nav class="th-nav" aria-label="SWAPO Times">
-      <a href="{{ url('times/') }}" aria-current="page">{{ t('Latest', 'ताज़ा') }}</a>
-      <a href="{{ url('times/epaper/') }}">{{ icon('paper') }} {{ t('E-paper', 'ई-पेपर') }}</a>
-      <a href="{{ url('times/press/') }}">{{ icon('press') }} {{ t('Press', 'प्रेस') }}</a>
-      <a href="{{ url('times/gallery/') }}">{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
+    <h1 class="th-title">{{ t('SWAPO Samachar', 'स्वापो समाचार') }}</h1>
+    <p class="th-sub">{{ t('News and announcements from SWAPO Trust', 'स्वापो ट्रस्ट की सूचनाएँ एवं गतिविधियाँ') }}</p>
+    <nav class="th-nav" aria-label="SWAPO Samachar">
+      <a href="{{ url('samachar/') }}"{% if sec == 'latest' %} aria-current="page"{% endif %}>{{ t('Announcements', 'सूचनाएँ') }}</a>
+      <a href="{{ url('samachar/in-the-news/') }}"{% if sec == 'press' %} aria-current="page"{% endif %}>{{ icon('press') }} {{ t('In the news', 'मीडिया में') }}</a>
+      <a href="{{ url('samachar/monthly/') }}"{% if sec == 'monthly' %} aria-current="page"{% endif %}>{{ icon('paper') }} {{ t('Monthly edition', 'मासिक अंक') }}</a>
+      <a href="{{ url('samachar/gallery/') }}"{% if sec == 'gallery' %} aria-current="page"{% endif %}>{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
     </nav>
   </div>
 </header>

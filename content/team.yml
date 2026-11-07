@@ -1,0 +1,48 @@
+# Team and branches. Add a photo path (e.g. /uploads/team/name.jpg) to show a photo.
+founder:
+  name_en: "Kapil Agrawal"
+  name_hi: "कपिल अग्रवाल"
+  role_en: "Founder & National President"
+  role_hi: "संस्थापक एवं राष्ट्रीय अध्यक्ष"
+  photo: ""
+
+branches:
+  - id: hathras
+    name_en: "Hathras (Head Office)"
+    name_hi: "हाथरस (मुख्य कार्यालय)"
+    state_en: "Uttar Pradesh"
+    state_hi: "उत्तर प्रदेश"
+    address_en: "City Plaza, Sadabad Gate, Hathras 204101"
+    address_hi: "सिटी प्लाज़ा, सादाबाद गेट, हाथरस 204101"
+    team_year: "2026"
+    members:
+      - { name_en: "Sky Sunil Burman", name_hi: "स्काई सुनील बर्मन", role_en: "District President", role_hi: "जिला अध्यक्ष", photo: "" }
+      - { name_en: "Sky Dinesh Sardana", name_hi: "स्काई दिनेश सरदाना", role_en: "City President", role_hi: "नगर अध्यक्ष", photo: "" }
+      - { name_en: "Sky Utkarsh Sharma", name_hi: "स्काई उत्कर्ष शर्मा", role_en: "District General Secretary", role_hi: "जिला महामंत्री", photo: "" }
+      - { name_en: "Sky Love Tayal", name_hi: "स्काई लव तायल", role_en: "City General Secretary", role_hi: "नगर महामंत्री", photo: "" }
+      - { name_en: "Sky Vishnu Mohan Varshney", name_hi: "स्काई विष्णु मोहन वार्ष्णेय", role_en: "Treasurer", role_hi: "कोषाध्यक्ष", photo: "" }
+    more_en: "Also on the 2026 team: Manoj Agrawal (Raya wale) and Rakesh Bansal, District Senior Vice Presidents; Shrimohan Varshney and Deepak Gupta (Koyla wale), District Vice Presidents; Mohit Garg, District Organisation Secretary; Keshav Lal Arora and Ravi Varshney, City Senior Vice Presidents; Manish Goyal, City Vice President; Dr. Mohit Garg, in charge of the Medical Cell. Advisers include Govind Prasad Agrawal, Shrikishan Arora, Vijay Krishna Garg and Ashok Agrawal (Gorai wale)."
+    more_hi: "2026 टीम में ये भी शामिल हैं: मनोज अग्रवाल (राया वाले) एवं राकेश बंसल, जिला वरिष्ठ उपाध्यक्ष; श्रीमोहन वार्ष्णेय एवं दीपक गुप्ता (कोयला वाले), जिला उपाध्यक्ष; मोहित गर्ग, जिला संगठन मंत्री; केशव लाल अरोड़ा एवं रवि वार्ष्णेय, नगर वरिष्ठ उपाध्यक्ष; मनीष गोयल, नगर उपाध्यक्ष; डॉ. मोहित गर्ग, प्रभारी चिकित्सा प्रकोष्ठ। संरक्षकों में गोविंद प्रसाद अग्रवाल, श्रीकिशन अरोड़ा, विजय कृष्ण गर्ग और अशोक अग्रवाल (गोरई वाले) शामिल हैं।"
+  - id: surat
+    name_en: "Surat"
+    name_hi: "सूरत"
+    state_en: "Gujarat"
+    state_hi: "गुजरात"
+    address_en: ""
+    address_hi: ""
+    team_year: "2026"
+    members:
+      - { name_en: "Sky Subhash Garg", name_hi: "स्काई सुभाष गर्ग", role_en: "Branch President", role_hi: "शाखा अध्यक्ष", photo: "" }
+    more_en: "The Surat branch joins drives in Hathras, such as the 2026 winter sweater distribution, and runs its own seva in Surat."
+    more_hi: "सूरत शाखा हाथरस के अभियानों में भी भाग लेती है, जैसे 2026 का शीतकालीन स्वेटर वितरण, और सूरत में अपनी सेवा चलाती है।"
+  - id: mathura
+    name_en: "Mathura"
+    name_hi: "मथुरा"
+    state_en: "Uttar Pradesh"
+    state_hi: "उत्तर प्रदेश"
+    address_en: ""
+    address_hi: ""
+    team_year: ""
+    members: []
+    more_en: "Branch details will be added soon."
+    more_hi: "शाखा का विवरण जल्द जोड़ा जाएगा।"

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, tr, block, icon, page_hero with context %}
+{% set title = "Our founder" %}
+{% set f = team.founder %}
+{% block main %}
+{{ page_hero('Founder & National President', 'संस्थापक एवं राष्ट्रीय अध्यक्ष', f.name_en, f.name_hi, 'uploads/photos/felicitation.jpg', asset, 'संस्थापक') }}
+{% include "_about_tabs.html" %}
+
+<section class="section">
+  <div class="wrap founder-page">
+    <aside class="fp-side">
+      <div class="founder-photo big">
+        {% if f.photo %}<img src="{{ asset(f.photo) }}" alt="{{ f.name_en }}">{% else %}<span class="monogram">KA</span>{% endif %}
+      </div>
+      <p class="fp-name">{{ t(f.name_en, f.name_hi) }}</p>
+      <p class="fp-role">{{ t(f.role_en, f.role_hi) }}</p>
+      <ul class="fp-facts">
+        <li>{{ icon('pin') }} {{ t('Hathras, Uttar Pradesh', 'हाथरस, उत्तर प्रदेश') }}</li>
+        <li>{{ icon('calendar') }} {{ t('Leading the TB Nutrition Mission since 2016', '2016 से टीबी पोषण पोटली मिशन का नेतृत्व') }}</li>
+        <li>{{ icon('building') }} {{ t('Branches in Hathras, Mathura and Surat', 'हाथरस, मथुरा और सूरत में शाखाएँ') }}</li>
+      </ul>
+      {% if site.founder_facebook %}<a class="btn btn-teal btn-block" href="{{ site.founder_facebook }}" target="_blank" rel="noopener">{{ icon('facebook') }} {{ t('Follow on Facebook', 'फ़ेसबुक पर फ़ॉलो करें') }}</a>{% endif %}
+    </aside>
+    <div class="prose fp-body">
+      <p class="motto small" lang="hi">परहित सरिस धर्म नहिं भाई</p>
+      {{ block('<p class="dropcap">Kapil Agrawal founded SWAPO Trust in Hathras on a belief that runs through all of its work: seva is a form of worship, and a duty we owe one another.</p><p>The name he chose, Social Welfare and Peace Organisation, puts two ideas side by side. The trust deed covers a wide field, from health and education to the protection of animals and the environment, from yoga and satsang to helping people whose rights have been violated.</p><p>The work SWAPO is best known for began under his leadership on 16 July 2016, when the Trust handed its first monthly ration to poor MDR-TB patients at the District TB Centre. It has continued every month since.</p><p>As National President he leads a team of members called SKY, SWAPO Karm Yogis, with branches in Hathras, Mathura and Surat. He also takes public problems to the government, through letters and memoranda to ministers and the Chief Minister.</p>',
+               '<p class="dropcap">श्री कपिल अग्रवाल ने हाथरस में स्वापो ट्रस्ट की स्थापना उस विश्वास पर की, जो इसके हर कार्य में दिखता है: सेवा ही पूजा है, और एक-दूसरे के प्रति हमारा कर्तव्य।</p><p>उन्होंने जो नाम चुना, समाज कल्याण एवं शांति संगठन, उसमें दो विचार साथ चलते हैं। न्यास-पत्र का दायरा व्यापक है: स्वास्थ्य और शिक्षा से लेकर पशुओं और पर्यावरण की रक्षा तक, योग और सत्संग से लेकर मानवाधिकार उल्लंघन के पीड़ितों की मदद तक।</p><p>स्वापो का सबसे चर्चित कार्य उनके नेतृत्व में 16 जुलाई 2016 को शुरू हुआ, जब ट्रस्ट ने जिला क्षय रोग केंद्र पर निर्धन एमडीआर-टीबी मरीज़ों को पहला मासिक राशन दिया। तब से यह हर माह जारी है।</p><p>राष्ट्रीय अध्यक्ष के रूप में वे स्काई, यानी स्वापो कर्मयोगी, कहलाने वाले सदस्यों की टीम का नेतृत्व करते हैं, जिसकी शाखाएँ हाथरस, मथुरा और सूरत में हैं। वे जनता की समस्याएँ भी शासन तक ले जाते हैं, मंत्रियों और मुख्यमंत्री को पत्र और ज्ञापन भेजकर।</p>') }}
+      <figure class="pull">
+        <blockquote lang="hi">“संगठन के पदाधिकारियों और सहयोगियों के सहयोग से यह कार्य संभव हो पा रहा है, इसके लिए सभी का आभार है।”</blockquote>
+        <figcaption>{{ t('Kapil Agrawal, at the 39th monthly TB nutrition distribution', 'कपिल अग्रवाल, 39वें मासिक टीबी पोषाहार वितरण पर') }}</figcaption>
+      </figure>
+      <div class="note-card">{{ icon('doc') }}<p>{{ t('More of his story, in his own words, along with photos from SWAPO’s founding day, will be added here soon.', 'उनके अपने शब्दों में उनकी कहानी और स्वापो के स्थापना दिवस की तस्वीरें जल्द यहाँ जोड़ी जाएँगी।') }}</p></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

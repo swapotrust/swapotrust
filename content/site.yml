@@ -11,8 +11,8 @@ tagline_hi: "पूरे भारत में आध्यात्मिक 
 
 founder: "Kapil Agrawal"
 founder_hi: "कपिल अग्रवाल"
-founder_role_en: "Founder & President"
-founder_role_hi: "संस्थापक एवं अध्यक्ष"
+founder_role_en: "Founder & National President"
+founder_role_hi: "संस्थापक एवं राष्ट्रीय अध्यक्ष"
 founder_photo: ""
 
 address_en: "SWAPO Trust (Regd.), City Plaza, Sadabad Gate, Hathras – 204101, Uttar Pradesh, India"
@@ -24,6 +24,7 @@ facebook: "https://www.facebook.com/share/1FTPQ1Yt9d/"
 founder_facebook: "https://www.facebook.com/share/1CH7sFZjkh/"
 youtube: ""
 instagram: ""
+linkedin: "https://www.linkedin.com/company/swapo-trust/"
 whatsapp_channel: ""
 google_form_volunteer: ""
 
@@ -41,17 +42,17 @@ tb_start: "2016-07-16"
 # Impact numbers on the home page
 impact:
   - value: "180+"
-    label_en: "MDR-TB patients given six months of rations"
-    label_hi: "एमडीआर-टीबी मरीज़ों को छह माह का राशन"
+    label_en: "MDR-TB patients given six months of poshan potli (by the 39th month)"
+    label_hi: "एमडीआर-टीबी मरीज़ों को छह माह की पोषण पोटली (39वें माह तक)"
   - value: "3"
-    label_en: "Permanent drinking-water tanks run by us"
-    label_hi: "हमारे द्वारा संचालित स्थायी पेयजल टंकियाँ"
-  - value: "6"
-    label_en: "Specialities at our free health camps"
-    label_hi: "निःशुल्क स्वास्थ्य शिविरों में विशेषज्ञ सेवाएँ"
-  - value: "20+"
-    label_en: "Areas of seva, from water to winter relief"
-    label_hi: "सेवा के क्षेत्र – जल से लेकर शीत राहत तक"
+    label_en: "Permanent drinking-water tanks we run in Hathras"
+    label_hi: "हाथरस में हमारे द्वारा संचालित स्थायी पेयजल टंकियाँ"
+  - value: "3"
+    label_en: "Branches: Hathras, Mathura and Surat"
+    label_hi: "शाखाएँ: हाथरस, मथुरा और सूरत"
+  - value: "23"
+    label_en: "Programmes under six pillars of seva"
+    label_hi: "सेवा के छह स्तंभों में कार्यक्रम"
 
 # Places on the Seva Map (latitude, longitude). Add water tanks, bonfire points etc.
 places:
@@ -60,3 +61,21 @@ places:
     kind: "office"
     lat: 27.5960
     lng: 78.0520
+
+# Running strip at the top of every page (keep each line short)
+ticker:
+  - en: "Sponsor a month's poshan potli for an MDR-TB patient"
+    hi: "किसी एमडीआर-टीबी मरीज़ की एक माह की पोषण पोटली प्रायोजित करें"
+    link: donate/#sponsor
+  - en: "Blankets, sweaters and caps needed this winter"
+    hi: "इस सर्दी कंबल, स्वेटर और टोपे की ज़रूरत है"
+    link: donate/#needs
+  - en: "Help build cremation centres for poor families"
+    hi: "निर्धन परिवारों के लिए अंत्येष्टि स्थल बनाने में सहयोग करें"
+    link: work/care/#cremation
+  - en: "Students: volunteer with us on site or online"
+    hi: "विद्यार्थी: मैदान में या ऑनलाइन, हमारे साथ सेवा करें"
+    link: get-involved/#students
+  - en: "Become a SKY, a SWAPO Karm Yogi"
+    hi: "स्काई बनें, स्वापो कर्मयोगी"
+    link: get-involved/#sky

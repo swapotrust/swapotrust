@@ -1,0 +1,31 @@
+# Home page slideshow. First slide shows first. Add or reorder from the editor.
+- photo: /uploads/photos/tb-poshan-potli.jpg
+  kicker_en: "TB Nutrition Mission · since July 2016"
+  kicker_hi: "टीबी पोषण पोटली मिशन · जुलाई 2016 से"
+  title_en: "A poshan potli every month for MDR-TB patients"
+  title_hi: "एमडीआर-टीबी मरीज़ों को हर माह पोषण पोटली"
+  link: work/tb-nutrition/
+- photo: /uploads/photos/plantation-drive.jpg
+  kicker_en: "Water & Environment"
+  kicker_hi: "जल एवं पर्यावरण"
+  title_en: "Trees planted, guarded and cared for by our members"
+  title_hi: "हमारे सदस्यों द्वारा लगाए, बचाए और सींचे गए पौधे"
+  link: work/water/#plantation
+- photo: /uploads/photos/elders-ashram.jpg
+  kicker_en: "Care & Dignity"
+  kicker_hi: "सम्मान एवं संरक्षण"
+  title_en: "Warm clothes and food for elders in our ashrams"
+  title_hi: "आश्रमों में बुज़ुर्गों के लिए गर्म कपड़े और भोजन"
+  link: work/care/#elders
+- photo: /uploads/photos/sharbat-seva-market.jpg
+  kicker_en: "Pyau & Sharbat Seva"
+  kicker_hi: "प्याऊ एवं शरबत सेवा"
+  title_en: "Cold water and sharbat through the Hathras summer"
+  title_hi: "हाथरस की गर्मी में ठंडा पानी और शरबत"
+  link: work/water/#pyau
+- photo: /uploads/photos/independence-day-school.jpg
+  kicker_en: "Education & National Days"
+  kicker_hi: "शिक्षा एवं राष्ट्रीय पर्व"
+  title_en: "Independence Day with children of a government school"
+  title_hi: "सरकारी विद्यालय के बच्चों के साथ स्वतंत्रता दिवस"
+  link: work/education/

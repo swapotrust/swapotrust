@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, tr, icon, page_hero with context %}
+{% set title = "Contribute" %}
+{% block main %}
+{{ page_hero('Contribute', 'सहयोग करें', 'Every contribution reaches someone directly', 'हर सहयोग सीधे किसी ज़रूरतमंद तक पहुँचता है', 'uploads/photos/tb-poshan-programme.jpg', asset, 'सहयोग',
+  'Give grains, blankets or medicines, sponsor a specific need, or contribute funds to a programme. Call, WhatsApp or visit us to give.', 'अनाज, कंबल या दवाइयाँ दें, कोई विशेष ज़रूरत प्रायोजित करें, या किसी कार्यक्रम के लिए धन दें। सहयोग के लिए कॉल, व्हाट्सऐप करें या कार्यालय आएँ।') }}
+
+<nav class="tabs" aria-label="On this page">
+  <div class="wrap tabs-row">
+    <a href="#how">{{ t('How to give', 'कैसे दें') }}</a>
+    <a href="#sponsor">{{ t('Sponsor a need', 'ज़रूरत प्रायोजित करें') }}</a>
+    <a href="#programmes">{{ t('Give to a programme', 'कार्यक्रम के लिए') }}</a>
+    <a href="#needs">{{ t('Things we need', 'ज़रूरी सामान') }}</a>
+    <a href="#trust">{{ t('Transparency', 'पारदर्शिता') }}</a>
+    <a href="#faq">{{ t('Questions', 'प्रश्न') }}</a>
+  </div>
+</nav>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="give-head">
+      <div>
+        <p class="eyebrow">{{ t('How to give', 'कैसे दें') }}</p>
+        <h2>{{ t('Talk to us, and we will tell you exactly where it will go', 'हमसे बात करें, हम बताएँगे कि आपका सहयोग कहाँ जाएगा') }}</h2>
+      </div>
+      <div class="give-contact">
+        <a class="btn btn-gold" href="tel:+{{ site.phone_raw }}">{{ icon('phone') }} {{ site.phone }}</a>
+        <a class="btn btn-teal" href="https://wa.me/{{ site.phone_raw }}?text={{ 'Namaste, I would like to contribute to SWAPO Trust.'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} WhatsApp</a>
+      </div>
+    </div>
+    <div class="ways">
+      <div class="way"><span class="way-n">1</span><h3>{{ t('Give in kind', 'सामग्री दें') }}</h3><p>{{ t('Grains, pulses, blankets, warm clothes, medicines, books and school supplies. Drop them at our office or we will collect.', 'अनाज, दालें, कंबल, गर्म कपड़े, दवाइयाँ, किताबें और स्कूल सामग्री। कार्यालय पर दें, या हम आकर ले जाएँगे।') }}</p></div>
+      <div class="way"><span class="way-n">2</span><h3>{{ t('Sponsor a need', 'ज़रूरत प्रायोजित करें') }}</h3><p>{{ t('Pay for one specific thing, such as a TB patient’s potli or a child’s school year, and we will send you a photo when it is delivered.', 'किसी एक चीज़ का खर्च उठाएँ, जैसे किसी टीबी मरीज़ की पोटली या किसी बच्चे का स्कूल वर्ष, और पहुँचने पर हम आपको फ़ोटो भेजेंगे।') }}</p></div>
+      <div class="way"><span class="way-n">3</span><h3>{{ t('Give funds', 'धन से सहयोग') }}</h3><p>{{ t('Contribute to a programme of your choice or wherever the need is greatest. Call or WhatsApp us for the Trust’s bank details.', 'अपनी पसंद के कार्यक्रम के लिए, या जहाँ ज़रूरत सबसे अधिक हो, सहयोग दें। ट्रस्ट के बैंक विवरण के लिए कॉल या व्हाट्सऐप करें।') }}</p></div>
+    </div>
+    <div class="freq">
+      <div class="fq"><b>{{ t('One-time', 'एक बार') }}</b><span>{{ t('For a drive, a festival, or a family occasion such as a birthday or a remembrance day.', 'किसी अभियान, पर्व, या जन्मदिन व पुण्यतिथि जैसे पारिवारिक अवसर पर।') }}</span></div>
+      <div class="fq"><b>{{ t('Monthly', 'मासिक') }}</b><span>{{ t('Ideal for the TB poshan potli, which has to arrive every single month.', 'टीबी पोषण पोटली के लिए सबसे उपयुक्त, जिसे हर माह पहुँचना होता है।') }}</span></div>
+      <div class="fq"><b>{{ t('Annual', 'वार्षिक') }}</b><span>{{ t('Sponsor a child’s school year, a water tank’s upkeep or a season of winter relief.', 'किसी बच्चे का स्कूल वर्ष, पेयजल टंकी का रखरखाव या शीत राहत का एक मौसम प्रायोजित करें।') }}</span></div>
+    </div>
+    <p class="tax-note">{{ icon('doc') }} {{ t('Please note: donations to SWAPO Trust are not tax-exempt at present.', 'कृपया ध्यान दें: वर्तमान में स्वापो ट्रस्ट को दिए गए दान पर कर छूट नहीं है।') }}</p>
+  </div>
+</section>
+
+<section class="section tint" id="sponsor">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ t('Sponsor a need', 'ज़रूरत प्रायोजित करें') }}</p><h2>{{ t('Choose one thing to make possible', 'कोई एक चीज़ चुनें जिसे आप संभव बनाएँ') }}</h2></div>
+    {% set menu = [
+      ('health', 'One poshan potli for a month', 'एक माह की पोषण पोटली', 'Food for one MDR-TB patient for a month', 'एक एमडीआर-टीबी मरीज़ का एक माह का भोजन'),
+      ('health', 'A full course of potli', 'पूरे इलाज की पोटली', 'Six months of potli for one patient', 'एक मरीज़ के लिए छह माह की पोटली'),
+      ('health', 'A haemoglobin camp', 'एक हीमोग्लोबिन शिविर', 'Testing for the girls of one school', 'एक विद्यालय की छात्राओं की जाँच'),
+      ('relief', 'Blankets for an ashram', 'एक आश्रम के लिए कंबल', 'Winter blankets for elders in one ashram', 'एक आश्रम के बुज़ुर्गों के लिए कंबल'),
+      ('relief', 'A week of alaav', 'एक सप्ताह का अलाव', 'Wood for one bonfire point through the cold wave', 'शीतलहर में एक अलाव स्थल की लकड़ी'),
+      ('water', 'A summer pyau', 'गर्मी की एक प्याऊ', 'Water and upkeep at one pyau for the summer', 'एक प्याऊ का पूरी गर्मी का पानी और रखरखाव'),
+      ('water', 'A tree with a guard', 'ट्री-गार्ड सहित एक पेड़', 'A sapling, its guard and your name on it', 'एक पौधा, उसका ट्री-गार्ड और उस पर आपका नाम'),
+      ('education', 'A child’s school year', 'एक बच्चे का स्कूल वर्ष', 'Fees, books and uniform for one year', 'एक वर्ष की फ़ीस, किताबें और गणवेश'),
+      ('care', 'A daughter’s new home', 'एक बेटी का नया घर', 'Household items for a kanya vivah', 'कन्या विवाह के लिए घरेलू सामान'),
+      ('care', 'Cremation centre', 'अंत्येष्टि स्थल', 'Bricks, cement or a share of construction', 'ईंट, सीमेंट या निर्माण में हिस्सेदारी'),
+    ] %}
+    <div class="sponsor-grid">
+      {% for pid, a, b, c, d in menu %}
+      {% set pp = pillar_map[pid] %}
+      <a class="spon" style="--pc: {{ pp.color }}" href="https://wa.me/{{ site.phone_raw }}?text={{ ('Namaste, I would like to sponsor: ' ~ a)|urlencode }}" target="_blank" rel="noopener">
+        <span class="spon-ico">{{ icon(pp.icon) }}</span>
+        <b>{{ t(a, b) }}</b><span>{{ t(c, d) }}</span>
+        <span class="spon-go">{{ icon('whatsapp') }} {{ t('Sponsor this', 'प्रायोजित करें') }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="programmes">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ t('Give to a programme', 'किसी कार्यक्रम के लिए') }}</p><h2>{{ t('Every programme, and what your support pays for', 'हर कार्यक्रम, और आपका सहयोग किस पर खर्च होता है') }}</h2></div>
+    <div class="prog-pick">
+      {% for p in pillars %}
+      <div class="pp-group" style="--pc: {{ p.color }}">
+        <h3>{{ icon(p.icon) }} {{ t(p.title_en, p.title_hi) }}</h3>
+        <ul>
+          {% for g in p.programmes %}
+          <li id="give-{{ g.id }}" data-prog="{{ g.id }}">
+            <span><b>{{ t(g.title_en, g.title_hi) }}</b>{% if g.status == 'building' %} <span class="badge badge-build">{{ t('Being built', 'निर्माणाधीन') }}</span>{% endif %}<small>{{ t(g.text_en, g.text_hi) }}</small></span>
+            <a class="btn btn-ghost-dark btn-sm" href="https://wa.me/{{ site.phone_raw }}?text={{ ('Namaste, I would like to support: ' ~ g.title_en)|urlencode }}" target="_blank" rel="noopener">{{ t('Support', 'सहयोग') }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section tint" id="needs">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ t('Things we need', 'ज़रूरी सामान') }}</p><h2>{{ t('What we can use right now', 'अभी किन चीज़ों की ज़रूरत है') }}</h2></div>
+    {% set needs = [
+      ('Wheat flour, rice, daliya, masoor dal, soya chunks', 'आटा, चावल, दलिया, मसूर दाल, सोयाबीन बड़ी', 'For the monthly TB poshan potli', 'मासिक टीबी पोषण पोटली के लिए'),
+      ('Blankets, sweaters, caps, shawls', 'कंबल, स्वेटर, टोपे, शॉल', 'Winter relief for ashrams and families', 'आश्रमों और परिवारों के लिए शीत राहत'),
+      ('Wood for alaav', 'अलाव के लिए लकड़ी', 'Bonfire points through the cold wave', 'शीतलहर में अलाव स्थलों के लिए'),
+      ('Dressings, ointments, basic medicines', 'पट्टियाँ, मरहम, सामान्य दवाइयाँ', 'For residents of the leprosy ashram', 'कुष्ठ आश्रम के निवासियों के लिए'),
+      ('Books, notebooks, school bags, uniforms', 'किताबें, कॉपियाँ, स्कूल बैग, गणवेश', 'For sponsored children', 'प्रायोजित बच्चों के लिए'),
+      ('Water coolers, matkas, glasses', 'वाटर कूलर, मटके, गिलास', 'For summer pyau', 'गर्मियों की प्याऊ के लिए'),
+      ('Saplings and tree guards', 'पौधे और ट्री-गार्ड', 'For plantation drives', 'वृक्षारोपण अभियानों के लिए'),
+      ('Bricks, cement, steel', 'ईंट, सीमेंट, सरिया', 'For the cremation centres', 'अंत्येष्टि स्थलों के लिए'),
+      ('Bed, utensils, clothes, household items', 'पलंग, बर्तन, कपड़े, घरेलू सामान', 'For kanya vivah', 'कन्या विवाह के लिए'),
+      ('Fruit, sweets, fodder', 'फल, मिठाई, चारा', 'For ashram visits and gau seva', 'आश्रम सेवा और गौ सेवा के लिए'),
+    ] %}
+    <ul class="needs">
+      {% for a, b, c, d in needs %}<li>{{ icon('gift') }}<span><b>{{ t(a, b) }}</b>{{ t(c, d) }}</span></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="trust">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ t('Transparency', 'पारदर्शिता') }} · <span lang="hi">सत्यमेव जयते</span></p><h2>{{ t('How we look after what you give', 'आपके सहयोग का हम कैसे ध्यान रखते हैं') }}</h2></div>
+    <div class="trust-grid">
+      <div class="tr-item">{{ icon('shield') }}<h3>{{ t('Bank account, two signatures', 'बैंक खाता, दो हस्ताक्षर') }}</h3><p>{{ t('All money is deposited in the Trust’s account with a nationalised or recognised bank. Every payment needs two signatures: the President or Chief Trustee, and a person they authorise.', 'सारी धनराशि ट्रस्ट के राष्ट्रीयकृत या मान्यता प्राप्त बैंक खाते में जमा होती है। हर भुगतान पर दो हस्ताक्षर ज़रूरी हैं: अध्यक्ष या मुख्य ट्रस्टी, और उनके द्वारा अधिकृत व्यक्ति।') }}</p></div>
+      <div class="tr-item">{{ icon('doc') }}<h3>{{ t('Receipts and certificates', 'रसीद एवं प्रमाण पत्र') }}</h3><p>{{ t('On request, we give a receipt for your contribution and a certificate of appreciation. Registration documents can be shared on request.', 'अनुरोध पर हम आपके सहयोग की रसीद और प्रशंसा प्रमाण पत्र देते हैं। पंजीकरण दस्तावेज़ अनुरोध पर साझा किए जा सकते हैं।') }}</p></div>
+      <div class="tr-item">{{ icon('camera') }}<h3>{{ t('Photos and reports back', 'तस्वीरें और रिपोर्ट') }}</h3><p>{{ t('When your contribution is used, we send you photos. Our activities are posted on this website and our social pages, and many are covered by local newspapers.', 'आपका सहयोग उपयोग होने पर हम आपको तस्वीरें भेजते हैं। हमारी गतिविधियाँ इस वेबसाइट और सोशल पेजों पर आती हैं, और कई स्थानीय अख़बारों में छपती हैं।') }}</p></div>
+      <div class="tr-item">{{ icon('heart') }}<h3>{{ t('Only for charitable work', 'केवल धर्मार्थ कार्य') }}</h3><p>{{ t('The trust deed says contributions can be spent only on public welfare and the Trust’s objectives. Members give their time without pay.', 'न्यास-पत्र के अनुसार सहयोग केवल जनकल्याण और ट्रस्ट के उद्देश्यों पर खर्च हो सकता है। सदस्य बिना वेतन के अपना समय देते हैं।') }}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section tint" id="faq">
+  <div class="wrap faq">
+    <h2>{{ t('Questions people ask', 'अक्सर पूछे जाने वाले प्रश्न') }}</h2>
+    {% set faqs = [
+      ('Is my donation tax-exempt?', 'क्या मेरे दान पर कर छूट मिलेगी?', 'Not at present. SWAPO Trust does not currently have tax-exemption registration, so donations cannot be claimed as a deduction.', 'अभी नहीं। स्वापो ट्रस्ट के पास वर्तमान में कर छूट पंजीकरण नहीं है, इसलिए दान पर कटौती का दावा नहीं किया जा सकता।'),
+      ('Can I choose where my contribution goes?', 'क्या मैं चुन सकता हूँ कि मेरा सहयोग कहाँ जाए?', 'Yes. Tell us the programme or the specific need, and we will use it there and send you photos.', 'हाँ। हमें कार्यक्रम या विशेष ज़रूरत बताएँ, हम वहीं उपयोग करेंगे और आपको तस्वीरें भेजेंगे।'),
+      ('Can I give on a birthday or in someone’s memory?', 'क्या मैं जन्मदिन या किसी की स्मृति में दे सकता हूँ?', 'Yes. Many members mark birthdays, anniversaries and remembrance days with a potli distribution, a meal at an ashram or a tree.', 'हाँ। कई सदस्य जन्मदिन, वर्षगाँठ और पुण्यतिथि पर पोटली वितरण, आश्रम में भोजन या पौधारोपण करते हैं।'),
+      ('Can I come and see the work?', 'क्या मैं आकर काम देख सकता हूँ?', 'Please do. Call us to find out when the next distribution or camp is, and join us.', 'ज़रूर। अगला वितरण या शिविर कब है, यह जानने के लिए कॉल करें और हमारे साथ आएँ।'),
+      ('Can I give from outside Hathras?', 'क्या मैं हाथरस से बाहर से दे सकता हूँ?', 'Yes. Call or WhatsApp us for bank details. Our Surat and Mathura branches can also help.', 'हाँ। बैंक विवरण के लिए कॉल या व्हाट्सऐप करें। हमारी सूरत और मथुरा शाखाएँ भी मदद कर सकती हैं।'),
+    ] %}
+    {% for a, b, c, d in faqs %}
+    <details class="qa"><summary>{{ t(a, b) }}</summary><p>{{ t(c, d) }}</p></details>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section contribute">
+  <div class="wrap support-grid">
+    <div><h2>{{ t('Ready to help?', 'सहयोग के लिए तैयार?') }}</h2><p>{{ t(site.address_en, site.address_hi) }}</p></div>
+    <div class="btn-row">
+      <a class="btn btn-gold" href="tel:+{{ site.phone_raw }}">{{ icon('phone') }} {{ site.phone }}</a>
+      <a class="btn btn-ghost" href="https://wa.me/{{ site.phone_raw }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} WhatsApp</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

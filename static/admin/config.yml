@@ -34,9 +34,9 @@ media_libraries:
 
 collections:
   - name: news
-    label: "SWAPO Times – News / समाचार"
-    label_singular: "News story / समाचार"
-    description: "Write in Hindi or English. Add photos. Tap Save to publish – the story appears on the website in about 1–2 minutes."
+    label: "SWAPO Samachar – Announcements / सूचनाएँ"
+    label_singular: "Announcement / सूचना"
+    description: "Write in Hindi or English. Add photos. Tap Save to publish. It appears on the website in about 1–2 minutes and in that month's Monthly Edition."
     folder: content/news
     create: true
     delete: true
@@ -116,7 +116,7 @@ collections:
         required: false
 
   - name: press
-    label: "Press coverage / समाचार पत्रों में"
+    label: "In the news / मीडिया में स्वापो"
     label_singular: "Clipping / कतरन"
     folder: content/press
     create: true
@@ -154,6 +154,131 @@ collections:
               - { label: "Caption (English)", name: caption_en, widget: string, required: false }
               - { label: "Caption (Hindi)", name: caption_hi, widget: string, required: false }
 
+  - name: stories
+    label: "Impact stories / प्रभाव कहानियाँ"
+    editor: { preview: false }
+    files:
+      - name: stories
+        label: "Impact stories"
+        file: content/stories.yml
+        media_folder: /static/uploads/photos
+        public_folder: /uploads/photos
+        fields:
+          - label: "Stories"
+            name: stories
+            widget: list
+            root: true
+            summary: "{{fields.title_en}}"
+            fields:
+              - { label: "Short id (no spaces)", name: id, widget: string }
+              - { label: "Pillar", name: pillar, widget: select, options: [health, water, relief, care, education, spirit] }
+              - { label: "Programme id (e.g. tb-nutrition, pyau)", name: programme, widget: string }
+              - { label: "Type", name: kind, widget: select, options: [{ label: "Real event", value: event }, { label: "Representative (identity hidden)", value: representative }], default: event }
+              - { label: "Photo", name: photo, widget: image, required: false }
+              - { label: "Date / label (English)", name: date_en, widget: string }
+              - { label: "Date / label (Hindi)", name: date_hi, widget: string }
+              - { label: "Title (English)", name: title_en, widget: string }
+              - { label: "Title (Hindi)", name: title_hi, widget: string }
+              - { label: "Story (English) – leave a blank line between paragraphs", name: text_en, widget: text }
+              - { label: "Story (Hindi)", name: text_hi, widget: text }
+
+  - name: voices
+    label: "Voices / आवाज़ें"
+    editor: { preview: false }
+    files:
+      - name: voices
+        label: "Quotes"
+        file: content/voices.yml
+        media_folder: /static/uploads/people
+        public_folder: /uploads/people
+        fields:
+          - label: "Quotes"
+            name: voices
+            widget: list
+            root: true
+            summary: "{{fields.name_en}}"
+            hint: "Only real statements, with the person's permission."
+            fields:
+              - { label: "Name (English)", name: name_en, widget: string }
+              - { label: "Name (Hindi)", name: name_hi, widget: string }
+              - { label: "Role (English)", name: role_en, widget: string }
+              - { label: "Role (Hindi)", name: role_hi, widget: string }
+              - { label: "Quote (Hindi)", name: quote_hi, widget: text }
+              - { label: "Quote (English)", name: quote_en, widget: text }
+              - { label: "Occasion (English)", name: context_en, widget: string, required: false }
+              - { label: "Occasion (Hindi)", name: context_hi, widget: string, required: false }
+              - { label: "Photo", name: photo, widget: image, required: false }
+              - { label: "Source link", name: link, widget: string, required: false }
+
+  - name: slides
+    label: "Home slideshow / स्लाइड शो"
+    editor: { preview: false }
+    files:
+      - name: slides
+        label: "Slides"
+        file: content/slides.yml
+        media_folder: /static/uploads/photos
+        public_folder: /uploads/photos
+        fields:
+          - label: "Slides"
+            name: slides
+            widget: list
+            root: true
+            summary: "{{fields.title_en}}"
+            fields:
+              - { label: "Photo (wide photos work best)", name: photo, widget: image }
+              - { label: "Small label (English)", name: kicker_en, widget: string }
+              - { label: "Small label (Hindi)", name: kicker_hi, widget: string }
+              - { label: "Headline (English)", name: title_en, widget: string }
+              - { label: "Headline (Hindi)", name: title_hi, widget: string }
+              - { label: "Link (e.g. work/tb-nutrition/)", name: link, widget: string, required: false }
+
+  - name: team
+    label: "Team & branches / टीम एवं शाखाएँ"
+    editor: { preview: false }
+    files:
+      - name: team
+        label: "Team & branches"
+        file: content/team.yml
+        media_folder: /static/uploads/team
+        public_folder: /uploads/team
+        fields:
+          - label: "Founder"
+            name: founder
+            widget: object
+            fields:
+              - { label: "Name (English)", name: name_en, widget: string }
+              - { label: "Name (Hindi)", name: name_hi, widget: string }
+              - { label: "Role (English)", name: role_en, widget: string }
+              - { label: "Role (Hindi)", name: role_hi, widget: string }
+              - { label: "Photo", name: photo, widget: image, required: false }
+          - label: "Branches"
+            name: branches
+            widget: list
+            summary: "{{fields.name_en}}"
+            fields:
+              - { label: "Short id (no spaces)", name: id, widget: string }
+              - { label: "Branch name (English)", name: name_en, widget: string }
+              - { label: "Branch name (Hindi)", name: name_hi, widget: string }
+              - { label: "State (English)", name: state_en, widget: string }
+              - { label: "State (Hindi)", name: state_hi, widget: string }
+              - { label: "Address (English)", name: address_en, widget: string, required: false }
+              - { label: "Address (Hindi)", name: address_hi, widget: string, required: false }
+              - { label: "Team year", name: team_year, widget: string, required: false }
+              - label: "Members"
+                name: members
+                widget: list
+                required: false
+                summary: "{{fields.name_en}} – {{fields.role_en}}"
+                fields:
+                  - { label: "Name (English) – start with Sky", name: name_en, widget: string }
+                  - { label: "Name (Hindi)", name: name_hi, widget: string }
+                  - { label: "Role (English)", name: role_en, widget: string }
+                  - { label: "Role (Hindi)", name: role_hi, widget: string }
+                  - { label: "Photo", name: photo, widget: image, required: false }
+              - { label: "More about the branch (English)", name: more_en, widget: text, required: false }
+              - { label: "More about the branch (Hindi)", name: more_hi, widget: text, required: false }
+
   - name: settings
     label: "Website settings / वेबसाइट सेटिंग"
     editor: { preview: false }
@@ -184,6 +309,7 @@ collections:
           - { label: "Founder's Facebook link", name: founder_facebook, widget: string, required: false }
           - { label: "YouTube link", name: youtube, widget: string, required: false }
           - { label: "Instagram link", name: instagram, widget: string, required: false }
+          - { label: "LinkedIn link", name: linkedin, widget: string, required: false }
           - { label: "WhatsApp Channel link", name: whatsapp_channel, widget: string, required: false }
           - { label: "Founder photo", name: founder_photo, widget: image, required: false, media_folder: /static/uploads/site, public_folder: /uploads/site }
           - { label: "Registration No.", name: registration_no, widget: string, required: false }
@@ -211,3 +337,10 @@ collections:
                 options: [office, water, health, relief, care, education, spirit]
               - { label: "Latitude", name: lat, widget: number, value_type: float }
               - { label: "Longitude", name: lng, widget: number, value_type: float }
+          - label: "Running strip at the top (help messages)"
+            name: ticker
+            widget: list
+            fields:
+              - { label: "Text (English)", name: en, widget: string }
+              - { label: "Text (Hindi)", name: hi, widget: string }
+              - { label: "Link (e.g. donate/#needs)", name: link, widget: string }

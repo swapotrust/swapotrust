@@ -1,0 +1,17 @@
+<svg class="hub" viewBox="0 0 600 600" role="img" aria-label="Six pillars of SWAPO's seva around one mission">
+  <circle class="hub-ring" cx="300" cy="300" r="205"/>
+  {% for n in hub %}
+  <line class="hub-spoke" x1="300" y1="300" x2="{{ n.x }}" y2="{{ n.y }}" style="stroke: {{ n.p.color }}"/>
+  {% endfor %}
+  <circle class="hub-core-bg" cx="300" cy="300" r="92"/>
+  <image href="{{ asset('img/logo-192.png') }}" x="222" y="222" width="156" height="156"/>
+  {% for n in hub %}
+  <a href="{{ url('work/' ~ n.p.id ~ '/') }}" class="hub-node">
+    <circle cx="{{ n.x }}" cy="{{ n.y }}" r="62" style="fill: {{ n.p.color }}"/>
+    <svg x="{{ n.x - 15 }}" y="{{ n.y - 40 }}" width="30" height="30" class="hub-ico"><use href="#i-{{ n.p.icon }}"/></svg>
+    <text class="hub-count" x="{{ n.x }}" y="{{ n.y + 8 }}">{{ n.p.programmes|length }}</text>
+    <text class="hub-lbl l-en" x="{{ n.x }}" y="{{ n.y + 30 }}">{{ n.p.title_en.split(' & ')[0].split(',')[0] }}</text>
+    <text class="hub-lbl l-hi" x="{{ n.x }}" y="{{ n.y + 30 }}">{{ n.p.title_hi.split(' एवं ')[0].split(',')[0] }}</text>
+  </a>
+  {% endfor %}
+</svg>

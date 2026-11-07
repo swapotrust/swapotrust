@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% from "_macros.html" import t, icon with context %}
 {% set title = "Photo gallery" %}
+{% set sec = "gallery" %}
 {% block main %}
 <header class="times-head slim">
   <div class="wrap">
-    <h1 class="th-title">SWAPO Times</h1>
-    <p class="th-sub">{{ t('Photo gallery – moments of seva', 'फ़ोटो गैलरी – सेवा के पल') }}</p>
-    <nav class="th-nav" aria-label="SWAPO Times">
-      <a href="{{ url('times/') }}">{{ t('Latest', 'ताज़ा') }}</a>
-      <a href="{{ url('times/epaper/') }}">{{ icon('paper') }} {{ t('E-paper', 'ई-पेपर') }}</a>
-      <a href="{{ url('times/press/') }}">{{ icon('press') }} {{ t('Press', 'प्रेस') }}</a>
-      <a href="{{ url('times/gallery/') }}" aria-current="page">{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
+    <h1 class="th-title">{{ t('SWAPO Samachar', 'स्वापो समाचार') }}</h1>
+    <p class="th-sub">{{ t('Photo gallery: moments of seva', 'फ़ोटो गैलरी: सेवा के पल') }}</p>
+    <nav class="th-nav" aria-label="SWAPO Samachar">
+      <a href="{{ url('samachar/') }}"{% if sec == 'latest' %} aria-current="page"{% endif %}>{{ t('Announcements', 'सूचनाएँ') }}</a>
+      <a href="{{ url('samachar/in-the-news/') }}"{% if sec == 'press' %} aria-current="page"{% endif %}>{{ icon('press') }} {{ t('In the news', 'मीडिया में') }}</a>
+      <a href="{{ url('samachar/monthly/') }}"{% if sec == 'monthly' %} aria-current="page"{% endif %}>{{ icon('paper') }} {{ t('Monthly edition', 'मासिक अंक') }}</a>
+      <a href="{{ url('samachar/gallery/') }}"{% if sec == 'gallery' %} aria-current="page"{% endif %}>{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
     </nav>
   </div>
 </header>
@@ -19,11 +20,11 @@
     {% if photos %}
     <div class="gallery">
       {% for g in photos %}
-      <figure class="g-item"><img src="{{ asset(g.src) }}" alt="" loading="lazy" data-lightbox><figcaption><a href="{{ url('times/' ~ g.post.slug ~ '/') }}">{{ t(g.post.title_en, g.post.title_hi) }}</a></figcaption></figure>
+      <figure class="g-item"><img src="{{ asset(g.src) }}" alt="" loading="lazy" data-lightbox>{% if g.cap_en %}<figcaption>{% if g.href %}<a href="{{ url(g.href) }}">{{ t(g.cap_en, g.cap_hi) }}</a>{% else %}{{ t(g.cap_en, g.cap_hi) }}{% endif %}</figcaption>{% endif %}</figure>
       {% endfor %}
     </div>
     {% else %}
-    <div class="note-card">{{ icon('camera') }}<p>{{ t('Photos from every SWAPO Times story collect here automatically.', 'स्वापो टाइम्स के हर समाचार की तस्वीरें यहाँ अपने-आप जुड़ती जाती हैं।') }}</p></div>
+    <div class="note-card">{{ icon('camera') }}<p>{{ t('Photos from our work collect here automatically.', 'हमारे कार्य की तस्वीरें यहाँ अपने-आप जुड़ती जाती हैं।') }}</p></div>
     {% endif %}
   </div>
 </section>

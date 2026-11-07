@@ -8,7 +8,7 @@
 {% block main %}
 <article class="article">
   <header class="wrap art-head">
-    <a class="art-mast" href="{{ url('times/') }}">SWAPO Times</a>
+    <a class="art-mast" href="{{ url('samachar/') }}">{{ t('SWAPO Samachar', 'स्वापो समाचार') }}</a>
     <p class="kicker"><span class="dot p-{{ post.pillar }}"></span>{{ t(post.cat_en, post.cat_hi) }} · <time datetime="{{ post.date.isoformat() }}">{{ t(post.date_en, post.date_hi) }}</time>{% if post.place %} · {{ icon('pin') }} {{ post.place }}{% endif %}</p>
     <h1>{{ t(post.title_en, post.title_hi) }}</h1>
   </header>
@@ -48,7 +48,7 @@
 {% if related %}
 <section class="section tint">
   <div class="wrap">
-    <h2 class="mini-h">{{ icon('paper') }} {{ t('More from SWAPO Times', 'स्वापो टाइम्स से और') }}</h2>
+    <h2 class="mini-h">{{ icon('paper') }} {{ t('More from SWAPO Samachar', 'स्वापो समाचार से और') }}</h2>
     <div class="news-row">{% for q in related %}{{ news_card(q, url, asset, 'ncard-sm') }}{% endfor %}</div>
   </div>
 </section>

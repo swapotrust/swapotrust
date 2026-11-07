@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, icon, page_hero with context %}
+{% set title = "Voices" %}
+{% block main %}
+{{ page_hero('Voices', 'आवाज़ें', 'What people have said about our work', 'हमारे कार्य के बारे में लोगों ने क्या कहा', 'uploads/photos/tb-poshan-programme.jpg', asset, 'आवाज़ें',
+  'Statements by officials, public representatives and our own members, with the occasion and the source.', 'अधिकारियों, जनप्रतिनिधियों और हमारे सदस्यों के कथन, अवसर और स्रोत के साथ।') }}
+
+<section class="section">
+  <div class="wrap voices-list">
+    {% for v in voices %}
+    <figure class="vbig{% if loop.index is even %} flip{% endif %}">
+      <div class="vbig-av">{% if v.photo %}<img src="{{ asset(v.photo) }}" alt="{{ v.name_en }}">{% else %}<span>{{ v.name_en[:1] }}</span>{% endif %}</div>
+      <div>
+        {{ icon('quote', 'ico q-ico') }}
+        <blockquote lang="hi">{{ v.quote_hi }}</blockquote>
+        <p class="vtr l-en">{{ v.quote_en }}</p>
+        <figcaption>
+          <b>{{ t(v.name_en, v.name_hi) }}</b>
+          <span>{{ t(v.role_en, v.role_hi) }}</span>
+          <small>{{ t(v.context_en, v.context_hi) }}{% if v.link %} · <a href="{{ v.link }}" target="_blank" rel="noopener">{{ t('Source', 'स्रोत') }}</a>{% endif %}</small>
+        </figcaption>
+      </div>
+    </figure>
+    {% endfor %}
+    <div class="note-card">{{ icon('users') }}<p>{{ t('Have you worked with SWAPO, as a doctor, official, volunteer or partner? We would be glad to add your words here.', 'क्या आपने चिकित्सक, अधिकारी, स्वयंसेवक या साझेदार के रूप में स्वापो के साथ काम किया है? हमें आपके शब्द यहाँ जोड़कर खुशी होगी।') }} <a href="mailto:{{ site.email }}">{{ site.email }}</a></p></div>
+  </div>
+</section>
+{% endblock %}

@@ -1,91 +1,89 @@
 {% extends "base.html" %}
-{% from "_macros.html" import t, tr, block, icon with context %}
-{% set title = "About us" %}
+{% from "_macros.html" import t, tr, block, icon, page_hero with context %}
+{% set title = "Our story" %}
 {% block main %}
-<header class="page-head">
-  <div class="wrap">
-    <p class="eyebrow">{{ t('About SWAPO Trust', 'स्वापो ट्रस्ट के बारे में') }}</p>
-    <h1>{{ t('A trust built on one simple idea: seva, without conditions.', 'एक सरल विचार पर बना न्यास: बिना शर्त सेवा।') }}</h1>
-    <nav class="subnav" aria-label="On this page">
-      <a href="#story">{{ t('Our story', 'हमारी कहानी') }}</a>
-      <a href="#mission">{{ t('Mission & vision', 'उद्देश्य एवं दृष्टि') }}</a>
-      <a href="#objectives">{{ t('Objectives', 'लक्ष्य') }}</a>
-      <a href="#founder">{{ t('Founder', 'संस्थापक') }}</a>
-      <a href="#transparency">{{ t('Transparency', 'पारदर्शिता') }}</a>
-    </nav>
-  </div>
-</header>
+{{ page_hero('About SWAPO Trust', 'स्वापो ट्रस्ट परिचय', 'Our story', 'हमारी कहानी', 'uploads/photos/members-meeting.jpg', asset, 'परिचय',
+  'A trust built on a line from the Ramcharitmanas: there is no duty greater than doing good for others.', 'रामचरितमानस की एक पंक्ति पर बना न्यास: दूसरों के हित से बड़ा कोई धर्म नहीं।') }}
+{% include "_about_tabs.html" %}
 
 <section class="section" id="story">
-  <div class="wrap prose-grid">
-    <h2>{{ t('Our story', 'हमारी कहानी') }}</h2>
+  <div class="wrap story-grid">
     <div class="prose">
-      {{ block('<p>SWAPO – the <strong>Social Welfare and Peace Organisation</strong> – is a registered public trust headquartered at Sadabad Gate, Hathras, in western Uttar Pradesh. It was founded by <strong>Kapil Agrawal</strong> with a belief that spiritual values mean little unless they become service to people who need it.</p><p>What began as local acts of help has grown into steady, year-round work: monthly nutrition for drug-resistant TB patients since 2016, permanent drinking-water tanks for the city, free multi-speciality health camps, winter blankets and bonfires, weddings for daughters of poor families, care for elders, orphans and cows, and support for children’s education.</p><p>We are run by volunteers and supported by citizens, local organisations and the district administration. Our work is open to everyone, without discrimination of caste, creed, religion, politics or wealth.</p>',
-        '<p>स्वापो – <strong>समाज कल्याण एवं शांति संगठन</strong> – एक पंजीकृत लोक न्यास है, जिसका मुख्यालय सादाबाद गेट, हाथरस (पश्चिमी उत्तर प्रदेश) में है। इसकी स्थापना <strong>श्री कपिल अग्रवाल</strong> ने इस विश्वास के साथ की कि आध्यात्मिक मूल्य तभी सार्थक हैं जब वे ज़रूरतमंदों की सेवा बनें।</p><p>स्थानीय सहायता से शुरू हुआ यह कार्य आज पूरे वर्ष चलने वाली निरंतर सेवा बन चुका है: 2016 से एमडीआर-टीबी मरीज़ों को मासिक पोषाहार, शहर में स्थायी पेयजल टंकियाँ, निःशुल्क बहु-विशेषज्ञ स्वास्थ्य शिविर, सर्दियों में कंबल और अलाव, निर्धन परिवारों की बेटियों के विवाह, बुज़ुर्गों, अनाथ बच्चों और गौवंश की सेवा, तथा बच्चों की शिक्षा में सहयोग।</p><p>संस्था स्वयंसेवकों द्वारा संचालित है और नागरिकों, स्थानीय संगठनों तथा जिला प्रशासन का सहयोग प्राप्त करती है। हमारी सेवा सबके लिए है – जाति, संप्रदाय, धर्म, राजनीति या आर्थिक स्थिति के भेदभाव के बिना।</p>') }}
+      <h2>{{ t('Why SWAPO began', 'स्वापो क्यों शुरू हुआ') }}</h2>
+      {{ block('<p>SWAPO, the <strong>Social Welfare and Peace Organisation</strong>, was founded in Hathras by <strong>Kapil Agrawal</strong>. The idea behind it is simple and old. Seva is a form of worship, and spiritual values mean little unless they turn into help for someone who needs it.</p><p>The Trust is registered as a public charitable trust with its head office at City Plaza, Sadabad Gate, Hathras. Its trust deed gives it a wide brief: humanitarian service, health, education, the environment, the protection of all living beings, and the removal of harmful customs and casteism.</p><p>In practice, SWAPO is a group of traders, doctors, teachers, professionals and students from Hathras who give their time and money every month. We call each of them a SKY, a <em>SWAPO Karm Yogi</em>. Today the Trust also has branches in Mathura and Surat.</p>',
+               '<p>स्वापो, यानी <strong>समाज कल्याण एवं शांति संगठन</strong>, की स्थापना हाथरस में <strong>श्री कपिल अग्रवाल</strong> ने की। इसके पीछे विचार सरल और पुराना है। सेवा ही पूजा है, और आध्यात्मिक मूल्य तभी सार्थक हैं जब वे किसी ज़रूरतमंद की मदद बनें।</p><p>ट्रस्ट एक पंजीकृत सार्वजनिक धर्मार्थ न्यास है, जिसका मुख्य कार्यालय सिटी प्लाज़ा, सादाबाद गेट, हाथरस में है। न्यास-पत्र इसे व्यापक दायित्व देता है: मानव सेवा, स्वास्थ्य, शिक्षा, पर्यावरण, सभी जीवों की रक्षा, और कुरीतियों व जातिवाद को दूर करना।</p><p>व्यवहार में स्वापो हाथरस के व्यापारियों, चिकित्सकों, शिक्षकों, पेशेवरों और विद्यार्थियों का समूह है, जो हर माह अपना समय और धन देते हैं। हम इनमें से हर एक को स्काई कहते हैं, यानी <em>स्वापो कर्मयोगी</em>। आज ट्रस्ट की शाखाएँ मथुरा और सूरत में भी हैं।</p>') }}
+      <p class="founder-sign"><a class="link-arrow" href="{{ url('about/founder/') }}">{{ t('Read about our founder', 'संस्थापक के बारे में पढ़ें') }} {{ icon('arrow') }}</a></p>
+    </div>
+    <figure class="story-fig">
+      <img src="{{ asset('uploads/photos/members-meeting-hall.jpg') }}" alt="SWAPO members at a meeting" loading="lazy">
+      <figcaption>{{ t('SWAPO members at a meeting in Hathras', 'हाथरस में स्वापो सदस्यों की बैठक') }}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ t('Milestones', 'पड़ाव') }}</p><h2>{{ t('Our journey so far', 'अब तक की यात्रा') }}</h2></div>
+    {% set ms = [
+      ('Founding', 'स्थापना', 'SWAPO Trust founded in Hathras by Kapil Agrawal', 'श्री कपिल अग्रवाल द्वारा हाथरस में स्वापो ट्रस्ट की स्थापना'),
+      ('16 July 2016', '16 जुलाई 2016', 'First monthly poshan potli for MDR-TB patients at the District TB Centre', 'जिला क्षय रोग केंद्र पर एमडीआर-टीबी मरीज़ों को पहली मासिक पोषण पोटली'),
+      ('39th month', '39वाँ माह', 'About 180 patients have received six months of rations each', 'लगभग 180 मरीज़ों को छह-छह माह का राशन'),
+      ('2025', '2025', 'Surat branch active; free blood test camps; winter bonfires across the city', 'सूरत शाखा सक्रिय; निःशुल्क रक्त जाँच शिविर; शहर भर में अलाव'),
+      ('2026', '2026', 'New Hathras team; Anaemia Mukt Hathras campaign; memoranda to the Railway Minister and the Chief Minister', 'हाथरस की नई टीम; एनीमिया मुक्त हाथरस अभियान; रेल मंत्री और मुख्यमंत्री को ज्ञापन'),
+      ('August 2026', 'अगस्त 2026', 'Poshan potli for 25 TB patients at Bagla District Hospital', 'बागला जिला अस्पताल में 25 टीबी मरीज़ों को पोषण पोटली'),
+      ('November 2026', 'नवंबर 2026', 'SWAPO Trust goes online', 'स्वापो ट्रस्ट ऑनलाइन'),
+    ] %}
+    <ol class="hline">
+      {% for d_en, d_hi, en, hi in ms %}<li><span class="hl-date">{{ t(d_en, d_hi) }}</span><p>{{ t(en, hi) }}</p></li>{% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="mission">
+  <div class="wrap">
+    <div class="mv-grid">
+      <div class="mv"><span class="mv-hi" lang="hi">उद्देश्य</span><p class="eyebrow">{{ t('Mission', 'उद्देश्य') }}</p><p class="mv-text">{{ t('To promote spiritual awareness and social welfare, and to support the poor and needy across India.', 'आध्यात्मिक जागरूकता और समाज कल्याण को बढ़ावा देना, तथा पूरे भारत में गरीब और ज़रूरतमंदों की सहायता करना।') }}</p></div>
+      <div class="mv"><span class="mv-hi" lang="hi">दृष्टि</span><p class="eyebrow">{{ t('Vision', 'दृष्टि') }}</p><p class="mv-text">{{ t('A kind and harmonious society where everyone has the basic necessities of life and a chance to grow.', 'एक करुणामय और सौहार्दपूर्ण समाज, जहाँ हर व्यक्ति को जीवन की मूलभूत आवश्यकताएँ और आगे बढ़ने का अवसर मिले।') }}</p></div>
+      <div class="mv"><span class="mv-hi" lang="hi">विश्वास</span><p class="eyebrow">{{ t('What we believe', 'हमारा विश्वास') }}</p><p class="mv-text">{{ t('One person’s duty is another person’s right.', 'एक व्यक्ति का कर्तव्य ही दूसरे का अधिकार है।') }}</p></div>
+    </div>
+    <div class="values">
+      {% set vals = [('Seva', 'सेवा', 'Selfless service, without expecting anything back', 'बिना अपेक्षा के निःस्वार्थ सेवा'),
+                     ('Samata', 'समता', 'No discrimination of caste, religion, politics or wealth', 'जाति, धर्म, राजनीति या धन का कोई भेदभाव नहीं'),
+                     ('Satya', 'सत्य', 'Honest work and open accounts', 'ईमानदार कार्य और पारदर्शी हिसाब'),
+                     ('Shanti', 'शांति', 'Peaceful ways, even when we protest', 'विरोध में भी शांतिपूर्ण मार्ग')] %}
+      {% for en, hi, d_en, d_hi in vals %}<div class="value"><b lang="hi">{{ hi }}</b><span class="l-en">{{ en }}</span><p>{{ t(d_en, d_hi) }}</p></div>{% endfor %}
     </div>
   </div>
 </section>
 
-<section class="section tint" id="mission">
-  <div class="wrap mv-grid">
-    <div class="mv">
-      <p class="eyebrow">{{ t('Mission', 'उद्देश्य') }}</p>
-      <p class="mv-text">{{ t('To promote spiritual awareness and social welfare, and to support the poor and needy across India.', 'आध्यात्मिक जागरूकता और समाज कल्याण को बढ़ावा देना, तथा पूरे भारत में गरीब और ज़रूरतमंदों की सहायता करना।') }}</p>
-    </div>
-    <div class="mv">
-      <p class="eyebrow">{{ t('Vision', 'दृष्टि') }}</p>
-      <p class="mv-text">{{ t('A harmonious, compassionate society where everyone has access to the basic necessities of life and the opportunity to grow.', 'एक सौहार्दपूर्ण और करुणामय समाज, जहाँ हर व्यक्ति को जीवन की मूलभूत आवश्यकताएँ और आगे बढ़ने के अवसर मिलें।') }}</p>
-    </div>
-    <div class="mv">
-      <p class="eyebrow">{{ t('Our belief', 'हमारा विश्वास') }}</p>
-      <p class="mv-text">{{ t('One person’s duty is another person’s right.', 'एक व्यक्ति का कर्तव्य ही दूसरे का अधिकार है।') }}</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="objectives">
+<section class="section tint" id="objectives">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">{{ t('From our trust deed', 'हमारे न्यास-पत्र से') }}</p>
       <h2>{{ t('What the Trust exists to do', 'न्यास के लक्ष्य') }}</h2>
     </div>
     {% set objectives = [
-      ('Serve humanity, protect the environment and all living beings, in a selfless and spiritual spirit.', 'निःस्वार्थ और आध्यात्मिक भाव से मानव सेवा, पर्यावरण तथा सभी जीवों की रक्षा।'),
+      ('Serve people, protect the environment and all living beings, selflessly and in a spiritual spirit.', 'निःस्वार्थ और आध्यात्मिक भाव से मानव सेवा, पर्यावरण और सभी जीवों की रक्षा।'),
       ('Help suffering and needy patients with care and the materials they need.', 'पीड़ित और ज़रूरतमंद रोगियों को आवश्यक सहायता और सामग्री उपलब्ध कराना।'),
-      ('Carry out spiritual, educational and health-promoting work in society.', 'समाज में आध्यात्मिक, शैक्षिक और स्वास्थ्यवर्धक कार्य करना।'),
-      ('Spread knowledge and values, and work to remove harmful customs and casteism.', 'ज्ञान और मूल्यों का प्रसार तथा कुरीतियों और जातिवाद को दूर करने का प्रयास।'),
-      ('Promote meditation, yoga, education, science, literature, art and music.', 'ध्यान, योग, शिक्षा, विज्ञान, साहित्य, कला और संगीत को बढ़ावा देना।'),
-      ('Help victims of human-rights violations and inform the competent authorities.', 'मानवाधिकार उल्लंघन के पीड़ितों की सहायता और सक्षम संस्थाओं को सूचना देना।'),
-      ('Raise public problems with government through letters, memoranda and peaceful campaigns.', 'पत्र, ज्ञापन और शांतिपूर्ण अभियानों द्वारा जन-समस्याएँ शासन तक पहुँचाना।'),
-      ('Honour advocates, journalists, social workers and writers who defend human rights.', 'मानवाधिकारों के लिए समर्पित अधिवक्ताओं, पत्रकारों, समाजसेवियों और लेखकों का सम्मान।'),
-      ('Hold workshops that help people in despair or drawn to crime find a better path.', 'निराशा से ग्रस्त या अपराध की ओर प्रवृत्त लोगों के लिए परिवर्तनकारी कार्यशालाएँ।'),
-      ('Organise public-utility camps, and open SWAPO units across India and abroad.', 'जनोपयोगी शिविरों का आयोजन तथा देश-विदेश में स्वापो की इकाइयाँ स्थापित करना।'),
+      ('Carry out spiritual, educational and health work in society.', 'समाज में आध्यात्मिक, शैक्षिक और स्वास्थ्य संबंधी कार्य।'),
+      ('Spread knowledge and good values, and work to end harmful customs and casteism.', 'ज्ञान और अच्छे संस्कारों का प्रसार, और कुरीतियों व जातिवाद को समाप्त करने का प्रयास।'),
+      ('Promote meditation, yoga, education, science, literature, art and music.', 'ध्यान, योग, शिक्षा, विज्ञान, साहित्य, कला और संगीत को बढ़ावा।'),
+      ('Help victims of human-rights violations and inform the competent authority.', 'मानवाधिकार उल्लंघन के पीड़ितों की सहायता और सक्षम संस्था को सूचना।'),
+      ('Take public problems to the government through letters, memoranda and peaceful campaigns.', 'पत्र, ज्ञापन और शांतिपूर्ण अभियानों द्वारा जन-समस्याएँ शासन तक पहुँचाना।'),
+      ('Honour advocates, journalists, social workers and writers who defend people’s rights.', 'लोगों के अधिकारों के लिए खड़े अधिवक्ताओं, पत्रकारों, समाजसेवियों और लेखकों का सम्मान।'),
+      ('Hold workshops that help people in despair, or drawn towards crime, find a better path.', 'निराशा से ग्रस्त या अपराध की ओर प्रवृत्त लोगों के लिए परिवर्तनकारी कार्यशालाएँ।'),
+      ('Hold public-service camps, and open SWAPO branches across India and abroad.', 'जनोपयोगी शिविरों का आयोजन, और देश-विदेश में स्वापो की शाखाएँ खोलना।'),
     ] %}
-    <ol class="obj-list">
+    <ol class="obj-list two">
       {% for en, hi in objectives %}<li>{{ t(en, hi) }}</li>{% endfor %}
     </ol>
-  </div>
-</section>
-
-<section class="section tint" id="founder">
-  <div class="wrap founder-grid">
-    <div class="founder-photo">
-      {% if site.founder_photo %}<img src="{{ asset(site.founder_photo) }}" alt="{{ site.founder }}">{% else %}<span class="monogram">KA</span>{% endif %}
-    </div>
-    <div>
-      <p class="eyebrow">{{ t('Founder & President', 'संस्थापक एवं अध्यक्ष') }}</p>
-      <h2>{{ t(site.founder, site.founder_hi) }}</h2>
-      {{ block('<p>Kapil Agrawal founded SWAPO Trust and personally leads its work in Hathras – from the monthly TB distributions to health camps and winter drives. Under his leadership the Trust works closely with the district health administration and with fellow social organisations of the city.</p>',
-               '<p>श्री कपिल अग्रवाल ने स्वापो ट्रस्ट की स्थापना की और हाथरस में इसके कार्यों का स्वयं नेतृत्व करते हैं – मासिक टीबी वितरण से लेकर स्वास्थ्य शिविरों और शीतकालीन अभियानों तक। उनके नेतृत्व में ट्रस्ट जिला स्वास्थ्य प्रशासन और शहर के अन्य सामाजिक संगठनों के साथ मिलकर कार्य करता है।</p>', 'prose') }}
-      <p class="founder-sign"><a href="tel:+{{ site.phone_raw }}">{{ icon('phone') }} {{ site.phone }}</a> · <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-    </div>
   </div>
 </section>
 
 <section class="section" id="transparency">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">{{ t('Transparency', 'पारदर्शिता') }}</p>
+      <p class="eyebrow">{{ t('Transparency', 'पारदर्शिता') }} · <span lang="hi">सत्यमेव जयते</span></p>
       <h2>{{ t('How the Trust is run', 'ट्रस्ट का संचालन') }}</h2>
     </div>
     <div class="trans-grid">
@@ -96,21 +94,20 @@
           <dt>{{ t('Legal form', 'वैधानिक स्वरूप') }}</dt><dd>{{ t('Registered public charitable trust', 'पंजीकृत सार्वजनिक धर्मार्थ न्यास') }}</dd>
           {% if site.registration_no %}<dt>{{ t('Registration No.', 'पंजीकरण सं.') }}</dt><dd>{{ site.registration_no }}</dd>{% endif %}
           {% if site.pan %}<dt>PAN</dt><dd>{{ site.pan }}</dd>{% endif %}
-          {% if site.reg_12a %}<dt>12A</dt><dd>{{ site.reg_12a }}</dd>{% endif %}
-          {% if site.reg_80g %}<dt>80G</dt><dd>{{ site.reg_80g }}</dd>{% endif %}
-          {% if site.darpan_id %}<dt>NGO Darpan</dt><dd>{{ site.darpan_id }}</dd>{% endif %}
-          <dt>{{ t('Area of work', 'कार्य क्षेत्र') }}</dt><dd>{{ t('India and the world (as per trust deed)', 'भारत एवं विश्व (न्यास-पत्र के अनुसार)') }}</dd>
+          <dt>{{ t('Head office', 'मुख्य कार्यालय') }}</dt><dd>{{ t('City Plaza, Sadabad Gate, Hathras', 'सिटी प्लाज़ा, सादाबाद गेट, हाथरस') }}</dd>
+          <dt>{{ t('Area of work', 'कार्य क्षेत्र') }}</dt><dd>{{ t('India and abroad (as per trust deed)', 'भारत एवं विदेश (न्यास-पत्र के अनुसार)') }}</dd>
+          <dt>{{ t('Tax status', 'कर स्थिति') }}</dt><dd>{{ t('Donations are not tax-exempt at present', 'वर्तमान में दान पर कर छूट नहीं है') }}</dd>
         </dl>
       </div>
       <div class="trans">
         {{ icon('doc') }}
         <h3>{{ t('Handling of funds', 'धनराशि का प्रबंधन') }}</h3>
-        <p>{{ t('All money and donations received are deposited in a bank account with a nationalised or recognised bank, and spent only on public welfare and the objectives of the Trust. Every transaction needs the signatures of the President / Chief Trustee and a person authorised by them.', 'प्राप्त सभी धनराशि और दान राष्ट्रीयकृत या मान्यता प्राप्त बैंक के खाते में जमा होते हैं, और केवल जनकल्याण तथा ट्रस्ट के उद्देश्यों पर व्यय होते हैं। प्रत्येक लेन-देन के लिए अध्यक्ष / मुख्य ट्रस्टी तथा उनके द्वारा अधिकृत व्यक्ति के हस्ताक्षर आवश्यक हैं।') }}</p>
+        <p>{{ t('All money received is deposited in the Trust’s account with a nationalised or recognised bank and spent only on public welfare and the Trust’s objectives. Every transaction needs two signatures: the President or Chief Trustee, and a person they authorise.', 'प्राप्त सारी धनराशि ट्रस्ट के राष्ट्रीयकृत या मान्यता प्राप्त बैंक खाते में जमा होती है और केवल जनकल्याण व ट्रस्ट के उद्देश्यों पर खर्च होती है। हर लेन-देन पर दो हस्ताक्षर ज़रूरी हैं: अध्यक्ष या मुख्य ट्रस्टी, और उनके द्वारा अधिकृत व्यक्ति।') }}</p>
       </div>
       <div class="trans">
         {{ icon('users') }}
         <h3>{{ t('Dignity first', 'गरिमा सर्वोपरि') }}</h3>
-        <p>{{ t('We do not publish the faces or names of TB, leprosy or other patients without their consent. Marriage support is given only for brides aged 18 and above, as the law requires.', 'हम टीबी, कुष्ठ या अन्य रोगियों के चेहरे या नाम उनकी सहमति के बिना प्रकाशित नहीं करते। विवाह सहायता केवल 18 वर्ष या अधिक आयु की कन्याओं के लिए दी जाती है, जैसा कानून में है।') }}</p>
+        <p>{{ t('We do not publish the faces or names of patients without their consent. Stories about individuals leave out details that could identify them. Marriage support is given only for brides aged 18 and above.', 'हम मरीज़ों के चेहरे या नाम उनकी सहमति के बिना प्रकाशित नहीं करते। व्यक्तियों की कहानियों में पहचान बताने वाली जानकारी नहीं दी जाती। विवाह सहायता केवल 18 वर्ष या अधिक आयु की कन्याओं के लिए है।') }}</p>
       </div>
     </div>
   </div>

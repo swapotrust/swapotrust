@@ -1,31 +1,46 @@
 {% extends "base.html" %}
 {% from "_macros.html" import t, icon with context %}
-{% set title = "Press coverage" %}
+{% set title = "In the news" %}
+{% set sec = "press" %}
 {% block main %}
 <header class="times-head slim">
   <div class="wrap">
-    <h1 class="th-title">SWAPO Times</h1>
-    <p class="th-sub">{{ t('In the press – newspaper and media coverage of our work', 'समाचार पत्रों और मीडिया में हमारा कार्य') }}</p>
-    <nav class="th-nav" aria-label="SWAPO Times">
-      <a href="{{ url('times/') }}">{{ t('Latest', 'ताज़ा') }}</a>
-      <a href="{{ url('times/epaper/') }}">{{ icon('paper') }} {{ t('E-paper', 'ई-पेपर') }}</a>
-      <a href="{{ url('times/press/') }}" aria-current="page">{{ icon('press') }} {{ t('Press', 'प्रेस') }}</a>
-      <a href="{{ url('times/gallery/') }}">{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
+    <h1 class="th-title">{{ t('SWAPO Samachar', 'स्वापो समाचार') }}</h1>
+    <p class="th-sub">{{ t('In the news: newspaper and online coverage of our work', 'मीडिया में स्वापो: अख़बारों और ऑनलाइन समाचारों में हमारा कार्य') }}</p>
+    <nav class="th-nav" aria-label="SWAPO Samachar">
+      <a href="{{ url('samachar/') }}"{% if sec == 'latest' %} aria-current="page"{% endif %}>{{ t('Announcements', 'सूचनाएँ') }}</a>
+      <a href="{{ url('samachar/in-the-news/') }}"{% if sec == 'press' %} aria-current="page"{% endif %}>{{ icon('press') }} {{ t('In the news', 'मीडिया में') }}</a>
+      <a href="{{ url('samachar/monthly/') }}"{% if sec == 'monthly' %} aria-current="page"{% endif %}>{{ icon('paper') }} {{ t('Monthly edition', 'मासिक अंक') }}</a>
+      <a href="{{ url('samachar/gallery/') }}"{% if sec == 'gallery' %} aria-current="page"{% endif %}>{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
     </nav>
   </div>
 </header>
 <section class="section">
   <div class="wrap">
     {% if press %}
+    {% set links = press|selectattr('kind', 'equalto', 'link')|list %}
+    {% if links %}
+    <h2 class="mini-h">{{ icon('globe') }} {{ t('Online news', 'ऑनलाइन समाचार') }}</h2>
+    <div class="link-cards">
+      {% for c in links %}
+      <a class="lcard" href="{{ c.link }}" target="_blank" rel="noopener">
+        <span class="kicker"><b>{{ c.newspaper }}</b>{% if c.has_date %} · {{ t(c.date_en, c.date_hi) }}{% endif %}</span>
+        <span class="press-h" lang="hi">{{ c.headline }}</span>
+        {% if c.note %}<span class="press-note l-en">{{ c.note }}</span>{% endif %}
+        <span class="link-arrow">{{ t('Read the report', 'समाचार पढ़ें') }} {{ icon('arrow') }}</span>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <h2 class="mini-h">{{ icon('press') }} {{ t('Newspaper clippings', 'अख़बार की कतरनें') }}</h2>
     <div class="press-wall">
-      {% for c in press %}
+      {% for c in press if c.kind == 'clipping' %}
       <figure class="press-item">
-        {% if c.image %}<img src="{{ asset(c.image) }}" alt="{{ c.headline }}" loading="lazy" data-lightbox>{% endif %}
+        <img src="{{ asset(c.image) }}" alt="{{ c.headline }}" loading="lazy" data-lightbox>
         <figcaption>
-          <span class="kicker"><b>{{ c.newspaper }}</b> · {{ t(c.date_en, c.date_hi) }}</span>
-          <span class="press-h">{{ c.headline }}</span>
-          {% if c.note %}<span class="press-note">{{ c.note }}</span>{% endif %}
-          {% if c.link %}<a href="{{ c.link }}" target="_blank" rel="noopener">{{ t('Read online', 'ऑनलाइन पढ़ें') }} {{ icon('arrow') }}</a>{% endif %}
+          <span class="kicker"><b>{{ c.newspaper }}</b>{% if c.has_date %} · {{ t(c.date_en, c.date_hi) }}{% endif %}</span>
+          <span class="press-h" lang="hi">{{ c.headline }}</span>
+          {% if c.note %}<span class="press-note l-en">{{ c.note }}</span>{% endif %}
         </figcaption>
       </figure>
       {% endfor %}

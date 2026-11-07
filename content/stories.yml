@@ -1,0 +1,122 @@
+# Impact stories shown on the Impact page and the programme pages.
+# kind: event (a real activity, from our records and press) | representative
+# (a composite story drawn from many people we have served; names and details changed).
+- id: tb-months
+  pillar: health
+  programme: tb-nutrition
+  kind: event
+  photo: /uploads/photos/tb-poshan-potli.jpg
+  date_en: "Since July 2016"
+  date_hi: "जुलाई 2016 से"
+  title_en: "A poshan potli every month, for ten years"
+  title_hi: "दस वर्ष, हर माह एक पोषण पोटली"
+  text_en: "MDR-TB treatment lasts many months and the medicines are hard on the body. Patients who cannot afford good food often feel worse before they feel better. In July 2016 we began handing a month's ration to poor MDR patients at the District TB Centre, Hathras. We have not missed a month since.\n\nBy the 39th month, about 180 patients had received six months of rations each. In August 2026 we gave kits to 25 more patients at Bagla District Hospital, with Hathras Sadar MLA Anjula Mahaur as chief guest."
+  text_hi: "एमडीआर-टीबी का इलाज कई महीने चलता है और दवाइयाँ शरीर पर भारी पड़ती हैं। जो मरीज़ अच्छा भोजन नहीं जुटा पाते, वे अक्सर ठीक होने से पहले और कमज़ोर हो जाते हैं। जुलाई 2016 में हमने जिला क्षय रोग केंद्र, हाथरस पर निर्धन एमडीआर मरीज़ों को एक माह का राशन देना शुरू किया। तब से एक भी माह नहीं छूटा।\n\n39वें माह तक लगभग 180 मरीज़ों को छह-छह माह का राशन दिया जा चुका था। अगस्त 2026 में हमने बागला जिला अस्पताल में 25 और मरीज़ों को पोटली दी, जिसमें हाथरस सदर विधायक अंजुला माहौर मुख्य अतिथि रहीं।"
+
+- id: tb-representative
+  pillar: health
+  programme: tb-nutrition
+  kind: representative
+  photo: /uploads/photos/tb-nikshay-mitra-campaign.jpg
+  date_en: "TB Nutrition Mission"
+  date_hi: "टीबी पोषण पोटली मिशन"
+  title_en: "Free medicine, but no food at home"
+  title_hi: "दवा मुफ़्त, पर घर में भोजन नहीं"
+  text_en: "A daily-wage worker from a village near Hathras was diagnosed with MDR-TB. The treatment was free, but he was too weak to work, and the family of five was living on what his wife earned. He began skipping meals so the children could eat, and his weight kept falling.\n\nAt the TB centre he was enrolled for our monthly poshan potli. With flour, dal, daliya and soya at home, the family no longer had to choose. Over the following months he regained weight and finished his course of treatment."
+  text_hi: "हाथरस के पास के एक गाँव के दिहाड़ी मज़दूर को एमडीआर-टीबी निकली। इलाज मुफ़्त था, लेकिन वह काम करने लायक नहीं रहा और पाँच लोगों का परिवार पत्नी की कमाई पर चल रहा था। वह बच्चों का पेट भरने के लिए खुद भोजन छोड़ने लगा और उसका वज़न लगातार गिरता गया।\n\nटीबी केंद्र पर उसका नाम हमारी मासिक पोषण पोटली के लिए जोड़ा गया। घर में आटा, दाल, दलिया और सोयाबीन आने लगे तो परिवार को चुनना नहीं पड़ा। अगले महीनों में उसका वज़न वापस बढ़ा और उसने इलाज पूरा किया।"
+
+- id: anaemia
+  pillar: health
+  programme: anaemia
+  kind: event
+  photo: /uploads/press/haemoglobin-check-girls.jpg
+  date_en: "May 2026"
+  date_hi: "मई 2026"
+  title_en: "Anaemia Mukt Hathras begins in a girls' school"
+  title_hi: "एक कन्या विद्यालय से शुरू हुआ एनीमिया मुक्त हाथरस"
+  text_en: "Many girls do not know they are anaemic until they faint in class or fall ill. In May 2026 we launched the Anaemia Mukt Hathras campaign with a haemoglobin testing camp at the Government Girls Inter College, Rampur. Nagar Palika chairperson Shweta Diwakar inaugurated the camp.\n\nGirls with low haemoglobin were told what it means and what to eat, and their families were advised to see a doctor."
+  text_hi: "कई छात्राओं को तब तक पता नहीं चलता कि उनमें खून की कमी है, जब तक वे कक्षा में बेहोश न हो जाएँ या बीमार न पड़ें। मई 2026 में हमने राजकीय कन्या इंटर कॉलेज, रामपुर में हीमोग्लोबिन जाँच शिविर के साथ एनीमिया मुक्त हाथरस अभियान शुरू किया। नगर पालिका अध्यक्ष श्वेता दिवाकर ने शिविर का शुभारंभ किया।\n\nजिन छात्राओं का हीमोग्लोबिन कम निकला, उन्हें इसका अर्थ और सही आहार बताया गया, और परिवारों को चिकित्सक से मिलने की सलाह दी गई।"
+
+- id: winter
+  pillar: relief
+  programme: bonfires
+  kind: event
+  photo: /uploads/photos/elders-ashram.jpg
+  date_en: "Winter 2025–26"
+  date_hi: "शीत ऋतु 2025–26"
+  title_en: "Warmth on the coldest nights"
+  title_hi: "सबसे ठंडी रातों में गर्माहट"
+  text_en: "When the cold wave reached Hathras in December 2025, we arranged bonfires at the bus stand, Sasni Gate, Talab Chauraha and outside Bagla Hospital, with enough wood to last several days.\n\nIn January we took sweaters and caps to the residents of Apna Ghar Ashram on Jalesar Road and caps to families in Kanshiram Township. Members of our Surat branch came to help."
+  text_hi: "दिसंबर 2025 में जब शीतलहर हाथरस पहुँची, हमने बस अड्डा, सासनी गेट, तालाब चौराहा और बागला अस्पताल के बाहर कई दिनों के लिए लकड़ी के साथ अलाव जलवाए।\n\nजनवरी में हम जलेसर रोड स्थित अपना घर आश्रम के प्रभुजनों के लिए स्वेटर और टोपे, और कांशीराम टाउनशिप के परिवारों के लिए टोपे लेकर गए। हमारी सूरत शाखा के सदस्य भी मदद के लिए आए।"
+
+- id: divyang
+  pillar: care
+  programme: children
+  kind: event
+  photo: /uploads/press/mahanavami-divyang-children.jpg
+  date_en: "Mahanavami 2025"
+  date_hi: "महानवमी 2025"
+  title_en: "Kanya pujan with divyang girls"
+  title_hi: "दिव्यांग कन्याओं का पूजन"
+  text_en: "On Mahanavami, families across India invite young girls home for kanya pujan. We spent the day at the residential school for divyang children on Jalesar Road, where many girls live away from their families.\n\nOur members did kanya pujan with them and gave them fruit, sweets and biscuits."
+  text_hi: "महानवमी पर पूरे भारत में परिवार कन्याओं को घर बुलाकर पूजन करते हैं। हमने यह दिन जलेसर रोड स्थित दिव्यांग बच्चों के आवासीय विद्यालय में बिताया, जहाँ कई बालिकाएँ अपने परिवारों से दूर रहती हैं।\n\nहमारे सदस्यों ने उनका कन्या पूजन किया और उन्हें फल, मिठाई और बिस्कुट दिए।"
+
+- id: pyau
+  pillar: water
+  programme: pyau
+  kind: event
+  photo: /uploads/photos/sharbat-seva.jpg
+  date_en: "Summer 2026"
+  date_hi: "ग्रीष्म 2026"
+  title_en: "Cold water at Gandhi Tiraha"
+  title_hi: "गांधी तिराहे पर ठंडा पानी"
+  text_en: "Hathras summers cross 45°C, and people waiting for buses and rickshaws have nowhere to drink. In May 2026 we set up a cold-water pyau at Gandhi Tiraha in front of the gurudwara, and another outside a temple in the city.\n\nThese are in addition to the three permanent drinking-water tanks we run through the year, and the sharbat we serve in the markets."
+  text_hi: "हाथरस की गर्मी 45°C पार कर जाती है, और बस-रिक्शा का इंतज़ार करने वालों के पास पानी पीने की जगह नहीं होती। मई 2026 में हमने गुरुद्वारे के सामने गांधी तिराहे पर ठंडे पानी की प्याऊ लगवाई, और शहर में एक मंदिर के बाहर दूसरी।\n\nये पूरे वर्ष चलने वाली हमारी तीन स्थायी पेयजल टंकियों और बाज़ारों में पिलाए जाने वाले शरबत के अतिरिक्त हैं।"
+
+- id: plantation
+  pillar: water
+  programme: plantation
+  kind: event
+  photo: /uploads/photos/plantation-sky-guards.jpg
+  date_en: "2026"
+  date_hi: "2026"
+  title_en: "A name on every tree guard"
+  title_hi: "हर ट्री-गार्ड पर एक नाम"
+  text_en: "Saplings planted at public drives often dry up within weeks. So every tree we plant gets a guard with the name of the SWAPO Karm Yogi who has promised to water and protect it.\n\nDistrict officials and police officers have joined our plantation drives, and members check on their trees through the summer."
+  text_hi: "सार्वजनिक अभियानों में लगाए गए पौधे अक्सर कुछ हफ़्तों में सूख जाते हैं। इसलिए हमारे हर पौधे के ट्री-गार्ड पर उस स्वापो कर्मयोगी का नाम होता है, जिसने उसे पानी देने और बचाने का वचन दिया है।\n\nजिले के अधिकारी और पुलिस अधिकारी हमारे वृक्षारोपण अभियानों में शामिल हुए हैं, और सदस्य गर्मियों में अपने पौधों की देखभाल करते हैं।"
+
+- id: roads
+  pillar: spirit
+  programme: public-issues
+  kind: event
+  photo: ""
+  date_en: "October 2026"
+  date_hi: "अक्टूबर 2026"
+  title_en: "Roads keep rising, houses sink below them"
+  title_hi: "सड़कें ऊँची होती गईं, मकान नीचे धँसते गए"
+  text_en: "In many Hathras lanes, each new road is laid on top of the old one. The road rises, houses end up below it, and rainwater runs into homes. On the road from Burj Wala Kuan to Chavar Gate, a new RCC road was laid over the old interlocking tiles even after a complaint on the CM portal.\n\nIn October 2026 we wrote to the Chief Minister asking that agencies remove the old road before building a new one, and clean up properly after construction."
+  text_hi: "हाथरस की कई गलियों में हर नई सड़क पुरानी सड़क के ऊपर ही बना दी जाती है। सड़क ऊँची होती जाती है, मकान उससे नीचे रह जाते हैं और बरसात का पानी घरों में घुसता है। बुर्ज वाला कुआँ से चावड़ गेट मार्ग पर, सीएम पोर्टल पर शिकायत के बाद भी पुरानी इंटरलॉकिंग टाइलों के ऊपर नई आरसीसी सड़क डाल दी गई।\n\nअक्टूबर 2026 में हमने मुख्यमंत्री को पत्र लिखकर माँग की कि नई सड़क बनाने से पहले पुरानी सड़क हटाई जाए और निर्माण के बाद ठीक से सफ़ाई हो।"
+
+- id: vivah-representative
+  pillar: care
+  programme: kanya-vivah
+  kind: representative
+  photo: /uploads/photos/household-items.jpg
+  date_en: "Kanya Vivah"
+  date_hi: "कन्या विवाह"
+  title_en: "A wedding the family thought it could not afford"
+  title_hi: "वह विवाह, जिसे परिवार असंभव मान चुका था"
+  text_en: "A widow in Hathras had fixed her daughter's wedding but had no money for the things a new home needs. She had already borrowed for the ceremony.\n\nA neighbour told her about SWAPO. Members visited, made a list with her, and collected a bed, utensils, clothes and other items. The wedding went ahead on the date she had fixed, without a new loan."
+  text_hi: "हाथरस की एक विधवा ने बेटी का विवाह तय कर दिया था, लेकिन नए घर के सामान के लिए पैसे नहीं थे। समारोह के लिए वह पहले ही उधार ले चुकी थी।\n\nएक पड़ोसी ने उसे स्वापो के बारे में बताया। सदस्यों ने घर जाकर उसके साथ सूची बनाई और पलंग, बर्तन, कपड़े और अन्य सामान जुटाया। विवाह तय तारीख पर हुआ, बिना किसी नए कर्ज़ के।"
+
+- id: education-representative
+  pillar: education
+  programme: sponsorship
+  kind: representative
+  photo: /uploads/photos/school-girls.jpg
+  date_en: "Education Sponsorship"
+  date_hi: "शिक्षा प्रायोजन"
+  title_en: "Back in class after a year at home"
+  title_hi: "एक साल घर बैठने के बाद फिर कक्षा में"
+  text_en: "A girl of eleven had to leave school when her father lost his job. Her younger brother's fees came first.\n\nA SWAPO member agreed to sponsor her. We paid the school directly for fees, books and uniform, and she rejoined her class the next session. Our members still check on her progress every few months."
+  text_hi: "ग्यारह साल की एक बच्ची को पिता की नौकरी छूटने पर स्कूल छोड़ना पड़ा। पहले छोटे भाई की फ़ीस भरी गई।\n\nस्वापो के एक सदस्य ने उसे प्रायोजित करने का वचन दिया। हमने फ़ीस, किताबें और गणवेश का भुगतान सीधे विद्यालय को किया, और वह अगले सत्र में फिर अपनी कक्षा में लौट आई। हमारे सदस्य हर कुछ महीनों में उसकी पढ़ाई का हाल लेते हैं।"

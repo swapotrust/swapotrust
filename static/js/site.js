@@ -95,6 +95,31 @@
     });
   });
 
+
+  /* ---- Home slideshow ---- */
+  $$('[data-slider]').forEach(function (sl) {
+    var slides = $$('.slide', sl), dots = $$('.slider-dots button', sl), i = 0, timer;
+    if (slides.length < 2) return;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, j) { s.classList.toggle('is-on', j === i); });
+      dots.forEach(function (d, j) { d.classList.toggle('is-on', j === i); });
+    }
+    function auto() { clearInterval(timer); if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(function () { show(i + 1); }, 6000); }
+    dots.forEach(function (d, j) { d.addEventListener('click', function () { show(j); auto(); }); });
+    var pv = $('.sl-prev', sl), nx = $('.sl-next', sl);
+    pv && pv.addEventListener('click', function () { show(i - 1); auto(); });
+    nx && nx.addEventListener('click', function () { show(i + 1); auto(); });
+    var x0 = null;
+    sl.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    sl.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { show(i + (dx < 0 ? 1 : -1)); auto(); } x0 = null; });
+    auto();
+  });
+
+  /* ---- Donate: highlight chosen programme (?for=id) ---- */
+  var want = new URLSearchParams(location.search).get('for');
+  if (want) { var row = document.getElementById('give-' + want); if (row) { row.classList.add('is-picked'); setTimeout(function () { row.scrollIntoView({ block: 'center' }); }, 300); } }
+
   /* ---- E-paper: Download PDF ---- */
   $$('[data-print]').forEach(function (b) { b.addEventListener('click', function () { window.print(); }); });
 

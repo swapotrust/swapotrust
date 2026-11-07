@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, tr, block, icon, page_hero with context %}
+{% set title = "Team & branches" %}
+{% block main %}
+{{ page_hero('Team & branches', 'टीम एवं शाखाएँ', 'The people behind the seva', 'सेवा के पीछे के लोग', 'uploads/photos/members-meeting-hall-2.jpg', asset, 'टीम') }}
+{% include "_about_tabs.html" %}
+
+<section class="section">
+  <div class="wrap">
+    <div class="sky-intro">
+      <div>
+        <p class="eyebrow">{{ t('Every member is a SKY', 'हर सदस्य एक स्काई') }}</p>
+        <h2><span lang="hi">स्वापो कर्मयोगी</span> (SKY)</h2>
+        <p class="sec-sub">{{ t('A SKY is a member of SWAPO who gives time, energy and resources to its mission, and lives by its values of selfless service, compassion and spiritual growth. That is why every name below begins with “Sky”.', 'स्काई स्वापो का वह सदस्य है जो संस्था के उद्देश्य के लिए अपना समय, ऊर्जा और साधन देता है, और निःस्वार्थ सेवा, करुणा और आध्यात्मिक विकास के मूल्यों पर चलता है। इसीलिए नीचे हर नाम “स्काई” से शुरू होता है।') }}</p>
+      </div>
+      <a class="btn btn-gold" href="{{ url('get-involved/') }}#sky">{{ t('Become a SKY', 'स्काई बनें') }} {{ icon('arrow') }}</a>
+    </div>
+
+    <div class="leader">
+      <div class="founder-photo">{% if team.founder.photo %}<img src="{{ asset(team.founder.photo) }}" alt="">{% else %}<span class="monogram">KA</span>{% endif %}</div>
+      <div><p class="eyebrow">{{ t('National leadership', 'राष्ट्रीय नेतृत्व') }}</p><h3>{{ t(team.founder.name_en, team.founder.name_hi) }}</h3><p>{{ t(team.founder.role_en, team.founder.role_hi) }}</p><a class="link-arrow" href="{{ url('about/founder/') }}">{{ t('Read his story', 'उनकी कहानी पढ़ें') }} {{ icon('arrow') }}</a></div>
+    </div>
+  </div>
+</section>
+
+{% for b in team.branches %}
+<section class="section{% if loop.index is odd %} tint{% endif %}" id="{{ b.id }}">
+  <div class="wrap">
+    <div class="branch-head">
+      <span class="branch-pin big">{{ icon('pin') }}</span>
+      <div>
+        <h2>{{ t(b.name_en, b.name_hi) }} <small>{{ t(b.state_en, b.state_hi) }}</small></h2>
+        {% if b.address_en %}<p class="muted">{{ t(b.address_en, b.address_hi) }}</p>{% endif %}
+        {% if b.team_year %}<p class="kicker">{{ t('Team ' ~ b.team_year, 'टीम ' ~ b.team_year) }}</p>{% endif %}
+      </div>
+    </div>
+    {% if b.members %}
+    <div class="people">
+      {% for m in b.members %}
+      <div class="person">
+        <span class="person-av">{% if m.photo %}<img src="{{ asset(m.photo) }}" alt="">{% else %}{{ m.name_en.replace('Sky ', '')[:1] }}{% endif %}</span>
+        <b>{{ t(m.name_en, m.name_hi) }}</b>
+        <span>{{ t(m.role_en, m.role_hi) }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if b.more_en %}<p class="branch-more">{{ t(b.more_en, b.more_hi) }}</p>{% endif %}
+  </div>
+</section>
+{% endfor %}
+
+<section class="section">
+  <div class="wrap support-grid">
+    <div><h2>{{ t('Start a SWAPO branch in your city', 'अपने शहर में स्वापो की शाखा खोलें') }}</h2><p class="sec-sub">{{ t('Our trust deed allows branches anywhere in India and abroad. If you and a few friends want to start one, we will help you set it up.', 'हमारा न्यास-पत्र भारत और विदेश में कहीं भी शाखा खोलने की अनुमति देता है। अगर आप और आपके कुछ मित्र शाखा शुरू करना चाहते हैं, तो हम मदद करेंगे।') }}</p></div>
+    <div class="btn-row"><a class="btn btn-teal" href="{{ url('get-involved/') }}#branch">{{ t('How to start a branch', 'शाखा कैसे खोलें') }} {{ icon('arrow') }}</a></div>
+  </div>
+</section>
+{% endblock %}

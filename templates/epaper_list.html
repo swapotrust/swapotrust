@@ -1,24 +1,25 @@
 {% extends "base.html" %}
 {% from "_macros.html" import t, icon with context %}
-{% set title = "SWAPO Times e-paper" %}
+{% set title = "SWAPO Samachar monthly edition" %}
+{% set sec = "monthly" %}
 {% block main %}
 <header class="times-head slim">
   <div class="wrap">
-    <h1 class="th-title">SWAPO Times</h1>
-    <p class="th-sub">{{ t('Monthly e-paper – every month’s stories, ready to download and share', 'मासिक ई-पेपर – हर माह के सभी समाचार, डाउनलोड और साझा करने के लिए तैयार') }}</p>
-    <nav class="th-nav" aria-label="SWAPO Times">
-      <a href="{{ url('times/') }}">{{ t('Latest', 'ताज़ा') }}</a>
-      <a href="{{ url('times/epaper/') }}" aria-current="page">{{ icon('paper') }} {{ t('E-paper', 'ई-पेपर') }}</a>
-      <a href="{{ url('times/press/') }}">{{ icon('press') }} {{ t('Press', 'प्रेस') }}</a>
-      <a href="{{ url('times/gallery/') }}">{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
+    <h1 class="th-title">{{ t('SWAPO Samachar', 'स्वापो समाचार') }}</h1>
+    <p class="th-sub">{{ t('Monthly edition: each month’s announcements in one page, ready to download and share', 'मासिक अंक: हर माह की सूचनाएँ एक पृष्ठ पर, डाउनलोड और साझा करने के लिए तैयार') }}</p>
+    <nav class="th-nav" aria-label="SWAPO Samachar">
+      <a href="{{ url('samachar/') }}"{% if sec == 'latest' %} aria-current="page"{% endif %}>{{ t('Announcements', 'सूचनाएँ') }}</a>
+      <a href="{{ url('samachar/in-the-news/') }}"{% if sec == 'press' %} aria-current="page"{% endif %}>{{ icon('press') }} {{ t('In the news', 'मीडिया में') }}</a>
+      <a href="{{ url('samachar/monthly/') }}"{% if sec == 'monthly' %} aria-current="page"{% endif %}>{{ icon('paper') }} {{ t('Monthly edition', 'मासिक अंक') }}</a>
+      <a href="{{ url('samachar/gallery/') }}"{% if sec == 'gallery' %} aria-current="page"{% endif %}>{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
     </nav>
   </div>
 </header>
 <section class="section">
   <div class="wrap ep-grid">
     {% for e in epapers %}
-    <a class="ep-card" href="{{ url('times/epaper/' ~ e.key ~ '/') }}">
-      <span class="ep-mini-mast">SWAPO Times</span>
+    <a class="ep-card" href="{{ url('samachar/monthly/' ~ e.key ~ '/') }}">
+      <span class="ep-mini-mast">{{ t('SWAPO Samachar', 'स्वापो समाचार') }}</span>
       <span class="ep-month">{{ t(e.label_en, e.label_hi) }}</span>
       <span class="ep-lead">{{ t(e.lead.title_en, e.lead.title_hi) }}</span>
       <span class="ep-count">{{ e.count }} {{ t('stories', 'समाचार') }} · {{ t('Open', 'खोलें') }} {{ icon('arrow') }}</span>

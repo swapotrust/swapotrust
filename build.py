@@ -163,8 +163,10 @@ def load_press():
         if not name.endswith(".md"):
             continue
         meta, body = read_md(os.path.join(folder, name))
-        d = to_date(meta.get("date"))
+        has_date = bool(meta.get("date"))
+        d = to_date(meta.get("date")) if has_date else dt.datetime(1900, 1, 1, tzinfo=IST)
         items.append({
+            "has_date": has_date,
             "headline": str(meta.get("headline") or "").strip(),
             "newspaper": str(meta.get("newspaper") or "").strip(),
             "image": str(meta.get("clipping") or "").strip().lstrip("/"),
@@ -172,7 +174,8 @@ def load_press():
             "date": d,
             "date_en": fmt_date(d, "en"),
             "date_hi": fmt_date(d, "hi"),
-            "note": plain(body, 240),
+            "note": plain(body, 260),
+            "kind": "clipping" if meta.get("clipping") else "link",
         })
     items.sort(key=lambda p: p["date"], reverse=True)
     return items
@@ -186,6 +189,7 @@ class Site:
             trim_blocks=True,
             lstrip_blocks=True,
         )
+        self.env.tests["contains"] = lambda seq, x: x in (seq or [])
         self.pages = []
 
     def render(self, template, out_path, **ctx):
@@ -275,6 +279,19 @@ def months_between(start, now):
     return (now.year - start.year) * 12 + (now.month - start.month) + 1
 
 
+def hub_layout(pillars):
+    """Positions for the six-pillar hub infographic (viewBox 0 0 600 600)."""
+    import math
+    nodes = []
+    n = len(pillars)
+    for i, p in enumerate(pillars):
+        ang = math.radians(-90 + i * 360 / n)
+        x, y = 300 + 205 * math.cos(ang), 300 + 205 * math.sin(ang)
+        lx, ly = 300 + 110 * math.cos(ang), 300 + 110 * math.sin(ang)
+        nodes.append({"p": p, "x": round(x, 1), "y": round(y, 1), "lx": round(lx, 1), "ly": round(ly, 1)})
+    return nodes
+
+
 def main():
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
@@ -283,10 +300,36 @@ def main():
     site = load_yaml("site.yml")
     pillars = load_yaml("pillars.yml")
     categories = load_yaml("categories.yml")
+    team = load_yaml("team.yml")
+    stories = load_yaml("stories.yml") or []
+    voices = load_yaml("voices.yml") or []
+    slides = load_yaml("slides.yml") or []
+    gallery_cfg = load_yaml("gallery.yml") or {}
     posts = load_news(categories)
     press = load_press()
     now = dt.datetime.now(IST)
     tb_start = to_date(site.get("tb_start") or "2016-07-16")
+
+    pillar_map = {p["id"]: p for p in pillars}
+    prog_map = {}
+    for p in pillars:
+        for g in p["programmes"]:
+            g["photos"] = [str(x).lstrip("/") for x in (g.get("photos") or []) if x]
+            g["pillar"] = p["id"]
+            prog_map[g["id"]] = g
+    for st in stories:
+        st["photo"] = str(st.get("photo") or "").lstrip("/")
+        st["pillar_obj"] = pillar_map.get(st.get("pillar"), pillars[0])
+        st["paras_en"] = [x for x in str(st.get("text_en") or "").split("\n\n") if x.strip()]
+        st["paras_hi"] = [x for x in str(st.get("text_hi") or "").split("\n\n") if x.strip()]
+    for sl in slides:
+        sl["photo"] = str(sl.get("photo") or "").lstrip("/")
+    for v in voices:
+        v["photo"] = str(v.get("photo") or "").lstrip("/")
+    for b in team.get("branches", []):
+        for m in b.get("members") or []:
+            m["photo"] = str(m.get("photo") or "").lstrip("/")
+    team["founder"]["photo"] = str(team["founder"].get("photo") or "").lstrip("/")
 
     months = OrderedDict()
     for p in posts:
@@ -299,49 +342,69 @@ def main():
                         "label_hi": month_label(key, "hi"), "lead": lead,
                         "rest": rest, "count": len(items)})
 
-    photos = [{"src": ph, "post": p} for p in posts for ph in p["photos"]]
-    gallery_cfg = load_yaml("gallery.yml") if os.path.exists(os.path.join(CONTENT, "gallery.yml")) else {}
-    reel = []
+    # Photo pool: editor gallery, news photos, programme photos (no duplicates)
+    seen, reel = set(), []
+    def add(src, en, hi, href=""):
+        src = str(src or "").strip().lstrip("/")
+        if src and src not in seen:
+            seen.add(src)
+            reel.append({"src": src, "cap_en": en, "cap_hi": hi or en, "href": href})
     for g in (gallery_cfg.get("photos") or []):
-        src = str((g or {}).get("image") or "").strip().lstrip("/")
-        if src:
-            reel.append({"src": src, "cap_en": g.get("caption_en") or "", "cap_hi": g.get("caption_hi") or g.get("caption_en") or "", "href": ""})
-    for ph in photos:
-        reel.append({"src": ph["src"], "cap_en": ph["post"]["title_en"], "cap_hi": ph["post"]["title_hi"],
-                     "href": "times/" + ph["post"]["slug"] + "/"})
-    pillar_map = {p["id"]: p for p in pillars}
-    reel_ph, depth = [], max(len(p["programmes"]) for p in pillars)
-    for i in range(depth):
-        for p in pillars:
-            if i < len(p["programmes"]):
-                reel_ph.append((p, p["programmes"][i]))
-    pillar_links = [("work/#" + p["id"], p["title_en"], p["title_hi"]) for p in pillars]
+        add((g or {}).get("image"), g.get("caption_en") or "", g.get("caption_hi") or "")
+    for p in posts:
+        for ph in p["photos"]:
+            add(ph, p["title_en"], p["title_hi"], "samachar/" + p["slug"] + "/")
+    for p in pillars:
+        for g in p["programmes"]:
+            for ph in g["photos"]:
+                add(ph, g["title_en"], g["title_hi"], "work/" + p["id"] + "/#" + g["id"])
+    photos = reel
+
+    pillar_links = [("work/" + p["id"] + "/", p["title_en"], p["title_hi"]) for p in pillars]
+    n_prog = sum(len(p["programmes"]) for p in pillars)
 
     s = Site()
-    s.ctx = dict(site=site, pillars=pillars, pillar_map=pillar_map, posts=posts,
-                 press=press, categories=categories, epapers=epapers,
-                 photos=photos, reel=reel, reel_ph=reel_ph, pillar_links=pillar_links, year=now.year, tb_start=tb_start.strftime("%Y-%m-%d"),
-                 tb_months=months_between(tb_start, now), build_time=now.isoformat(),
-                 seva_wheel=Markup(seva_wheel()))
+    s.ctx = dict(site=site, pillars=pillars, pillar_map=pillar_map, prog_map=prog_map, posts=posts,
+                 press=press, categories=categories, epapers=epapers, team=team, stories=stories,
+                 voices=voices, slides=slides, photos=photos, reel=reel, pillar_links=pillar_links,
+                 n_prog=n_prog, hub=hub_layout(pillars), year=now.year,
+                 tb_start=tb_start.strftime("%Y-%m-%d"), tb_months=months_between(tb_start, now),
+                 build_time=now.isoformat(), seva_wheel=Markup(seva_wheel()))
 
     s.render("home.html", "index.html", active="home")
-    s.render("about.html", "about/index.html", active="about")
+    s.render("about.html", "about/index.html", active="about", sub="story")
+    s.render("founder.html", "about/founder/index.html", active="about", sub="founder")
+    s.render("team.html", "about/team/index.html", active="about", sub="team")
     s.render("work.html", "work/index.html", active="work")
+    for p in pillars:
+        s.render("pillar.html", f"work/{p['id']}/index.html", active="work", pillar=p,
+                 pstories=[x for x in stories if x.get("pillar") == p["id"]],
+                 pposts=[x for x in posts if x["pillar"] == p["id"]])
     s.render("tb.html", "work/tb-nutrition/index.html", active="work")
     s.render("impact.html", "impact/index.html", active="impact")
-    s.render("times.html", "times/index.html", active="times")
+    s.render("voices.html", "voices/index.html", active="impact")
+    s.render("times.html", "samachar/index.html", active="times")
     for p in posts:
-        s.render("post.html", f"times/{p['slug']}/index.html", active="times", post=p,
+        s.render("post.html", f"samachar/{p['slug']}/index.html", active="times", post=p,
                  related=[q for q in posts if q is not p][:3])
-    s.render("epaper_list.html", "times/epaper/index.html", active="times")
+    s.render("epaper_list.html", "samachar/monthly/index.html", active="times")
     for e in epapers:
-        s.render("epaper.html", f"times/epaper/{e['key']}/index.html", active="times", ep=e)
-    s.render("press.html", "times/press/index.html", active="times")
-    s.render("gallery.html", "times/gallery/index.html", active="times")
+        s.render("epaper.html", f"samachar/monthly/{e['key']}/index.html", active="times", ep=e)
+    s.render("press.html", "samachar/in-the-news/index.html", active="times")
+    s.render("gallery.html", "samachar/gallery/index.html", active="times")
     s.render("involved.html", "get-involved/index.html", active="involved")
+    s.render("donate.html", "donate/index.html", active="donate")
     s.render("contact.html", "contact/index.html", active="contact")
     s.render("404.html", "404.html", active="")
 
+    # old addresses -> new
+    for old, new in [("times/", "samachar/"), ("times/epaper/", "samachar/monthly/"),
+                     ("times/press/", "samachar/in-the-news/"), ("times/gallery/", "samachar/gallery/")]:
+        dest = os.path.join(OUT, old, "index.html")
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        target = BASE_URL + "/" + new
+        with open(dest, "w") as f:
+            f.write(f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={target}"><link rel="canonical" href="{target}"><a href="{target}">{target}</a>')
     # sitemap + robots
     with open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n'

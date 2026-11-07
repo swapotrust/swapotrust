@@ -15,12 +15,12 @@
 {%- endmacro %}
 
 {% macro sdg(n) -%}
-{% set names = {1:"No Poverty",2:"Zero Hunger",3:"Good Health",4:"Quality Education",5:"Gender Equality",6:"Clean Water",8:"Decent Work",10:"Reduced Inequalities",13:"Climate Action",15:"Life on Land",16:"Peace & Justice"} %}
+{% set names = {1:"No Poverty",2:"Zero Hunger",3:"Good Health",4:"Quality Education",5:"Gender Equality",6:"Clean Water",8:"Decent Work",10:"Reduced Inequalities",11:"Sustainable Cities",13:"Climate Action",15:"Life on Land",16:"Peace & Justice"} %}
 <span class="sdg sdg-{{ n }}" title="UN Sustainable Development Goal {{ n }}: {{ names[n] }}"><b>{{ n }}</b>{{ names[n] }}</span>
 {%- endmacro %}
 
 {% macro news_card(p, url, asset, size="") -%}
-<a class="ncard {{ size }}" href="{{ url('times/' ~ p.slug ~ '/') }}" data-cat="{{ p.category }}">
+<a class="ncard {{ size }}" href="{{ url('samachar/' ~ p.slug ~ '/') }}" data-cat="{{ p.category }}">
   <div class="ncard-img p-{{ p.pillar }}">
     {% if p.cover %}<img src="{{ asset(p.cover) }}" alt="" loading="lazy">{% else %}<span class="ph">{{ icon(p.pillar, 'ico ph-ico') }}</span>{% endif %}
     {% if p.photos|length > 1 %}<span class="ncount">{{ icon('camera') }} {{ p.photos|length }}</span>{% endif %}
@@ -31,4 +31,37 @@
     <p class="excerpt">{{ t(p.excerpt_en, p.excerpt_hi) }}</p>
   </div>
 </a>
+{%- endmacro %}
+
+
+{% macro page_hero(eyebrow_en, eyebrow_hi, title_en, title_hi, photo, asset, hi_word="", lede_en="", lede_hi="") -%}
+<header class="phero{% if photo %} has-photo{% endif %}">
+  {% if photo %}<img class="phero-bg" src="{{ asset(photo) }}" alt="">{% endif %}
+  <div class="wrap phero-in">
+    {% if hi_word %}<span class="phero-hi" lang="hi" aria-hidden="true">{{ hi_word }}</span>{% endif %}
+    <p class="eyebrow">{{ t(eyebrow_en, eyebrow_hi) }}</p>
+    <h1>{{ t(title_en, title_hi) }}</h1>
+    {% if lede_en %}<p class="lede">{{ t(lede_en, lede_hi) }}</p>{% endif %}
+    {{ caller() if caller else '' }}
+  </div>
+</header>
+{%- endmacro %}
+
+{% macro story_card(st, url, asset) -%}
+<article class="scard" style="--pc: {{ st.pillar_obj.color }}">
+  <div class="scard-img">
+    {% if st.photo %}<img src="{{ asset(st.photo) }}" alt="" loading="lazy">{% else %}<span class="scard-ph">{{ icon(st.pillar_obj.icon) }}</span>{% endif %}
+    <span class="scard-tag">{{ t(st.pillar_obj.title_en, st.pillar_obj.title_hi) }}</span>
+  </div>
+  <div class="scard-body">
+    <p class="kicker">{{ t(st.date_en, st.date_hi) }}{% if st.kind == 'representative' %} · <span class="rep">{{ t('Representative story', 'प्रतिनिधि कहानी') }}</span>{% endif %}</p>
+    <h3>{{ t(st.title_en, st.title_hi) }}</h3>
+    <p class="excerpt">{{ t(st.paras_en[0], st.paras_hi[0]) }}</p>
+    <a class="link-arrow" href="{{ url('impact/') }}#{{ st.id }}">{{ t('Read the story', 'पूरी कहानी') }} {{ icon('arrow') }}</a>
+  </div>
+</article>
+{%- endmacro %}
+
+{% macro privacy_note() -%}
+<p class="privacy-note">{{ icon('shield') }} {{ t('Representative story: it brings together the experiences of several people we have served. Names and identifying details are left out to protect their privacy.', 'प्रतिनिधि कहानी: इसमें हमारे द्वारा सेवित कई लोगों के अनुभव शामिल हैं। उनकी निजता की रक्षा के लिए नाम और पहचान से जुड़ी जानकारी नहीं दी गई है।') }}</p>
 {%- endmacro %}

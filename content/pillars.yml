@@ -1,152 +1,270 @@
+# The six pillars of SWAPO's work and the programmes under each.
+# status: flagship | ongoing | building   ·   photos: paths under /uploads/
 - id: health
   icon: health
   color: "#B5473A"
   title_en: "Health & Healing"
   title_hi: "स्वास्थ्य सेवा"
-  intro_en: "Nutrition, treatment and care for those the health system often reaches last."
-  intro_hi: "उन लोगों के लिए पोषण, उपचार और देखभाल, जिन तक स्वास्थ्य सेवाएँ सबसे बाद में पहुँचती हैं।"
+  intro_en: "Food, tests and medical supplies for people who struggle to get them."
+  intro_hi: "उन लोगों के लिए पोषण, जाँच और दवाइयाँ, जिन तक ये आसानी से नहीं पहुँचतीं।"
   sdgs: [2, 3]
   programmes:
-    - title_en: "TB Nutrition Mission"
-      title_hi: "टीबी पोषाहार मिशन"
-      flagship: true
-      text_en: "Every month since July 2016, poor MDR-TB patients at the District TB Centre receive a month's supply of flour, rice, porridge, lentils and soya – food that helps their treatment work."
-      text_hi: "जुलाई 2016 से हर माह जिला क्षय रोग केंद्र पर निर्धन एमडीआर-टीबी मरीज़ों को एक माह का आटा, चावल, दलिया, मसूर और सोयाबीन बड़ी दी जाती है – ताकि इलाज असर करे।"
-    - title_en: "Free Multi-Speciality Health Camps"
-      title_hi: "निःशुल्क बहु-विशेषज्ञ स्वास्थ्य शिविर"
-      text_en: "Physiotherapy, dental, skin, ENT, homoeopathy and allopathy consultations in one place, free of cost."
-      text_hi: "फिज़ियोथेरेपी, दंत, त्वचा, नाक-कान-गला, होम्योपैथी और एलोपैथी – एक ही स्थान पर, पूर्णतः निःशुल्क।"
-    - title_en: "Haemoglobin Checks for Girls"
-      title_hi: "बालिकाओं की हीमोग्लोबिन जाँच"
-      text_en: "India carries one of the world's highest burdens of anaemia. We screen adolescent girls and young women so it is caught early."
-      text_hi: "भारत में खून की कमी (एनीमिया) एक बड़ी समस्या है। हम किशोरियों और युवतियों की जाँच कर इसे समय रहते पकड़ते हैं।"
-    - title_en: "Blood Donation Drives"
+    - id: tb-nutrition
+      title_en: "TB Nutrition Mission"
+      title_hi: "टीबी पोषण पोटली मिशन"
+      status: flagship
+      since: "July 2016"
+      photos: [/uploads/photos/tb-poshan-potli.jpg, /uploads/photos/tb-nikshay-mitra-campaign.jpg, /uploads/photos/tb-poshan-programme.jpg]
+      text_en: "Every month since July 2016, poor patients with multi-drug-resistant (MDR) TB get a monthly nutrition kit from us."
+      text_hi: "जुलाई 2016 से हर माह मल्टी-ड्रग-रेज़िस्टेंट (एमडीआर) टीबी के निर्धन मरीज़ों को हमारी ओर से मासिक पोषण पोटली मिलती है।"
+      detail_en: "The kit is called a poshan potli: wheat flour, rice, daliya, masoor dal and soya chunks, enough for a month. It is handed over at the District TB Centre and at Bagla District Hospital. We also take part in the government's Ni-kshay Mitra programme, under which organisations adopt TB patients for the length of their treatment."
+      detail_hi: "इस किट को पोषण पोटली कहते हैं: आटा, चावल, दलिया, मसूर दाल और सोयाबीन बड़ी, एक माह के लिए पर्याप्त। यह जिला क्षय रोग केंद्र और बागला जिला अस्पताल पर दी जाती है। हम सरकार के नि-क्षय मित्र कार्यक्रम में भी शामिल हैं, जिसमें संस्थाएँ इलाज की पूरी अवधि के लिए टीबी मरीज़ों को गोद लेती हैं।"
+    - id: health-camps
+      title_en: "Free Health Camps"
+      title_hi: "निःशुल्क स्वास्थ्य शिविर"
+      status: ongoing
+      photos: []
+      text_en: "Physiotherapy, dental, skin, ENT, homoeopathy and allopathy check-ups in one place, free."
+      text_hi: "फ़िज़ियोथेरेपी, दंत, त्वचा, नाक-कान-गला, होम्योपैथी और एलोपैथी जाँच एक ही जगह, निःशुल्क।"
+      detail_en: "Doctors give their time and we arrange the venue, medicines and volunteers. Our free blood test camps at schools draw students and their parents in large numbers."
+      detail_hi: "चिकित्सक अपना समय देते हैं और हम स्थान, दवाइयों और स्वयंसेवकों की व्यवस्था करते हैं। विद्यालयों में हमारे निःशुल्क रक्त जाँच शिविरों में विद्यार्थी और अभिभावक बड़ी संख्या में आते हैं।"
+    - id: anaemia
+      title_en: "Anaemia Mukt Hathras"
+      title_hi: "एनीमिया मुक्त हाथरस"
+      status: ongoing
+      since: "2026"
+      photos: []
+      text_en: "Haemoglobin tests for schoolgirls and young women, so that anaemia is caught early."
+      text_hi: "छात्राओं और युवतियों की हीमोग्लोबिन जाँच, ताकि खून की कमी समय पर पकड़ी जा सके।"
+      detail_en: "Anaemia is common among adolescent girls in India and often goes unnoticed. In 2026 we started the Anaemia Mukt Hathras campaign with testing camps in girls' schools, starting at the Government Girls Inter College, Rampur."
+      detail_hi: "भारत में किशोरियों में खून की कमी आम है और अक्सर पता नहीं चलती। 2026 में हमने एनीमिया मुक्त हाथरस अभियान शुरू किया, जिसकी शुरुआत राजकीय कन्या इंटर कॉलेज, रामपुर से हुई।"
+    - id: blood-donation
+      title_en: "Blood Donation Drives"
       title_hi: "रक्तदान शिविर"
-      text_en: "Regular drives that bring donors together and keep blood available for those who need it."
-      text_hi: "नियमित शिविर, जिनसे ज़रूरतमंदों के लिए रक्त उपलब्ध रहता है।"
-    - title_en: "Support for Leprosy Patients"
-      title_hi: "कुष्ठ रोगियों की सहायता"
-      text_en: "Medical supplies and dressings provided to leprosy patients, with dignity."
-      text_hi: "कुष्ठ रोगियों को सम्मान के साथ दवाइयाँ और आवश्यक चिकित्सा सामग्री।"
+      status: ongoing
+      photos: []
+      text_en: "Regular drives so that blood is available when a patient needs it."
+      text_hi: "नियमित शिविर, ताकि ज़रूरत के समय मरीज़ को रक्त मिल सके।"
+      detail_en: "We bring donors together with blood banks and keep a list of volunteers who can be called in an emergency."
+      detail_hi: "हम रक्तदाताओं को ब्लड बैंकों से जोड़ते हैं और आपात स्थिति के लिए स्वयंसेवक रक्तदाताओं की सूची रखते हैं।"
+    - id: leprosy
+      title_en: "Leprosy Ashram Support"
+      title_hi: "कुष्ठ आश्रम सेवा"
+      status: ongoing
+      photos: []
+      text_en: "Medical supplies, food and daily essentials for residents of the leprosy ashram."
+      text_hi: "कुष्ठ आश्रम के निवासियों के लिए दवाइयाँ, भोजन और दैनिक ज़रूरत का सामान।"
+      detail_en: "Our members visit the ashram, spend time with residents and bring what they need, from dressings and medicines to ration."
+      detail_hi: "हमारे सदस्य आश्रम जाते हैं, निवासियों के साथ समय बिताते हैं और ज़रूरत का सामान पहुँचाते हैं, पट्टियों और दवाइयों से लेकर राशन तक।"
 
 - id: water
   icon: water
   color: "#1F7A8C"
   title_en: "Water & Environment"
   title_hi: "जल एवं पर्यावरण"
-  intro_en: "Clean water for every passer-by, and green cover for the generations after us."
-  intro_hi: "हर राहगीर के लिए स्वच्छ जल, और आने वाली पीढ़ियों के लिए हरियाली।"
+  intro_en: "Clean drinking water in public places, and trees that will outlive us."
+  intro_hi: "सार्वजनिक स्थानों पर स्वच्छ पेयजल, और ऐसे पेड़ जो हमारे बाद भी रहेंगे।"
   sdgs: [6, 13, 15]
   programmes:
-    - title_en: "Permanent Drinking-Water Tanks"
+    - id: water-tanks
+      title_en: "Permanent Drinking-Water Tanks"
       title_hi: "स्थायी पेयजल टंकियाँ"
-      text_en: "Three permanent drinking-water tanks in Hathras city, installed and maintained by SWAPO for anyone who is thirsty."
-      text_hi: "हाथरस शहर में तीन स्थायी पेयजल टंकियाँ, जिन्हें स्वापो ने लगाया है और स्वयं संभालता है।"
-    - title_en: "Sharbat & Water Seva"
-      title_hi: "शरबत एवं जल सेवा"
-      text_en: "Cool sharbat and drinking water for people on the streets through the hottest months."
-      text_hi: "भीषण गर्मी में राहगीरों के लिए ठंडा शरबत और पानी।"
-    - title_en: "Plantation Drives"
+      status: ongoing
+      photos: []
+      text_en: "Three permanent drinking-water tanks in Hathras, installed and looked after by SWAPO."
+      text_hi: "हाथरस में तीन स्थायी पेयजल टंकियाँ, जिन्हें स्वापो ने लगाया है और स्वयं संभालता है।"
+      detail_en: "The tanks are cleaned and refilled by our members. Anyone passing by, from rickshaw pullers to schoolchildren, can drink clean water for free."
+      detail_hi: "इन टंकियों की सफ़ाई और भराई हमारे सदस्य करते हैं। रिक्शा चालक हों या स्कूली बच्चे, कोई भी राहगीर यहाँ मुफ़्त में स्वच्छ पानी पी सकता है।"
+    - id: pyau
+      title_en: "Pyau & Sharbat Seva"
+      title_hi: "प्याऊ एवं शरबत सेवा"
+      status: ongoing
+      photos: [/uploads/photos/sharbat-seva.jpg, /uploads/photos/sharbat-seva-market.jpg, /uploads/photos/summer-seva-supplies.jpg]
+      text_en: "Cold water and sharbat for people on the street through the summer."
+      text_hi: "गर्मियों में राहगीरों के लिए ठंडा पानी और शरबत।"
+      detail_en: "Every summer we set up pyau (public water points) at busy places such as Gandhi Tiraha and outside temples, and serve sharbat in the markets on the hottest days."
+      detail_hi: "हर गर्मी हम गांधी तिराहा जैसे व्यस्त स्थानों और मंदिरों के सामने प्याऊ लगाते हैं, और सबसे गर्म दिनों में बाज़ारों में शरबत पिलाते हैं।"
+    - id: plantation
+      title_en: "Plantation Drives"
       title_hi: "वृक्षारोपण अभियान"
-      text_en: "Tree-planting drives with citizens and students, especially through the monsoon."
-      text_hi: "नागरिकों और विद्यार्थियों के साथ वृक्षारोपण, विशेषकर वर्षा ऋतु में।"
+      status: ongoing
+      photos: [/uploads/photos/plantation-drive.jpg, /uploads/photos/plantation-sky-guards.jpg]
+      text_en: "Trees planted with tree guards, and looked after until they can stand on their own."
+      text_hi: "ट्री-गार्ड के साथ पौधारोपण, और तब तक देखभाल जब तक पौधा अपने दम पर न खड़ा हो जाए।"
+      detail_en: "Each sapling gets a guard with the name of the SWAPO Karm Yogi (SKY) who has taken responsibility for watering and protecting it. District officials and police officers have joined our drives."
+      detail_hi: "हर पौधे के ट्री-गार्ड पर उस स्वापो कर्मयोगी (SKY) का नाम होता है, जिसने उसे पानी देने और बचाने की ज़िम्मेदारी ली है। हमारे अभियानों में जिले के अधिकारी और पुलिस अधिकारी भी शामिल हुए हैं।"
 
 - id: relief
   icon: relief
   color: "#C9822B"
-  title_en: "Food & Seasonal Relief"
-  title_hi: "अन्न एवं राहत"
-  intro_en: "When the season turns hard, we turn up – with food, warmth and shelter from the cold."
-  intro_hi: "जब मौसम कठिन होता है, हम साथ खड़े होते हैं – भोजन, गर्माहट और ठंड से बचाव के साथ।"
+  title_en: "Food & Winter Relief"
+  title_hi: "अन्न एवं शीत राहत"
+  intro_en: "Food through the year, and warmth when the north-Indian winter sets in."
+  intro_hi: "पूरे वर्ष भोजन, और उत्तर भारत की कड़ी सर्दी में गर्माहट।"
   sdgs: [1, 2]
   programmes:
-    - title_en: "Regular Food Distribution"
-      title_hi: "नियमित भोजन वितरण"
-      text_en: "Meals and food packets for the needy, distributed regularly through the year."
-      text_hi: "ज़रूरतमंदों को पूरे वर्ष नियमित रूप से भोजन और खाद्य सामग्री।"
-    - title_en: "Winter Blankets"
-      title_hi: "शीतकालीन कंबल वितरण"
-      text_en: "Blankets for families, the homeless and the elderly in the harsh north-Indian winter."
-      text_hi: "कड़ाके की सर्दी में बेघर, बुज़ुर्गों और ज़रूरतमंद परिवारों को कंबल।"
-    - title_en: "Community Bonfire Points"
+    - id: food
+      title_en: "Food Distribution"
+      title_hi: "भोजन वितरण"
+      status: ongoing
+      photos: [/uploads/photos/summer-seva-supplies.jpg]
+      text_en: "Meals, fruit and food packets for people in need, at ashrams and in poor localities."
+      text_hi: "आश्रमों और निर्धन बस्तियों में ज़रूरतमंदों को भोजन, फल और खाद्य सामग्री।"
+      detail_en: "On festivals and important days we serve food at ashrams and hospitals. On Shaheed Diwas we served refreshments to the residents of Apna Ghar Ashram."
+      detail_hi: "पर्वों और महत्वपूर्ण दिवसों पर हम आश्रमों और अस्पतालों में भोजन कराते हैं। शहीद दिवस पर हमने अपना घर आश्रम के प्रभुजनों को स्वल्पाहार कराया।"
+    - id: winter-clothes
+      title_en: "Blankets, Sweaters & Caps"
+      title_hi: "कंबल, स्वेटर एवं टोपे"
+      status: ongoing
+      photos: [/uploads/photos/elders-ashram.jpg]
+      text_en: "Warm clothes and blankets for elders, children and families who sleep cold."
+      text_hi: "बुज़ुर्गों, बच्चों और ठंड में रहने वाले परिवारों के लिए गर्म कपड़े और कंबल।"
+      detail_en: "In January 2026 we gave sweaters and caps to residents of Apna Ghar Ashram on Jalesar Road and caps to families in Kanshiram Township. Our Surat branch joined this drive."
+      detail_hi: "जनवरी 2026 में हमने जलेसर रोड स्थित अपना घर आश्रम के प्रभुजनों को स्वेटर और टोपे, और कांशीराम टाउनशिप में परिवारों को टोपे दिए। इस अभियान में हमारी सूरत शाखा भी शामिल हुई।"
+    - id: bonfires
+      title_en: "Community Bonfires (Alaav)"
       title_hi: "सामुदायिक अलाव"
-      text_en: "Bonfire points set up in public places on the coldest nights."
-      text_hi: "सबसे ठंडी रातों में सार्वजनिक स्थानों पर अलाव की व्यवस्था।"
+      status: ongoing
+      photos: []
+      text_en: "Bonfires at bus stands, crossings and outside hospitals on the coldest nights."
+      text_hi: "सबसे ठंडी रातों में बस अड्डों, चौराहों और अस्पतालों के बाहर अलाव।"
+      detail_en: "We arrange wood for several days at a time at the bus stand, Sasni Gate, Talab Chauraha and outside Bagla Hospital, where patients' families often wait through the night."
+      detail_hi: "हम बस अड्डा, सासनी गेट, तालाब चौराहा और बागला अस्पताल के बाहर, जहाँ मरीज़ों के परिजन अक्सर रात भर इंतज़ार करते हैं, कई दिनों के लिए लकड़ी की व्यवस्था करते हैं।"
 
 - id: care
   icon: care
   color: "#7A4E8C"
   title_en: "Care & Dignity"
   title_hi: "सम्मान एवं संरक्षण"
-  intro_en: "Standing with people at life's most important moments – from a daughter's wedding to a last farewell."
-  intro_hi: "जीवन के अहम पलों में साथ – बेटी की विदाई से लेकर अंतिम विदाई तक।"
+  intro_en: "Standing with people at life's big moments, from a daughter's wedding to a last farewell."
+  intro_hi: "जीवन के बड़े पलों में साथ, बेटी की विदाई से लेकर अंतिम विदाई तक।"
   sdgs: [1, 5, 10, 15]
   programmes:
-    - title_en: "Marriages of Underprivileged Girls"
-      title_hi: "निर्धन कन्याओं का विवाह"
-      text_en: "We organise weddings and provide everything a family needs for their daughter's new beginning. (Only for brides aged 18 and above, as per law.)"
-      text_hi: "हम विवाह का आयोजन करते हैं और नई शुरुआत के लिए आवश्यक सभी सामान देते हैं। (कानून के अनुसार केवल 18 वर्ष या अधिक आयु की कन्याओं के लिए।)"
-    - title_en: "Old-Age Homes"
-      title_hi: "वृद्धाश्रम सेवा"
-      text_en: "Nutritious food and daily essentials, delivered frequently to elders in old-age homes."
-      text_hi: "वृद्धाश्रमों में बुज़ुर्गों को नियमित रूप से पौष्टिक भोजन और ज़रूरत का सामान।"
-    - title_en: "Orphanage Support"
-      title_hi: "अनाथालय सहायता"
-      text_en: "Food, clothing and supplies for children growing up in orphanages."
-      text_hi: "अनाथालयों में पल रहे बच्चों के लिए भोजन, वस्त्र और आवश्यक सामग्री।"
-    - title_en: "Cremation Centres for the Poor"
+    - id: kanya-vivah
+      title_en: "Kanya Vivah"
+      title_hi: "निर्धन कन्या विवाह"
+      status: ongoing
+      photos: [/uploads/photos/household-items.jpg]
+      text_en: "We organise weddings for daughters of poor families and give the household items a new home needs."
+      text_hi: "हम निर्धन परिवारों की बेटियों के विवाह कराते हैं और नए घर के लिए ज़रूरी सामान देते हैं।"
+      detail_en: "Families tell us what they need, from a bed and utensils to clothes. Our members collect it and hand it over. Support is given only for brides aged 18 and above, as the law requires."
+      detail_hi: "परिवार हमें अपनी ज़रूरत बताते हैं, पलंग और बर्तनों से लेकर कपड़ों तक। हमारे सदस्य सामान जुटाकर सौंपते हैं। कानून के अनुसार सहायता केवल 18 वर्ष या अधिक आयु की कन्याओं के विवाह के लिए दी जाती है।"
+    - id: elders
+      title_en: "Old-Age Homes & Ashrams"
+      title_hi: "वृद्धाश्रम एवं आश्रम सेवा"
+      status: ongoing
+      photos: [/uploads/photos/elders-ashram.jpg]
+      text_en: "Nutritious food, clothes and daily needs for elders in ashrams and old-age homes."
+      text_hi: "आश्रमों और वृद्धाश्रमों में बुज़ुर्गों के लिए पौष्टिक भोजन, कपड़े और दैनिक ज़रूरतें।"
+      detail_en: "We visit Apna Ghar Ashram and other homes often, and ask the people who run them what is running short."
+      detail_hi: "हम अपना घर आश्रम और अन्य आश्रमों में अक्सर जाते हैं, और संचालकों से पूछते हैं कि किस चीज़ की कमी है।"
+    - id: children
+      title_en: "Orphanage & Divyang Children"
+      title_hi: "अनाथालय एवं दिव्यांग बच्चे"
+      status: ongoing
+      photos: []
+      text_en: "Food, clothes and celebrations with children in orphanages and in the residential school for divyang children."
+      text_hi: "अनाथालयों और दिव्यांग बच्चों के आवासीय विद्यालय में बच्चों के साथ भोजन, वस्त्र और पर्व।"
+      detail_en: "On Mahanavami 2025 we did kanya pujan with the girls of the residential school for divyang children on Jalesar Road and gave them fruit, sweets and biscuits."
+      detail_hi: "महानवमी 2025 पर हमने जलेसर रोड स्थित दिव्यांग बच्चों के आवासीय विद्यालय की कन्याओं का पूजन किया और उन्हें फल, मिठाई और बिस्कुट दिए।"
+    - id: cremation
+      title_en: "Cremation Centres for the Poor"
       title_hi: "निर्धनों हेतु अंत्येष्टि स्थल"
-      text_en: "We are building cremation facilities so that no family is denied a dignified farewell because of poverty."
-      text_hi: "हम अंत्येष्टि स्थलों का निर्माण कर रहे हैं, ताकि गरीबी के कारण किसी परिवार को सम्मानजनक अंतिम विदाई से वंचित न होना पड़े।"
-    - title_en: "Gau Seva"
+      status: building
+      photos: []
+      text_en: "We are building cremation centres so that no family is denied a dignified farewell because it is poor."
+      text_hi: "हम अंत्येष्टि स्थल बना रहे हैं, ताकि गरीबी के कारण किसी परिवार को सम्मानजनक अंतिम विदाई से वंचित न होना पड़े।"
+      detail_en: "Work is in progress. When it is complete, the centres will provide a clean, covered place and the basic materials for last rites at no cost to poor families. You can contribute materials or funds towards construction."
+      detail_hi: "निर्माण कार्य जारी है। पूरा होने पर ये स्थल निर्धन परिवारों को अंतिम संस्कार के लिए साफ़, ढका हुआ स्थान और ज़रूरी सामग्री निःशुल्क देंगे। आप निर्माण में सामग्री या धन से सहयोग कर सकते हैं।"
+    - id: gau-seva
+      title_en: "Gau Seva"
       title_hi: "गौ सेवा"
-      text_en: "Care, fodder and treatment for cows – part of our commitment to protect all living beings."
-      text_hi: "गौवंश के लिए चारा, देखभाल और उपचार – सभी जीवों की रक्षा के हमारे संकल्प का हिस्सा।"
+      status: ongoing
+      photos: []
+      text_en: "Fodder, care and treatment for cows, as part of our promise to protect all living beings."
+      text_hi: "गौवंश के लिए चारा, देखभाल और उपचार, सभी जीवों की रक्षा के हमारे संकल्प के अंतर्गत।"
+      detail_en: "Members contribute fodder and help with treatment for injured and abandoned cows."
+      detail_hi: "सदस्य चारे का योगदान देते हैं और घायल व बेसहारा गौवंश के उपचार में मदद करते हैं।"
 
 - id: education
   icon: education
   color: "#2F6B3F"
   title_en: "Education & Livelihood"
   title_hi: "शिक्षा एवं आजीविका"
-  intro_en: "Helping children stay in school and adults stand on their own feet."
-  intro_hi: "बच्चों की पढ़ाई जारी रहे और बड़े अपने पैरों पर खड़े हों।"
+  intro_en: "Keeping children in school, and helping adults earn a living."
+  intro_hi: "बच्चों की पढ़ाई जारी रहे, और बड़े अपनी रोज़ी कमा सकें।"
   sdgs: [4, 8]
   programmes:
-    - title_en: "Education Sponsorship"
+    - id: sponsorship
+      title_en: "Education Sponsorship"
       title_hi: "शिक्षा प्रायोजन"
-      text_en: "Fees, books and uniforms sponsored for underprivileged children."
-      text_hi: "निर्धन बच्चों की फीस, किताबें और गणवेश का प्रायोजन।"
-    - title_en: "Scholarships & Literacy"
-      title_hi: "छात्रवृत्ति एवं साक्षरता"
-      text_en: "Scholarships for deserving students and literacy classes for those who missed school."
-      text_hi: "मेधावी विद्यार्थियों को छात्रवृत्ति और पढ़ाई से वंचित लोगों के लिए साक्षरता कक्षाएँ।"
-    - title_en: "Skills, Livelihood & Microfinance"
+      status: ongoing
+      photos: [/uploads/photos/school-girls.jpg]
+      text_en: "School fees, books and uniforms for children from poor families."
+      text_hi: "निर्धन परिवारों के बच्चों की फ़ीस, किताबें और गणवेश।"
+      detail_en: "A member or donor sponsors a child for a year. We pay the school directly and stay in touch with the family."
+      detail_hi: "कोई सदस्य या दानदाता एक बच्चे को एक वर्ष के लिए प्रायोजित करता है। हम फ़ीस सीधे विद्यालय को देते हैं और परिवार के संपर्क में रहते हैं।"
+    - id: schools
+      title_en: "Scholarships, Literacy & School Programmes"
+      title_hi: "छात्रवृत्ति, साक्षरता एवं विद्यालय कार्यक्रम"
+      status: ongoing
+      photos: [/uploads/photos/independence-day-school.jpg]
+      text_en: "Scholarships for good students, literacy classes, and celebrations of national days in government schools."
+      text_hi: "मेधावी विद्यार्थियों को छात्रवृत्ति, साक्षरता कक्षाएँ, और सरकारी विद्यालयों में राष्ट्रीय पर्वों का आयोजन।"
+      detail_en: "On Independence Day we hoist the flag with children in government primary schools and give them sweets and stationery."
+      detail_hi: "स्वतंत्रता दिवस पर हम सरकारी प्राथमिक विद्यालयों में बच्चों के साथ ध्वजारोहण करते हैं और उन्हें मिठाई व लेखन सामग्री देते हैं।"
+    - id: livelihood
+      title_en: "Skills, Livelihood & Microfinance"
       title_hi: "कौशल, आजीविका एवं सूक्ष्म वित्त"
-      text_en: "Vocational and skill training, livelihood programmes and small-credit support to start earning."
-      text_hi: "व्यावसायिक एवं कौशल प्रशिक्षण, आजीविका कार्यक्रम और कमाई शुरू करने हेतु छोटे ऋण की सहायता।"
+      status: ongoing
+      photos: []
+      text_en: "Vocational training, livelihood programmes and small loans to help people start earning."
+      text_hi: "व्यावसायिक प्रशिक्षण, आजीविका कार्यक्रम और कमाई शुरू करने के लिए छोटे ऋण।"
+      detail_en: "We connect people with training and with members who can give them work or guidance to start a small business."
+      detail_hi: "हम लोगों को प्रशिक्षण से, और उन सदस्यों से जोड़ते हैं जो उन्हें काम दे सकें या छोटा व्यवसाय शुरू करने में मार्गदर्शन कर सकें।"
 
 - id: spirit
   icon: spirit
   color: "#B8862F"
   title_en: "Spirit, Culture & Public Voice"
   title_hi: "अध्यात्म, संस्कृति एवं जनहित"
-  intro_en: "Inner peace, shared values and the courage to raise public concerns."
-  intro_hi: "मन की शांति, साझा मूल्य और जनहित के मुद्दे उठाने का साहस।"
-  sdgs: [3, 16]
+  intro_en: "Inner peace, shared values, and speaking up for the public."
+  intro_hi: "मन की शांति, साझा मूल्य, और जनता की आवाज़ उठाना।"
+  sdgs: [3, 11, 16]
   programmes:
-    - title_en: "Yoga, Meditation & Satsang"
-      title_hi: "योग, ध्यान एवं सत्संग"
-      text_en: "Sessions, retreats and gatherings that bring peace of mind and positive values."
-      text_hi: "मन की शांति और सकारात्मक मूल्यों के लिए सत्र, शिविर और सत्संग।"
-    - title_en: "Important Days & Cultural Programmes"
-      title_hi: "महत्वपूर्ण दिवस एवं सांस्कृतिक कार्यक्रम"
-      text_en: "Positive programmes on national and international days, birth anniversaries and festivals."
-      text_hi: "राष्ट्रीय-अंतरराष्ट्रीय दिवसों, जयंतियों और पर्वों पर सकारात्मक कार्यक्रम।"
-    - title_en: "Raising Public Issues"
+    - id: public-issues
+      title_en: "Raising Public Issues"
       title_hi: "जनहित के मुद्दे"
-      text_en: "We take civic problems to the right government departments through letters and memoranda, and, when needed, peaceful public campaigns."
-      text_hi: "हम पत्र और ज्ञापन के माध्यम से जन-समस्याएँ संबंधित विभागों तक पहुँचाते हैं, और आवश्यकता होने पर शांतिपूर्ण जन-अभियान चलाते हैं।"
-    - title_en: "Human-Rights Help"
+      status: ongoing
+      photos: []
+      text_en: "Letters and memoranda to the government on problems that affect ordinary people."
+      text_hi: "आम लोगों को प्रभावित करने वाली समस्याओं पर शासन को पत्र और ज्ञापन।"
+      detail_en: "In 2026 we sent a ten-point memorandum to the Railway Minister on passenger facilities in Hathras, and wrote to the Chief Minister about roads being raised again and again until houses sit below road level and flood in the rains."
+      detail_hi: "2026 में हमने हाथरस में यात्री सुविधाओं पर रेल मंत्री को दस सूत्रीय ज्ञापन भेजा, और मुख्यमंत्री को उन सड़कों के बारे में लिखा जो बार-बार ऊँची की जाती हैं, जिससे मकान सड़क से नीचे रह जाते हैं और बरसात में पानी भर जाता है।"
+    - id: important-days
+      title_en: "National Days & Culture"
+      title_hi: "राष्ट्रीय पर्व एवं संस्कृति"
+      status: ongoing
+      photos: [/uploads/photos/independence-day-school.jpg, /uploads/photos/felicitation.jpg]
+      text_en: "Programmes on Independence Day, Shaheed Diwas, festivals and birth anniversaries."
+      text_hi: "स्वतंत्रता दिवस, शहीद दिवस, पर्वों और जयंतियों पर कार्यक्रम।"
+      detail_en: "We use these days to serve: food at an ashram on Shaheed Diwas, kanya pujan with divyang girls on Mahanavami, flag hoisting with schoolchildren on 15 August."
+      detail_hi: "हम इन दिनों को सेवा से जोड़ते हैं: शहीद दिवस पर आश्रम में भोजन, महानवमी पर दिव्यांग कन्याओं का पूजन, 15 अगस्त पर स्कूली बच्चों के साथ ध्वजारोहण।"
+    - id: yoga
+      title_en: "Yoga, Meditation & Satsang"
+      title_hi: "योग, ध्यान एवं सत्संग"
+      status: ongoing
+      photos: []
+      text_en: "Sessions and gatherings for peace of mind and good values."
+      text_hi: "मन की शांति और अच्छे संस्कारों के लिए सत्र और सत्संग।"
+      detail_en: "SWAPO began with a spiritual idea: that seva is a form of worship. Yoga, meditation and satsang keep that idea alive among our members."
+      detail_hi: "स्वापो की शुरुआत एक आध्यात्मिक विचार से हुई: सेवा ही पूजा है। योग, ध्यान और सत्संग इस विचार को हमारे सदस्यों के बीच जीवित रखते हैं।"
+    - id: human-rights
+      title_en: "Human-Rights Help"
       title_hi: "मानवाधिकार सहायता"
-      text_en: "When we learn of a rights violation, we help the person affected and inform the competent authority."
-      text_hi: "मानवाधिकार उल्लंघन की जानकारी मिलने पर हम पीड़ित की सहायता करते हैं और सक्षम संस्था को सूचित करते हैं।"
+      status: ongoing
+      photos: []
+      text_en: "When we learn that someone's rights have been violated, we help them and inform the right authority."
+      text_hi: "किसी के अधिकारों के उल्लंघन की जानकारी मिलने पर हम उसकी मदद करते हैं और सही अधिकारी को सूचित करते हैं।"
+      detail_en: "We also honour advocates, journalists and social workers who stand up for people's rights, and invite them as special members."
+      detail_hi: "हम लोगों के अधिकारों के लिए खड़े होने वाले अधिवक्ताओं, पत्रकारों और समाजसेवियों का सम्मान करते हैं और उन्हें विशेष आमंत्रित सदस्य बनाते हैं।"

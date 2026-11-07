@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% from "_macros.html" import t, icon with context %}
-{% set title = "SWAPO Times e-paper · " ~ ep.label_en %}
+{% set title = "SWAPO Samachar monthly · " ~ ep.label_en %}
 {% set og_image = ep.lead.cover %}
 {% set body_class = "epaper-page" %}
 {% block main %}
 <div class="ep-tools wrap">
-  <a href="{{ url('times/epaper/') }}">{{ icon('arrow', 'ico flip') }} {{ t('All editions', 'सभी संस्करण') }}</a>
+  <a href="{{ url('samachar/monthly/') }}">{{ icon('arrow', 'ico flip') }} {{ t('All editions', 'सभी संस्करण') }}</a>
   <div class="ep-actions">
     <button class="btn btn-teal btn-sm" type="button" data-print>{{ icon('download') }} {{ t('Download PDF', 'पीडीएफ डाउनलोड') }}</button>
-    <a class="btn btn-ghost-dark btn-sm" href="https://wa.me/?text={{ ('SWAPO Times – ' ~ ep.label_en ~ ' ' ~ canonical)|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} {{ t('Share', 'साझा करें') }}</a>
+    <a class="btn btn-ghost-dark btn-sm" href="https://wa.me/?text={{ ('SWAPO Samachar – ' ~ ep.label_en ~ ' ' ~ canonical)|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} {{ t('Share', 'साझा करें') }}</a>
   </div>
 </div>
 <p class="wrap ep-hint">{{ t('Tip: on a phone, tap “Download PDF”, then choose “Save as PDF” as the printer.', 'सुझाव: फ़ोन पर “पीडीएफ डाउनलोड” दबाएँ, फिर प्रिंटर में “Save as PDF” चुनें।') }}</p>
@@ -16,11 +16,11 @@
 <article class="paper">
   <header class="paper-mast">
     <div class="pm-row">
-      <span>{{ t('Monthly e-paper', 'मासिक ई-पेपर') }}</span>
+      <span>{{ t('Monthly edition', 'मासिक अंक') }}</span>
       <span>{{ t(ep.label_en, ep.label_hi) }}</span>
       <span>{{ t('Hathras edition', 'हाथरस संस्करण') }}</span>
     </div>
-    <h1 class="pm-title">SWAPO Times</h1>
+    <h1 class="pm-title">{{ t('SWAPO Samachar', 'स्वापो समाचार') }}</h1>
     <div class="pm-row pm-sub">
       <span>{{ t('SWAPO Trust (Regd.) · Social Welfare and Peace Organisation', 'स्वापो ट्रस्ट (पंजी.) · समाज कल्याण एवं शांति संगठन') }}</span>
       <span>{{ ep.count }} {{ t('stories', 'समाचार') }}</span>
