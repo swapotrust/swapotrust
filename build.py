@@ -300,12 +300,27 @@ def main():
                         "rest": rest, "count": len(items)})
 
     photos = [{"src": ph, "post": p} for p in posts for ph in p["photos"]]
+    gallery_cfg = load_yaml("gallery.yml") if os.path.exists(os.path.join(CONTENT, "gallery.yml")) else {}
+    reel = []
+    for g in (gallery_cfg.get("photos") or []):
+        src = str((g or {}).get("image") or "").strip().lstrip("/")
+        if src:
+            reel.append({"src": src, "cap_en": g.get("caption_en") or "", "cap_hi": g.get("caption_hi") or g.get("caption_en") or "", "href": ""})
+    for ph in photos:
+        reel.append({"src": ph["src"], "cap_en": ph["post"]["title_en"], "cap_hi": ph["post"]["title_hi"],
+                     "href": "times/" + ph["post"]["slug"] + "/"})
     pillar_map = {p["id"]: p for p in pillars}
+    reel_ph, depth = [], max(len(p["programmes"]) for p in pillars)
+    for i in range(depth):
+        for p in pillars:
+            if i < len(p["programmes"]):
+                reel_ph.append((p, p["programmes"][i]))
+    pillar_links = [("work/#" + p["id"], p["title_en"], p["title_hi"]) for p in pillars]
 
     s = Site()
     s.ctx = dict(site=site, pillars=pillars, pillar_map=pillar_map, posts=posts,
                  press=press, categories=categories, epapers=epapers,
-                 photos=photos, year=now.year, tb_start=tb_start.strftime("%Y-%m-%d"),
+                 photos=photos, reel=reel, reel_ph=reel_ph, pillar_links=pillar_links, year=now.year, tb_start=tb_start.strftime("%Y-%m-%d"),
                  tb_months=months_between(tb_start, now), build_time=now.isoformat(),
                  seva_wheel=Markup(seva_wheel()))
 

@@ -17,8 +17,9 @@
 <meta property="og:url" content="{{ canonical }}">
 <meta property="og:image" content="{{ absolute(og_image or 'img/og-default.jpg') }}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0E4A55">
-<link rel="icon" href="{{ asset('img/favicon.svg') }}" type="image/svg+xml">
+<meta name="theme-color" content="#5A1621">
+<link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ asset('img/logo-192.png') }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Mukta:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
@@ -30,28 +31,66 @@
 {% include "_icons.svg" %}
 <a class="skip" href="#main">Skip to content</a>
 
+<div class="topbar">
+  <div class="wrap topbar-row">
+    <div class="tb-left">
+      <a href="tel:+{{ site.phone_raw }}">{{ icon('phone') }} {{ site.phone }}</a>
+      <a href="mailto:{{ site.email }}">{{ icon('mail') }} {{ site.email }}</a>
+      <span class="tb-reg">{{ icon('shield') }} {{ t('Registered Trust · Hathras, U.P.', 'पंजीकृत न्यास · हाथरस, उ.प्र.') }}</span>
+    </div>
+    <div class="tb-right">
+      {% if site.facebook %}<a href="{{ site.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{{ icon('facebook') }} <span class="tb-hide">Facebook</span></a>{% endif %}
+      <a href="https://wa.me/{{ site.phone_raw }}" target="_blank" rel="noopener" aria-label="WhatsApp">{{ icon('whatsapp') }} <span class="tb-hide">WhatsApp</span></a>
+      <button class="tb-lang" type="button" data-lang-toggle aria-label="Switch language / भाषा बदलें">{{ icon('globe') }} <span class="l-en" lang="hi">हिंदी</span><span class="l-hi" lang="en">English</span></button>
+    </div>
+  </div>
+</div>
+
+{% set nav = [
+  ('home', '', 'Home', 'मुख्य पृष्ठ', []),
+  ('about', 'about/', 'About', 'हमारे बारे में', [
+    ('about/#story', 'Our story', 'हमारी कहानी'), ('about/#mission', 'Mission & vision', 'उद्देश्य एवं दृष्टि'),
+    ('about/#objectives', 'Objectives', 'लक्ष्य'), ('about/#founder', 'Our founder', 'संस्थापक'),
+    ('about/#transparency', 'Transparency', 'पारदर्शिता')]),
+  ('work', 'work/', 'Our Work', 'हमारा कार्य', [('work/tb-nutrition/', '★ TB Nutrition Mission', '★ टीबी पोषाहार मिशन')] + pillar_links),
+  ('impact', 'impact/', 'Impact', 'प्रभाव', []),
+  ('times', 'times/', 'SWAPO Times', 'स्वापो टाइम्स', [
+    ('times/', 'Latest news', 'ताज़ा समाचार'), ('times/epaper/', 'Monthly e-paper', 'मासिक ई-पेपर'),
+    ('times/press/', 'Press coverage', 'समाचार पत्रों में'), ('times/gallery/', 'Photo gallery', 'फ़ोटो गैलरी')]),
+  ('involved', 'get-involved/', 'Get Involved', 'जुड़ें', [
+    ('get-involved/#volunteer', 'Volunteer', 'स्वयंसेवक बनें'), ('get-involved/#member', 'Membership', 'सदस्यता'),
+    ('get-involved/#partner', 'Partner with us', 'साझेदारी'), ('get-involved/#contribute', 'Contribute', 'सहयोग करें')]),
+  ('contact', 'contact/', 'Contact', 'संपर्क', []),
+] %}
+
 <header class="site-head" id="top">
   <div class="wrap head-row">
     <a class="brand" href="{{ url('') }}" aria-label="SWAPO Trust home">
-      <img src="{{ asset('img/emblem.svg') }}" alt="" width="44" height="44">
+      <img src="{{ asset('img/logo-192.png') }}" alt="SWAPO Trust logo" width="56" height="56">
       <span class="brand-txt">
         <strong>{{ t('SWAPO Trust', 'स्वापो ट्रस्ट') }}</strong>
         <small>{{ t('Social Welfare & Peace Organisation', 'समाज कल्याण एवं शांति संगठन') }}</small>
       </span>
     </a>
     <nav class="main-nav" aria-label="Main">
-      {% set nav = [('home','', 'Home','मुख्य पृष्ठ'),('about','about/','About','हमारे बारे में'),('work','work/','Our Work','हमारा कार्य'),('impact','impact/','Impact','प्रभाव'),('times','times/','SWAPO Times','स्वापो टाइम्स'),('involved','get-involved/','Get Involved','जुड़ें'),('contact','contact/','Contact','संपर्क')] %}
       <ul>
-      {% for key, path, en, hi in nav %}
-        <li><a href="{{ url(path) }}"{% if active == key %} aria-current="page"{% endif %}>{{ t(en, hi) }}</a></li>
+      {% for key, path, en, hi, subs in nav %}
+        <li class="{{ 'has-sub' if subs }}">
+          <a href="{{ url(path) }}"{% if active == key %} aria-current="page"{% endif %}>{{ t(en, hi) }}{% if subs %} <svg class="caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>{% endif %}</a>
+          {% if subs %}
+          <div class="sub"><ul>
+            {% for sp, sen, shi in subs %}<li><a href="{{ url(sp) }}">{{ t(sen, shi) }}</a></li>{% endfor %}
+          </ul></div>
+          {% endif %}
+        </li>
       {% endfor %}
       </ul>
     </nav>
     <div class="head-actions">
       <button class="lang-btn" type="button" data-lang-toggle aria-label="Switch language / भाषा बदलें">
-        <span class="l-en" lang="hi">हिंदी</span><span class="l-hi" lang="en">English</span>
+        <span class="l-en" lang="hi">हिंदी</span><span class="l-hi" lang="en">EN</span>
       </button>
-      <a class="btn btn-gold btn-sm head-cta" href="{{ url('get-involved/') }}#contribute">{{ t('Contribute', 'सहयोग करें') }}</a>
+      <a class="btn btn-gold btn-sm head-cta" href="{{ url('get-involved/') }}#contribute">{{ icon('heart') }} {{ t('Contribute', 'सहयोग करें') }}</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" data-menu>
         {{ icon('menu') }}<span class="sr">Menu</span>
       </button>
@@ -61,18 +100,28 @@
 
 <div class="drawer" id="drawer" hidden>
   <div class="drawer-panel">
-    <button class="drawer-close" type="button" data-menu-close aria-label="Close menu">{{ icon('close') }}</button>
-    <ul>
-    {% for key, path, en, hi in nav %}
-      <li><a href="{{ url(path) }}"{% if active == key %} aria-current="page"{% endif %}>{{ t(en, hi) }}</a></li>
+    <div class="drawer-top">
+      <img src="{{ asset('img/logo-96.png') }}" alt="" width="48" height="48">
+      <button class="drawer-close" type="button" data-menu-close aria-label="Close menu">{{ icon('close') }}</button>
+    </div>
+    <ul class="drawer-nav">
+    {% for key, path, en, hi, subs in nav %}
+      {% if subs %}
+      <li><details{% if active == key %} open{% endif %}>
+        <summary{% if active == key %} class="is-active"{% endif %}>{{ t(en, hi) }}</summary>
+        <ul>
+          <li><a href="{{ url(path) }}">{{ t('Overview', 'मुख्य पृष्ठ') }}</a></li>
+          {% for sp, sen, shi in subs %}<li><a href="{{ url(sp) }}">{{ t(sen, shi) }}</a></li>{% endfor %}
+        </ul>
+      </details></li>
+      {% else %}
+      <li><a class="dn-link" href="{{ url(path) }}"{% if active == key %} aria-current="page"{% endif %}>{{ t(en, hi) }}</a></li>
+      {% endif %}
     {% endfor %}
     </ul>
-    <div class="drawer-sub">
-      <a href="{{ url('times/epaper/') }}">{{ icon('paper') }} {{ t('Monthly e-paper', 'मासिक ई-पेपर') }}</a>
-      <a href="{{ url('times/press/') }}">{{ icon('press') }} {{ t('Press coverage', 'समाचार पत्रों में') }}</a>
-      <a href="{{ url('times/gallery/') }}">{{ icon('camera') }} {{ t('Photo gallery', 'फ़ोटो गैलरी') }}</a>
-    </div>
+    <button class="btn btn-ghost-dark btn-block" type="button" data-lang-toggle>{{ icon('globe') }} <span class="l-en" lang="hi">हिंदी में देखें</span><span class="l-hi" lang="en">View in English</span></button>
     <a class="btn btn-gold btn-block" href="{{ url('get-involved/') }}#contribute">{{ t('Contribute', 'सहयोग करें') }}</a>
+    <p class="drawer-contact"><a href="tel:+{{ site.phone_raw }}">{{ icon('phone') }} {{ site.phone }}</a><br><a href="mailto:{{ site.email }}">{{ icon('mail') }} {{ site.email }}</a></p>
   </div>
 </div>
 
@@ -87,7 +136,7 @@
 <footer class="site-foot">
   <div class="wrap foot-grid">
     <div class="foot-brand">
-      <img src="{{ asset('img/emblem-light.svg') }}" alt="" width="56" height="56">
+      <img class="foot-logo" src="{{ asset('img/logo-192.png') }}" alt="SWAPO Trust logo" width="88" height="88">
       <p class="foot-name">{{ t('SWAPO Trust (Regd.)', 'स्वापो ट्रस्ट (पंजी.)') }}</p>
       <p>{{ t(site.full_en, site.full_hi) }}</p>
       <p class="foot-tag">{{ t(site.tagline_en, site.tagline_hi) }}</p>

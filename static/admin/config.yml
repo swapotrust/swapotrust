@@ -135,6 +135,25 @@ collections:
       - { label: "Online link (optional) / लिंक", name: link, widget: string, required: false }
       - { label: "Note (optional) / टिप्पणी", name: body, widget: text, required: false }
 
+  - name: gallery
+    label: "Photo gallery / फ़ोटो गैलरी"
+    editor: { preview: false }
+    files:
+      - name: gallery
+        label: "Running photo gallery (home page)"
+        file: content/gallery.yml
+        media_folder: /static/uploads/gallery
+        public_folder: /uploads/gallery
+        fields:
+          - label: "Photos"
+            name: photos
+            widget: list
+            hint: "These scroll across the home page. Photos from news stories are added automatically too."
+            fields:
+              - { label: "Photo", name: image, widget: image, choose_url: false }
+              - { label: "Caption (English)", name: caption_en, widget: string, required: false }
+              - { label: "Caption (Hindi)", name: caption_hi, widget: string, required: false }
+
   - name: settings
     label: "Website settings / वेबसाइट सेटिंग"
     editor: { preview: false }
@@ -162,6 +181,7 @@ collections:
           - { label: "Address (English)", name: address_en, widget: text }
           - { label: "Address (Hindi)", name: address_hi, widget: text }
           - { label: "Facebook page link", name: facebook, widget: string, required: false }
+          - { label: "Founder's Facebook link", name: founder_facebook, widget: string, required: false }
           - { label: "YouTube link", name: youtube, widget: string, required: false }
           - { label: "Instagram link", name: instagram, widget: string, required: false }
           - { label: "WhatsApp Channel link", name: whatsapp_channel, widget: string, required: false }

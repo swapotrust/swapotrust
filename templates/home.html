@@ -46,6 +46,38 @@
   </div>
 </section>
 
+<section class="reel-sec" aria-label="Moments of seva">
+  <div class="wrap reel-head">
+    <div>
+      <p class="eyebrow">{{ t('Moments of seva', 'सेवा के पल') }}</p>
+      <h2>{{ t('From the ground, every week', 'हर सप्ताह, ज़मीन से') }}</h2>
+    </div>
+    <a class="btn btn-ghost-dark btn-sm" href="{{ url('times/gallery/') }}">{{ icon('camera') }} {{ t('Full gallery', 'पूरी गैलरी') }}</a>
+  </div>
+  <div class="reel" data-reel>
+    <div class="reel-track">
+      {% for pass in [1, 2] %}
+      {% if reel %}
+        {% for r in reel %}
+        <figure class="reel-item"{% if pass == 2 %} aria-hidden="true"{% endif %}>
+          <img src="{{ asset(r.src) }}" alt="" loading="lazy" data-lightbox>
+          <figcaption>{{ t(r.cap_en, r.cap_hi) }}</figcaption>
+        </figure>
+        {% endfor %}
+      {% else %}
+        {% for p, g in reel_ph %}
+        <a class="reel-item reel-ph" href="{{ url('work/') }}#{{ p.id }}" style="--pc: {{ p.color }}"{% if pass == 2 %} aria-hidden="true" tabindex="-1"{% endif %}>
+          <span class="reel-ph-ico">{{ icon(p.icon) }}</span>
+          <span class="reel-ph-cat">{{ t(p.title_en, p.title_hi) }}</span>
+          <span class="reel-ph-t">{{ t(g.title_en, g.title_hi) }}</span>
+        </a>
+        {% endfor %}
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <section class="section flagship">
   <div class="wrap flag-grid">
     <div>
@@ -185,6 +217,20 @@
       {{ block('<p class="founder-msg">“Seva is not an event we organise once a year. It is a habit – a duty we owe one another. One person’s duty is another person’s right. When a TB patient gets his ration on time, when a thirsty traveller finds clean water, when a daughter’s wedding happens with dignity, that is our reward.”</p>',
                '<p class="founder-msg">“सेवा साल में एक बार होने वाला आयोजन नहीं, बल्कि एक आदत है – एक-दूसरे के प्रति हमारा कर्तव्य। एक व्यक्ति का कर्तव्य ही दूसरे का अधिकार है। जब किसी टीबी मरीज़ को समय पर राशन मिलता है, जब किसी प्यासे राहगीर को स्वच्छ पानी मिलता है, जब किसी बेटी का विवाह सम्मान से होता है – वही हमारा पुरस्कार है।”</p>') }}
       <p class="founder-sign"><b>{{ t(site.founder, site.founder_hi) }}</b>{{ t(site.founder_role_en, site.founder_role_hi) }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="fb-band">
+  <div class="wrap fb-grid">
+    <div class="fb-ico">{{ icon('facebook') }}</div>
+    <div>
+      <h2>{{ t('Daily updates on Facebook', 'फ़ेसबुक पर रोज़ की गतिविधियाँ') }}</h2>
+      <p>{{ t('Photos and news from every distribution, camp and drive are posted first on Facebook.', 'हर वितरण, शिविर और अभियान की तस्वीरें और समाचार सबसे पहले फ़ेसबुक पर आते हैं।') }}</p>
+    </div>
+    <div class="btn-row fb-btns">
+      {% if site.facebook %}<a class="btn btn-gold" href="{{ site.facebook }}" target="_blank" rel="noopener">{{ icon('facebook') }} {{ t('Follow SWAPO Trust', 'स्वापो ट्रस्ट को फ़ॉलो करें') }}</a>{% endif %}
+      {% if site.founder_facebook %}<a class="btn btn-ghost" href="{{ site.founder_facebook }}" target="_blank" rel="noopener">{{ t('Follow ' ~ site.founder, site.founder_hi ~ ' को फ़ॉलो करें') }}</a>{% endif %}
     </div>
   </div>
 </section>
