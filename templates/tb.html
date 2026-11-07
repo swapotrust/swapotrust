@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, tr, block, icon, sdg, news_card with context %}
+{% set title = "TB Nutrition Mission" %}
+{% set description = "Every month since 16 July 2016, SWAPO Trust has given food rations to poor MDR-TB patients at the District TB Centre, Hathras." %}
+{% block main %}
+<header class="page-head tb-head">
+  <div class="wrap tb-head-grid">
+    <div>
+      <p class="eyebrow eyebrow-light">{{ t('Flagship programme', 'प्रमुख कार्यक्रम') }}</p>
+      <h1>{{ t('TB Nutrition Mission', 'टीबी पोषाहार मिशन') }}</h1>
+      <p class="lede">{{ t('Food rations for poor patients with drug-resistant TB, at the District TB Centre, Hathras – every month, without a break, since 16 July 2016.', 'जिला क्षय रोग केंद्र, हाथरस पर दवा-प्रतिरोधी टीबी के निर्धन मरीज़ों को राशन – 16 जुलाई 2016 से हर माह, बिना रुके।') }}</p>
+      <div class="sdgs">{{ sdg(2) }}{{ sdg(3) }}</div>
+    </div>
+    <div class="big-counter">
+      <span class="bc-num" data-tb-months data-start="{{ tb_start }}">{{ tb_months }}</span>
+      <span class="bc-lbl">{{ t('months in a row', 'माह लगातार') }}</span>
+      <span class="bc-since">{{ t('since 16 July 2016', '16 जुलाई 2016 से') }}</span>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap prose-grid">
+    <h2>{{ t('Why food?', 'भोजन ही क्यों?') }}</h2>
+    {{ block('<p>Multi-drug-resistant (MDR) tuberculosis is treated with strong medicines over many months. For a poor family, the illness often means lost wages exactly when the patient needs to eat better than ever. Without enough food, patients find the treatment harder to bear and recovery slower.</p><p>SWAPO’s answer is simple and practical: a monthly ration, handed over in person at the District TB Centre, so that no enrolled patient has to choose between medicine and a meal.</p>',
+             '<p>मल्टी-ड्रग-रेज़िस्टेंट (एमडीआर) टीबी का इलाज कई महीनों तक तेज़ दवाओं से होता है। गरीब परिवार के लिए यह बीमारी अक्सर उसी समय कमाई छीन लेती है, जब मरीज़ को पहले से अधिक पौष्टिक भोजन चाहिए। पर्याप्त भोजन के बिना इलाज सहना कठिन होता है और स्वस्थ होने में देर लगती है।</p><p>स्वापो का उत्तर सरल और व्यावहारिक है: जिला क्षय रोग केंद्र पर हाथों-हाथ दिया जाने वाला मासिक राशन, ताकि किसी भी पंजीकृत मरीज़ को दवा और भोजन में से एक को चुनना न पड़े।</p>', 'prose') }}
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ t('Every monthly kit', 'हर मासिक किट में') }}</p><h2>{{ t('Five staples, one month of strength', 'पाँच खाद्य सामग्री, एक माह की ताक़त') }}</h2></div>
+    <ul class="kit">
+      <li><span>1</span>{{ t('Wheat flour', 'आटा') }}</li>
+      <li><span>2</span>{{ t('Rice', 'चावल') }}</li>
+      <li><span>3</span>{{ t('Daliya (porridge)', 'दलिया') }}</li>
+      <li><span>4</span>{{ t('Masoor dal', 'मसूर दाल') }}</li>
+      <li><span>5</span>{{ t('Soya chunks', 'सोयाबीन बड़ी') }}</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ t('The journey', 'यात्रा') }}</p><h2>{{ t('A promise kept, month after month', 'माह-दर-माह निभाया गया वादा') }}</h2></div>
+    <ol class="timeline">
+      <li><span class="tl-date">{{ t('16 July 2016', '16 जुलाई 2016') }}</span><h3>{{ t('The first distribution', 'पहला वितरण') }}</h3><p>{{ t('SWAPO begins monthly rations for MDR-TB patients at the District TB Centre, Hathras.', 'स्वापो ने जिला क्षय रोग केंद्र, हाथरस पर एमडीआर-टीबी मरीज़ों को मासिक राशन देना शुरू किया।') }}</p></li>
+      <li><span class="tl-date">{{ t('39th month', '39वाँ माह') }}</span><h3>{{ t('Recognised by the District TB Officer', 'जिला क्षय रोग अधिकारी द्वारा सराहना') }}</h3><p>{{ t('At the 39th consecutive distribution, Dr. A. S. Vashishtha noted the unbroken monthly record and said the Government of India’s decision to give ₹500 to every patient came after taking note of such work.', 'लगातार 39वें वितरण पर डॉ. ए. एस. वशिष्ठ ने निरंतर मासिक सेवा की सराहना की और कहा कि इसी का संज्ञान लेकर भारत सरकार ने प्रत्येक रोगी को ₹500 देने का निर्णय लिया।') }}</p></li>
+      <li><span class="tl-date">{{ t('Milestone', 'पड़ाव') }}</span><h3>{{ t('About 180 patients, six months each', 'लगभग 180 मरीज़, छह-छह माह') }}</h3><p>{{ t('Around 180 patients had received six months of rations each.', 'लगभग 180 मरीज़ों को छह-छह माह की राशन सामग्री दी जा चुकी थी।') }}</p></li>
+      <li class="tl-now"><span class="tl-date">{{ t('Today', 'आज') }}</span><h3><span data-tb-months data-start="{{ tb_start }}">{{ tb_months }}</span> {{ t('months and counting', 'माह, और जारी') }}</h3><p>{{ t('The distribution continues every month with the support of our office bearers, partners and citizens of Hathras.', 'हमारे पदाधिकारियों, सहयोगियों और हाथरस के नागरिकों के सहयोग से वितरण हर माह जारी है।') }}</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section quote-sec">
+  <div class="wrap">
+    <figure class="big-quote">
+      {{ icon('quote', 'ico q-ico') }}
+      <blockquote>{{ t('Since 16 July 2016, the organisation has provided nutrition every single month without a break.', '16 जुलाई 2016 से आज तक निरंतर हर माह संस्था द्वारा पोषाहार वितरण किया जा चुका है।') }}</blockquote>
+      <figcaption>{{ t('Dr. A. S. Vashishtha, District TB Officer, Hathras', 'डॉ. ए. एस. वशिष्ठ, जिला क्षय रोग अधिकारी, हाथरस') }}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap support-grid">
+    <div>
+      <h2>{{ t('Keep the streak alive', 'यह सिलसिला जारी रखें') }}</h2>
+      <p class="sec-sub">{{ t('You can sponsor a patient’s monthly kit, contribute grains, or join us at the next distribution.', 'आप किसी मरीज़ की मासिक किट प्रायोजित कर सकते हैं, अनाज दे सकते हैं, या अगले वितरण में हमारे साथ आ सकते हैं।') }}</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-gold" href="https://wa.me/{{ site.phone_raw }}?text={{ 'Namaste, I would like to sponsor a TB nutrition kit.'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} {{ t('Sponsor a kit', 'किट प्रायोजित करें') }}</a>
+      <a class="btn btn-ghost-dark" href="{{ url('get-involved/') }}#contribute">{{ t('Other ways to help', 'सहयोग के अन्य तरीके') }}</a>
+    </div>
+  </div>
+</section>
+
+{% set rel = posts|selectattr('category', 'equalto', 'tb-seva')|list %}
+{% if rel %}
+<section class="section">
+  <div class="wrap">
+    <h2 class="mini-h">{{ icon('paper') }} {{ t('From SWAPO Times', 'स्वापो टाइम्स से') }}</h2>
+    <div class="news-row">{% for q in rel[:6] %}{{ news_card(q, url, asset, 'ncard-sm') }}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

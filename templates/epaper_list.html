@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, icon with context %}
+{% set title = "SWAPO Times e-paper" %}
+{% block main %}
+<header class="times-head slim">
+  <div class="wrap">
+    <h1 class="th-title">SWAPO Times</h1>
+    <p class="th-sub">{{ t('Monthly e-paper – every month’s stories, ready to download and share', 'मासिक ई-पेपर – हर माह के सभी समाचार, डाउनलोड और साझा करने के लिए तैयार') }}</p>
+    <nav class="th-nav" aria-label="SWAPO Times">
+      <a href="{{ url('times/') }}">{{ t('Latest', 'ताज़ा') }}</a>
+      <a href="{{ url('times/epaper/') }}" aria-current="page">{{ icon('paper') }} {{ t('E-paper', 'ई-पेपर') }}</a>
+      <a href="{{ url('times/press/') }}">{{ icon('press') }} {{ t('Press', 'प्रेस') }}</a>
+      <a href="{{ url('times/gallery/') }}">{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
+    </nav>
+  </div>
+</header>
+<section class="section">
+  <div class="wrap ep-grid">
+    {% for e in epapers %}
+    <a class="ep-card" href="{{ url('times/epaper/' ~ e.key ~ '/') }}">
+      <span class="ep-mini-mast">SWAPO Times</span>
+      <span class="ep-month">{{ t(e.label_en, e.label_hi) }}</span>
+      <span class="ep-lead">{{ t(e.lead.title_en, e.lead.title_hi) }}</span>
+      <span class="ep-count">{{ e.count }} {{ t('stories', 'समाचार') }} · {{ t('Open', 'खोलें') }} {{ icon('arrow') }}</span>
+    </a>
+    {% else %}
+    <p class="empty">{{ t('The first edition will appear here automatically.', 'पहला संस्करण यहाँ अपने-आप दिखाई देगा।') }}</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

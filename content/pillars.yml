@@ -1,0 +1,152 @@
+- id: health
+  icon: health
+  color: "#B5473A"
+  title_en: "Health & Healing"
+  title_hi: "स्वास्थ्य सेवा"
+  intro_en: "Nutrition, treatment and care for those the health system often reaches last."
+  intro_hi: "उन लोगों के लिए पोषण, उपचार और देखभाल, जिन तक स्वास्थ्य सेवाएँ सबसे बाद में पहुँचती हैं।"
+  sdgs: [2, 3]
+  programmes:
+    - title_en: "TB Nutrition Mission"
+      title_hi: "टीबी पोषाहार मिशन"
+      flagship: true
+      text_en: "Every month since July 2016, poor MDR-TB patients at the District TB Centre receive a month's supply of flour, rice, porridge, lentils and soya – food that helps their treatment work."
+      text_hi: "जुलाई 2016 से हर माह जिला क्षय रोग केंद्र पर निर्धन एमडीआर-टीबी मरीज़ों को एक माह का आटा, चावल, दलिया, मसूर और सोयाबीन बड़ी दी जाती है – ताकि इलाज असर करे।"
+    - title_en: "Free Multi-Speciality Health Camps"
+      title_hi: "निःशुल्क बहु-विशेषज्ञ स्वास्थ्य शिविर"
+      text_en: "Physiotherapy, dental, skin, ENT, homoeopathy and allopathy consultations in one place, free of cost."
+      text_hi: "फिज़ियोथेरेपी, दंत, त्वचा, नाक-कान-गला, होम्योपैथी और एलोपैथी – एक ही स्थान पर, पूर्णतः निःशुल्क।"
+    - title_en: "Haemoglobin Checks for Girls"
+      title_hi: "बालिकाओं की हीमोग्लोबिन जाँच"
+      text_en: "India carries one of the world's highest burdens of anaemia. We screen adolescent girls and young women so it is caught early."
+      text_hi: "भारत में खून की कमी (एनीमिया) एक बड़ी समस्या है। हम किशोरियों और युवतियों की जाँच कर इसे समय रहते पकड़ते हैं।"
+    - title_en: "Blood Donation Drives"
+      title_hi: "रक्तदान शिविर"
+      text_en: "Regular drives that bring donors together and keep blood available for those who need it."
+      text_hi: "नियमित शिविर, जिनसे ज़रूरतमंदों के लिए रक्त उपलब्ध रहता है।"
+    - title_en: "Support for Leprosy Patients"
+      title_hi: "कुष्ठ रोगियों की सहायता"
+      text_en: "Medical supplies and dressings provided to leprosy patients, with dignity."
+      text_hi: "कुष्ठ रोगियों को सम्मान के साथ दवाइयाँ और आवश्यक चिकित्सा सामग्री।"
+
+- id: water
+  icon: water
+  color: "#1F7A8C"
+  title_en: "Water & Environment"
+  title_hi: "जल एवं पर्यावरण"
+  intro_en: "Clean water for every passer-by, and green cover for the generations after us."
+  intro_hi: "हर राहगीर के लिए स्वच्छ जल, और आने वाली पीढ़ियों के लिए हरियाली।"
+  sdgs: [6, 13, 15]
+  programmes:
+    - title_en: "Permanent Drinking-Water Tanks"
+      title_hi: "स्थायी पेयजल टंकियाँ"
+      text_en: "Three permanent drinking-water tanks in Hathras city, installed and maintained by SWAPO for anyone who is thirsty."
+      text_hi: "हाथरस शहर में तीन स्थायी पेयजल टंकियाँ, जिन्हें स्वापो ने लगाया है और स्वयं संभालता है।"
+    - title_en: "Sharbat & Water Seva"
+      title_hi: "शरबत एवं जल सेवा"
+      text_en: "Cool sharbat and drinking water for people on the streets through the hottest months."
+      text_hi: "भीषण गर्मी में राहगीरों के लिए ठंडा शरबत और पानी।"
+    - title_en: "Plantation Drives"
+      title_hi: "वृक्षारोपण अभियान"
+      text_en: "Tree-planting drives with citizens and students, especially through the monsoon."
+      text_hi: "नागरिकों और विद्यार्थियों के साथ वृक्षारोपण, विशेषकर वर्षा ऋतु में।"
+
+- id: relief
+  icon: relief
+  color: "#C9822B"
+  title_en: "Food & Seasonal Relief"
+  title_hi: "अन्न एवं राहत"
+  intro_en: "When the season turns hard, we turn up – with food, warmth and shelter from the cold."
+  intro_hi: "जब मौसम कठिन होता है, हम साथ खड़े होते हैं – भोजन, गर्माहट और ठंड से बचाव के साथ।"
+  sdgs: [1, 2]
+  programmes:
+    - title_en: "Regular Food Distribution"
+      title_hi: "नियमित भोजन वितरण"
+      text_en: "Meals and food packets for the needy, distributed regularly through the year."
+      text_hi: "ज़रूरतमंदों को पूरे वर्ष नियमित रूप से भोजन और खाद्य सामग्री।"
+    - title_en: "Winter Blankets"
+      title_hi: "शीतकालीन कंबल वितरण"
+      text_en: "Blankets for families, the homeless and the elderly in the harsh north-Indian winter."
+      text_hi: "कड़ाके की सर्दी में बेघर, बुज़ुर्गों और ज़रूरतमंद परिवारों को कंबल।"
+    - title_en: "Community Bonfire Points"
+      title_hi: "सामुदायिक अलाव"
+      text_en: "Bonfire points set up in public places on the coldest nights."
+      text_hi: "सबसे ठंडी रातों में सार्वजनिक स्थानों पर अलाव की व्यवस्था।"
+
+- id: care
+  icon: care
+  color: "#7A4E8C"
+  title_en: "Care & Dignity"
+  title_hi: "सम्मान एवं संरक्षण"
+  intro_en: "Standing with people at life's most important moments – from a daughter's wedding to a last farewell."
+  intro_hi: "जीवन के अहम पलों में साथ – बेटी की विदाई से लेकर अंतिम विदाई तक।"
+  sdgs: [1, 5, 10, 15]
+  programmes:
+    - title_en: "Marriages of Underprivileged Girls"
+      title_hi: "निर्धन कन्याओं का विवाह"
+      text_en: "We organise weddings and provide everything a family needs for their daughter's new beginning. (Only for brides aged 18 and above, as per law.)"
+      text_hi: "हम विवाह का आयोजन करते हैं और नई शुरुआत के लिए आवश्यक सभी सामान देते हैं। (कानून के अनुसार केवल 18 वर्ष या अधिक आयु की कन्याओं के लिए।)"
+    - title_en: "Old-Age Homes"
+      title_hi: "वृद्धाश्रम सेवा"
+      text_en: "Nutritious food and daily essentials, delivered frequently to elders in old-age homes."
+      text_hi: "वृद्धाश्रमों में बुज़ुर्गों को नियमित रूप से पौष्टिक भोजन और ज़रूरत का सामान।"
+    - title_en: "Orphanage Support"
+      title_hi: "अनाथालय सहायता"
+      text_en: "Food, clothing and supplies for children growing up in orphanages."
+      text_hi: "अनाथालयों में पल रहे बच्चों के लिए भोजन, वस्त्र और आवश्यक सामग्री।"
+    - title_en: "Cremation Centres for the Poor"
+      title_hi: "निर्धनों हेतु अंत्येष्टि स्थल"
+      text_en: "We are building cremation facilities so that no family is denied a dignified farewell because of poverty."
+      text_hi: "हम अंत्येष्टि स्थलों का निर्माण कर रहे हैं, ताकि गरीबी के कारण किसी परिवार को सम्मानजनक अंतिम विदाई से वंचित न होना पड़े।"
+    - title_en: "Gau Seva"
+      title_hi: "गौ सेवा"
+      text_en: "Care, fodder and treatment for cows – part of our commitment to protect all living beings."
+      text_hi: "गौवंश के लिए चारा, देखभाल और उपचार – सभी जीवों की रक्षा के हमारे संकल्प का हिस्सा।"
+
+- id: education
+  icon: education
+  color: "#2F6B3F"
+  title_en: "Education & Livelihood"
+  title_hi: "शिक्षा एवं आजीविका"
+  intro_en: "Helping children stay in school and adults stand on their own feet."
+  intro_hi: "बच्चों की पढ़ाई जारी रहे और बड़े अपने पैरों पर खड़े हों।"
+  sdgs: [4, 8]
+  programmes:
+    - title_en: "Education Sponsorship"
+      title_hi: "शिक्षा प्रायोजन"
+      text_en: "Fees, books and uniforms sponsored for underprivileged children."
+      text_hi: "निर्धन बच्चों की फीस, किताबें और गणवेश का प्रायोजन।"
+    - title_en: "Scholarships & Literacy"
+      title_hi: "छात्रवृत्ति एवं साक्षरता"
+      text_en: "Scholarships for deserving students and literacy classes for those who missed school."
+      text_hi: "मेधावी विद्यार्थियों को छात्रवृत्ति और पढ़ाई से वंचित लोगों के लिए साक्षरता कक्षाएँ।"
+    - title_en: "Skills, Livelihood & Microfinance"
+      title_hi: "कौशल, आजीविका एवं सूक्ष्म वित्त"
+      text_en: "Vocational and skill training, livelihood programmes and small-credit support to start earning."
+      text_hi: "व्यावसायिक एवं कौशल प्रशिक्षण, आजीविका कार्यक्रम और कमाई शुरू करने हेतु छोटे ऋण की सहायता।"
+
+- id: spirit
+  icon: spirit
+  color: "#B8862F"
+  title_en: "Spirit, Culture & Public Voice"
+  title_hi: "अध्यात्म, संस्कृति एवं जनहित"
+  intro_en: "Inner peace, shared values and the courage to raise public concerns."
+  intro_hi: "मन की शांति, साझा मूल्य और जनहित के मुद्दे उठाने का साहस।"
+  sdgs: [3, 16]
+  programmes:
+    - title_en: "Yoga, Meditation & Satsang"
+      title_hi: "योग, ध्यान एवं सत्संग"
+      text_en: "Sessions, retreats and gatherings that bring peace of mind and positive values."
+      text_hi: "मन की शांति और सकारात्मक मूल्यों के लिए सत्र, शिविर और सत्संग।"
+    - title_en: "Important Days & Cultural Programmes"
+      title_hi: "महत्वपूर्ण दिवस एवं सांस्कृतिक कार्यक्रम"
+      text_en: "Positive programmes on national and international days, birth anniversaries and festivals."
+      text_hi: "राष्ट्रीय-अंतरराष्ट्रीय दिवसों, जयंतियों और पर्वों पर सकारात्मक कार्यक्रम।"
+    - title_en: "Raising Public Issues"
+      title_hi: "जनहित के मुद्दे"
+      text_en: "We take civic problems to the right government departments through letters and memoranda, and, when needed, peaceful public campaigns."
+      text_hi: "हम पत्र और ज्ञापन के माध्यम से जन-समस्याएँ संबंधित विभागों तक पहुँचाते हैं, और आवश्यकता होने पर शांतिपूर्ण जन-अभियान चलाते हैं।"
+    - title_en: "Human-Rights Help"
+      title_hi: "मानवाधिकार सहायता"
+      text_en: "When we learn of a rights violation, we help the person affected and inform the competent authority."
+      text_hi: "मानवाधिकार उल्लंघन की जानकारी मिलने पर हम पीड़ित की सहायता करते हैं और सक्षम संस्था को सूचित करते हैं।"

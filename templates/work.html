@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, icon, sdg, news_card with context %}
+{% set title = "Our work" %}
+{% block main %}
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">{{ t('Our work', 'हमारा कार्य') }}</p>
+    <h1>{{ t('Six pillars. More than twenty programmes. One commitment.', 'छह स्तंभ। बीस से अधिक कार्यक्रम। एक संकल्प।') }}</h1>
+    <nav class="subnav pills" aria-label="Pillars">
+      {% for p in pillars %}<a href="#{{ p.id }}" style="--pc: {{ p.color }}">{{ icon(p.icon) }} {{ t(p.title_en, p.title_hi) }}</a>{% endfor %}
+    </nav>
+  </div>
+</header>
+
+{% for p in pillars %}
+<section class="section pillar-sec{% if loop.index is even %} tint{% endif %}" id="{{ p.id }}" style="--pc: {{ p.color }}">
+  <div class="wrap">
+    <div class="ps-head">
+      <span class="ps-num">0{{ loop.index }}</span>
+      <div>
+        <h2>{{ icon(p.icon, 'ico ps-ico') }} {{ t(p.title_en, p.title_hi) }}</h2>
+        <p class="sec-sub">{{ t(p.intro_en, p.intro_hi) }}</p>
+        <div class="sdgs" aria-label="UN Sustainable Development Goals">{% for n in p.sdgs %}{{ sdg(n) }}{% endfor %}</div>
+      </div>
+    </div>
+    <div class="prog-grid">
+      {% for g in p.programmes %}
+      <article class="prog{% if g.flagship %} prog-flag{% endif %}">
+        {% if g.flagship %}<span class="badge">{{ t('Flagship', 'प्रमुख कार्य') }}</span>{% endif %}
+        <h3>{{ t(g.title_en, g.title_hi) }}</h3>
+        <p>{{ t(g.text_en, g.text_hi) }}</p>
+        {% if g.flagship %}<a class="link-arrow" href="{{ url('work/tb-nutrition/') }}">{{ t('Read the full story', 'पूरी कहानी पढ़ें') }} {{ icon('arrow') }}</a>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% set rel = posts|selectattr('pillar', 'equalto', p.id)|list %}
+    {% if rel %}
+    <div class="ps-news">
+      <h3 class="mini-h">{{ icon('paper') }} {{ t('Recent news', 'हाल के समाचार') }}</h3>
+      <div class="news-row">{% for q in rel[:3] %}{{ news_card(q, url, asset, 'ncard-sm') }}{% endfor %}</div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

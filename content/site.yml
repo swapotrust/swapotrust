@@ -1,0 +1,61 @@
+# ------------------------------------------------------------
+# SWAPO Trust – site settings (editable from the admin panel)
+# Leave a field empty ("") to hide it on the website.
+# ------------------------------------------------------------
+name_en: "SWAPO Trust"
+name_hi: "स्वापो ट्रस्ट"
+full_en: "Social Welfare and Peace Organisation"
+full_hi: "समाज कल्याण एवं शांति संगठन"
+tagline_en: "Spreading spiritual awareness and social welfare across India"
+tagline_hi: "पूरे भारत में आध्यात्मिक जागरूकता और समाज कल्याण का प्रसार"
+
+founder: "Kapil Agrawal"
+founder_hi: "कपिल अग्रवाल"
+founder_role_en: "Founder & President"
+founder_role_hi: "संस्थापक एवं अध्यक्ष"
+founder_photo: ""
+
+address_en: "SWAPO Trust (Regd.), City Plaza, Sadabad Gate, Hathras – 204101, Uttar Pradesh, India"
+address_hi: "स्वापो ट्रस्ट (पंजी.), सिटी प्लाज़ा, सादाबाद गेट, हाथरस – 204101, उत्तर प्रदेश"
+phone: "+91 94122 76111"
+phone_raw: "919412276111"
+email: "swapotrust@gmail.com"
+facebook: ""
+youtube: ""
+instagram: ""
+whatsapp_channel: ""
+google_form_volunteer: ""
+
+# Registration & trust signals (shown only when filled)
+registration_no: ""
+pan: ""
+reg_12a: ""
+reg_80g: ""
+darpan_id: ""
+founded_year: ""
+
+# Flagship TB programme start (used for the live "unbroken months" counter)
+tb_start: "2016-07-16"
+
+# Impact numbers on the home page
+impact:
+  - value: "180+"
+    label_en: "MDR-TB patients given six months of rations"
+    label_hi: "एमडीआर-टीबी मरीज़ों को छह माह का राशन"
+  - value: "3"
+    label_en: "Permanent drinking-water tanks run by us"
+    label_hi: "हमारे द्वारा संचालित स्थायी पेयजल टंकियाँ"
+  - value: "6"
+    label_en: "Specialities at our free health camps"
+    label_hi: "निःशुल्क स्वास्थ्य शिविरों में विशेषज्ञ सेवाएँ"
+  - value: "20+"
+    label_en: "Areas of seva, from water to winter relief"
+    label_hi: "सेवा के क्षेत्र – जल से लेकर शीत राहत तक"
+
+# Places on the Seva Map (latitude, longitude). Add water tanks, bonfire points etc.
+places:
+  - name_en: "SWAPO Trust Head Office"
+    name_hi: "स्वापो ट्रस्ट मुख्य कार्यालय"
+    kind: "office"
+    lat: 27.5960
+    lng: 78.0520

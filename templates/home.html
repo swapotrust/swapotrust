@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, tr, block, icon, sdg, news_card with context %}
+{% set body_class = "home" %}
+{% block main %}
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ t('SWAPO Trust (Regd.) · Hathras, Uttar Pradesh', 'स्वापो ट्रस्ट (पंजी.) · हाथरस, उत्तर प्रदेश') }}</p>
+      <h1>{{ tr('Seva that shows up &mdash; <em>every month, every season.</em>', 'सेवा जो साथ निभाती है &mdash; <em>हर माह, हर मौसम।</em>') }}</h1>
+      <p class="lede">{{ t('Since July 2016 we have fed drug-resistant TB patients every single month. We run drinking-water tanks for our city, hold free health camps, and stand by families through the hardest winters – without asking anyone their caste, religion or politics.',
+        'जुलाई 2016 से हम हर माह, बिना रुके, एमडीआर-टीबी मरीज़ों को पोषाहार दे रहे हैं। हम शहर में पेयजल टंकियाँ चलाते हैं, निःशुल्क स्वास्थ्य शिविर लगाते हैं और कड़ी सर्दी में परिवारों के साथ खड़े रहते हैं – किसी से उसकी जाति, धर्म या राजनीति पूछे बिना।') }}</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href="{{ url('work/') }}">{{ t('See our work', 'हमारा कार्य देखें') }} {{ icon('arrow') }}</a>
+        <a class="btn btn-ghost" href="{{ url('get-involved/') }}">{{ t('Join the seva', 'सेवा से जुड़ें') }}</a>
+      </div>
+    </div>
+
+    <aside class="hero-front" aria-label="SWAPO Times">
+      <div class="front-mast">
+        <span class="front-title">SWAPO Times</span>
+        <span class="front-date">{{ t('Hathras edition', 'हाथरस संस्करण') }}</span>
+      </div>
+      <div class="front-counter">
+        <span class="front-num" data-tb-months data-start="{{ tb_start }}">{{ tb_months }}</span>
+        <span class="front-unit">{{ t('months in a row', 'माह, लगातार') }}</span>
+      </div>
+      <p class="front-head">{{ t('Not one month missed: nutrition for MDR-TB patients since 16 July 2016', 'एक भी माह नहीं छूटा: 16 जुलाई 2016 से एमडीआर-टीबी मरीज़ों को पोषाहार') }}</p>
+      {% if posts %}
+      {% set lp = posts[0] %}
+      <a class="front-latest" href="{{ url('times/' ~ lp.slug ~ '/') }}">
+        <span class="kicker">{{ t('Latest', 'ताज़ा') }} · {{ t(lp.date_en, lp.date_hi) }}</span>
+        <span class="front-latest-t">{{ t(lp.title_en, lp.title_hi) }}</span>
+      </a>
+      {% endif %}
+    </aside>
+  </div>
+
+  <div class="trust-strip">
+    <ul class="wrap">
+      <li>{{ icon('shield') }} {{ t('Registered public trust', 'पंजीकृत लोक न्यास') }}</li>
+      <li>{{ icon('calendar') }} {{ t('Monthly TB nutrition since 2016', '2016 से मासिक टीबी पोषाहार') }}</li>
+      <li>{{ icon('water') }} {{ t('3 drinking-water tanks for the city', 'शहर के लिए 3 पेयजल टंकियाँ') }}</li>
+      <li>{{ icon('users') }} {{ t('Open to all, without discrimination', 'सबके लिए, बिना भेदभाव') }}</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section flagship">
+  <div class="wrap flag-grid">
+    <div>
+      <p class="eyebrow eyebrow-light">{{ t('Flagship · TB Nutrition Mission', 'प्रमुख कार्य · टीबी पोषाहार मिशन') }}</p>
+      <h2>{{ t('Medicine works better on a full stomach.', 'भरे पेट पर दवा बेहतर असर करती है।') }}</h2>
+      <p>{{ t('Drug-resistant TB needs months of tough treatment – and poor patients often cannot afford the food that recovery depends on. So at the District TB Centre, Hathras, SWAPO gives every enrolled MDR patient a month of flour, rice, porridge, lentils and soya. We have done it every month since July 2016.',
+        'दवा-प्रतिरोधी टीबी का इलाज महीनों चलता है – और गरीब मरीज़ अक्सर वह भोजन नहीं जुटा पाते जिस पर स्वस्थ होना निर्भर है। इसलिए जिला क्षय रोग केंद्र, हाथरस पर स्वापो हर एमडीआर मरीज़ को एक माह का आटा, चावल, दलिया, मसूर और सोयाबीन बड़ी देता है। जुलाई 2016 से हर माह।') }}</p>
+      <ul class="flag-facts">
+        <li><b data-tb-months data-start="{{ tb_start }}">{{ tb_months }}</b>{{ t('consecutive months', 'लगातार माह') }}</li>
+        <li><b>~180</b>{{ t('patients given six months of rations', 'मरीज़ों को छह माह का राशन') }}</li>
+        <li><b>5</b>{{ t('staples in every kit', 'हर किट में 5 खाद्य सामग्री') }}</li>
+      </ul>
+      <a class="btn btn-gold" href="{{ url('work/tb-nutrition/') }}">{{ t('Read the full story', 'पूरी कहानी पढ़ें') }} {{ icon('arrow') }}</a>
+    </div>
+    <figure class="flag-quote">
+      {{ icon('quote', 'ico q-ico') }}
+      <blockquote>{{ t('Since 16 July 2016, the organisation has provided nutrition every single month without a break.', '16 जुलाई 2016 से आज तक निरंतर हर माह संस्था द्वारा पोषाहार वितरण किया जा चुका है।') }}</blockquote>
+      <figcaption>{{ t('Dr. A. S. Vashishtha, District TB Officer, Hathras (at the 39th distribution)', 'डॉ. ए. एस. वशिष्ठ, जिला क्षय रोग अधिकारी, हाथरस (39वें वितरण के अवसर पर)') }}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section impact-band">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">{{ t('Impact at a glance', 'एक नज़र में प्रभाव') }}</p>
+      <h2>{{ t('Small hands, steady work, real change', 'छोटे हाथ, निरंतर काम, असली बदलाव') }}</h2>
+    </div>
+    <ul class="stats">
+      {% for s in site.impact %}
+      <li class="stat"><span class="stat-num">{{ s.value }}</span><span class="stat-lbl">{{ t(s.label_en, s.label_hi) }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">{{ t('What we do', 'हम क्या करते हैं') }}</p>
+      <h2>{{ t('Six pillars of seva', 'सेवा के छह स्तंभ') }}</h2>
+      <p class="sec-sub">{{ t('More than twenty programmes, grouped by the need they meet.', 'बीस से अधिक कार्यक्रम, आवश्यकता के अनुसार छह स्तंभों में।') }}</p>
+    </div>
+    <div class="pillars">
+      {% for p in pillars %}
+      <a class="pillar" href="{{ url('work/') }}#{{ p.id }}" style="--pc: {{ p.color }}">
+        <span class="pillar-ico">{{ icon(p.icon) }}</span>
+        <h3>{{ t(p.title_en, p.title_hi) }}</h3>
+        <p>{{ t(p.intro_en, p.intro_hi) }}</p>
+        <ul class="pillar-list">
+          {% for g in p.programmes[:4] %}<li>{{ t(g.title_en, g.title_hi) }}</li>{% endfor %}
+          {% if p.programmes|length > 4 %}<li class="more">+{{ p.programmes|length - 4 }} {{ t('more', 'और') }}</li>{% endif %}
+        </ul>
+        <span class="pillar-go">{{ t('Explore', 'देखें') }} {{ icon('arrow') }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section calendar-sec">
+  <div class="wrap cal-grid">
+    <div class="cal-wheel">{{ seva_wheel }}</div>
+    <div>
+      <p class="eyebrow">{{ t('The Seva Calendar', 'सेवा पंचांग') }}</p>
+      <h2>{{ t('Every season has its seva', 'हर मौसम की अपनी सेवा') }}</h2>
+      <p class="sec-sub">{{ t('Need changes with the weather. Our work follows it around the year – the marker shows where we are today.', 'ज़रूरतें मौसम के साथ बदलती हैं, और हमारा काम भी। सुई दिखाती है कि आज हम वर्ष में कहाँ हैं।') }}</p>
+      <ul class="cal-legend">
+        <li><span class="sw w-health"></span><div><b>{{ t('Every month', 'हर माह') }}</b>{{ t('TB patient nutrition, food distribution', 'टीबी मरीज़ों का पोषाहार, भोजन वितरण') }}</div></li>
+        <li><span class="sw w-water"></span><div><b>{{ t('Summer · Apr–Jun', 'ग्रीष्म · अप्रैल–जून') }}</b>{{ t('Drinking-water tanks, sharbat seva', 'पेयजल टंकियाँ, शरबत सेवा') }}</div></li>
+        <li><span class="sw w-green"></span><div><b>{{ t('Monsoon · Jul–Sep', 'वर्षा · जुलाई–सितंबर') }}</b>{{ t('Plantation drives', 'वृक्षारोपण अभियान') }}</div></li>
+        <li><span class="sw w-relief"></span><div><b>{{ t('Winter · Nov–Feb', 'शीत · नवंबर–फ़रवरी') }}</b>{{ t('Blankets, community bonfires', 'कंबल वितरण, सामुदायिक अलाव') }}</div></li>
+        <li><span class="sw w-camp"></span><div><b>{{ t('All year', 'पूरे वर्ष') }}</b>{{ t('Health camps, blood donation, kanya vivah, elders, gau seva, education', 'स्वास्थ्य शिविर, रक्तदान, कन्या विवाह, वृद्ध सेवा, गौ सेवा, शिक्षा') }}</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section times-sec">
+  <div class="wrap">
+    <div class="times-mast">
+      <div>
+        <p class="eyebrow">{{ t('News from the ground', 'ज़मीन से समाचार') }}</p>
+        <h2 class="mast-title">SWAPO Times</h2>
+      </div>
+      <div class="mast-links">
+        <a href="{{ url('times/') }}">{{ t('All news', 'सभी समाचार') }} {{ icon('arrow') }}</a>
+        <a href="{{ url('times/epaper/') }}">{{ icon('paper') }} {{ t('E-paper', 'ई-पेपर') }}</a>
+      </div>
+    </div>
+    <div class="news-grid">
+      {% for p in posts[:3] %}
+        {{ news_card(p, url, asset, 'ncard-lg' if loop.first else '') }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section map-sec">
+  <div class="wrap map-grid">
+    <div>
+      <p class="eyebrow">{{ t('The Seva Map', 'सेवा मानचित्र') }}</p>
+      <h2>{{ t('Where our work happens', 'हमारा काम कहाँ होता है') }}</h2>
+      <p class="sec-sub">{{ t('Water tanks, bonfire points, camp sites and the places we serve every month – mapped across Hathras.', 'पेयजल टंकियाँ, अलाव स्थल, शिविर स्थल और वे स्थान जहाँ हम हर माह सेवा करते हैं – हाथरस के मानचित्र पर।') }}</p>
+      <a class="btn btn-teal" href="{{ url('impact/') }}#map">{{ icon('pin') }} {{ t('Open the map', 'मानचित्र देखें') }}</a>
+    </div>
+    <div class="map-box" data-map data-places='{{ site.places|tojson }}' data-compact></div>
+  </div>
+</section>
+
+{% if press %}
+<section class="section press-sec">
+  <div class="wrap">
+    <div class="sec-head row">
+      <div><p class="eyebrow">{{ t('In the press', 'समाचार पत्रों में') }}</p><h2>{{ t('What the papers say', 'अख़बारों में स्वापो') }}</h2></div>
+      <a href="{{ url('times/press/') }}">{{ t('All coverage', 'सारी कवरेज') }} {{ icon('arrow') }}</a>
+    </div>
+    <div class="press-strip">
+      {% for c in press[:6] %}
+      <a class="clip" href="{{ url('times/press/') }}">
+        {% if c.image %}<img src="{{ asset(c.image) }}" alt="{{ c.headline }}" loading="lazy">{% endif %}
+        <span class="clip-meta"><b>{{ c.newspaper }}</b> · {{ t(c.date_en, c.date_hi) }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section founder">
+  <div class="wrap founder-grid">
+    <div class="founder-photo">
+      {% if site.founder_photo %}<img src="{{ asset(site.founder_photo) }}" alt="{{ site.founder }}">{% else %}<span class="monogram">KA</span>{% endif %}
+    </div>
+    <div>
+      <p class="eyebrow">{{ t('A word from our founder', 'संस्थापक का संदेश') }}</p>
+      {{ block('<p class="founder-msg">“Seva is not an event we organise once a year. It is a habit – a duty we owe one another. One person’s duty is another person’s right. When a TB patient gets his ration on time, when a thirsty traveller finds clean water, when a daughter’s wedding happens with dignity, that is our reward.”</p>',
+               '<p class="founder-msg">“सेवा साल में एक बार होने वाला आयोजन नहीं, बल्कि एक आदत है – एक-दूसरे के प्रति हमारा कर्तव्य। एक व्यक्ति का कर्तव्य ही दूसरे का अधिकार है। जब किसी टीबी मरीज़ को समय पर राशन मिलता है, जब किसी प्यासे राहगीर को स्वच्छ पानी मिलता है, जब किसी बेटी का विवाह सम्मान से होता है – वही हमारा पुरस्कार है।”</p>') }}
+      <p class="founder-sign"><b>{{ t(site.founder, site.founder_hi) }}</b>{{ t(site.founder_role_en, site.founder_role_hi) }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section involve">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">{{ t('Be part of it', 'इसका हिस्सा बनें') }}</p>
+      <h2>{{ t('Together, we can make a difference', 'साथ मिलकर हम बदलाव ला सकते हैं') }}</h2>
+    </div>
+    <div class="inv-cards">
+      <a class="inv" href="{{ url('get-involved/') }}#volunteer">{{ icon('hand') }}<h3>{{ t('Volunteer', 'स्वयंसेवक बनें') }}</h3><p>{{ t('Give a few hours at a camp, a distribution or a drive.', 'किसी शिविर, वितरण या अभियान में कुछ घंटे दें।') }}</p></a>
+      <a class="inv" href="{{ url('get-involved/') }}#member">{{ icon('users') }}<h3>{{ t('Become a member', 'सदस्य बनें') }}</h3><p>{{ t('Individual and organisational membership.', 'व्यक्तिगत और संस्थागत सदस्यता।') }}</p></a>
+      <a class="inv" href="{{ url('get-involved/') }}#contribute">{{ icon('gift') }}<h3>{{ t('Contribute', 'सहयोग करें') }}</h3><p>{{ t('Grains, blankets, medicines – or a contribution to the Trust.', 'अनाज, कंबल, दवाइयाँ – या ट्रस्ट को आर्थिक सहयोग।') }}</p></a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+{% endblock %}

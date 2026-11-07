@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, icon with context %}
+{% set title = "Page not found" %}
+{% block base_tag %}<base href="{{ base_path }}">{% endblock %}
+{% block main %}
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">404</p>
+    <h1>{{ t('This page could not be found.', 'यह पृष्ठ नहीं मिला।') }}</h1>
+    <div class="btn-row"><a class="btn btn-gold" href="{{ absolute('') }}">{{ t('Go to the home page', 'मुख्य पृष्ठ पर जाएँ') }}</a></div>
+  </div>
+</header>
+{% endblock %}

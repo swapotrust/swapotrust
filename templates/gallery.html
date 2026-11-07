@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, icon with context %}
+{% set title = "Photo gallery" %}
+{% block main %}
+<header class="times-head slim">
+  <div class="wrap">
+    <h1 class="th-title">SWAPO Times</h1>
+    <p class="th-sub">{{ t('Photo gallery – moments of seva', 'फ़ोटो गैलरी – सेवा के पल') }}</p>
+    <nav class="th-nav" aria-label="SWAPO Times">
+      <a href="{{ url('times/') }}">{{ t('Latest', 'ताज़ा') }}</a>
+      <a href="{{ url('times/epaper/') }}">{{ icon('paper') }} {{ t('E-paper', 'ई-पेपर') }}</a>
+      <a href="{{ url('times/press/') }}">{{ icon('press') }} {{ t('Press', 'प्रेस') }}</a>
+      <a href="{{ url('times/gallery/') }}" aria-current="page">{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
+    </nav>
+  </div>
+</header>
+<section class="section">
+  <div class="wrap">
+    {% if photos %}
+    <div class="gallery">
+      {% for g in photos %}
+      <figure class="g-item"><img src="{{ asset(g.src) }}" alt="" loading="lazy" data-lightbox><figcaption><a href="{{ url('times/' ~ g.post.slug ~ '/') }}">{{ t(g.post.title_en, g.post.title_hi) }}</a></figcaption></figure>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="note-card">{{ icon('camera') }}<p>{{ t('Photos from every SWAPO Times story collect here automatically.', 'स्वापो टाइम्स के हर समाचार की तस्वीरें यहाँ अपने-आप जुड़ती जाती हैं।') }}</p></div>
+    {% endif %}
+  </div>
+</section>
+<div class="lightbox" hidden data-lb><button type="button" class="lb-close" aria-label="Close">{{ icon('close') }}</button><img alt=""></div>
+{% endblock %}

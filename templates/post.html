@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, icon, news_card with context %}
+{% set title = post.title_en if post.primary == 'en' else post.title_hi %}
+{% set og_title = title %}
+{% set description = post.excerpt_en if post.primary == 'en' else post.excerpt_hi %}
+{% set og_image = post.cover %}
+{% set og_type = "article" %}
+{% block main %}
+<article class="article">
+  <header class="wrap art-head">
+    <a class="art-mast" href="{{ url('times/') }}">SWAPO Times</a>
+    <p class="kicker"><span class="dot p-{{ post.pillar }}"></span>{{ t(post.cat_en, post.cat_hi) }} · <time datetime="{{ post.date.isoformat() }}">{{ t(post.date_en, post.date_hi) }}</time>{% if post.place %} · {{ icon('pin') }} {{ post.place }}{% endif %}</p>
+    <h1>{{ t(post.title_en, post.title_hi) }}</h1>
+  </header>
+
+  {% if post.photos %}
+  <div class="wrap-wide">
+    <div class="carousel" data-carousel>
+      <div class="car-track">
+        {% for ph in post.photos %}
+        <figure class="car-slide"><img src="{{ asset(ph) }}" alt="{{ t(post.title_en, post.title_hi)|striptags }} – photo {{ loop.index }}" {% if not loop.first %}loading="lazy"{% endif %} data-lightbox></figure>
+        {% endfor %}
+      </div>
+      {% if post.photos|length > 1 %}
+      <div class="car-dots">{% for ph in post.photos %}<button type="button" aria-label="Photo {{ loop.index }}"{% if loop.first %} class="is-on"{% endif %}></button>{% endfor %}</div>
+      <button class="car-prev" type="button" aria-label="Previous photo">{{ icon('arrow') }}</button>
+      <button class="car-next" type="button" aria-label="Next photo">{{ icon('arrow') }}</button>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="wrap art-body">
+    {% if not post.native_en %}<p class="lang-note l-en" lang="en">{{ icon('globe') }} This story is available in Hindi.</p>{% endif %}
+    {% if not post.native_hi %}<p class="lang-note l-hi" lang="hi">{{ icon('globe') }} यह समाचार अंग्रेज़ी में उपलब्ध है।</p>{% endif %}
+    <div class="prose l-en" lang="{{ 'en' if post.native_en else 'hi' }}">{{ post.body_en|safe }}</div>
+    <div class="prose l-hi" lang="{{ 'hi' if post.native_hi else 'en' }}">{{ post.body_hi|safe }}</div>
+
+    <div class="share" data-share data-title="{{ title }}" data-url="{{ canonical }}">
+      <span class="share-lbl">{{ t('Share this story', 'यह समाचार साझा करें') }}</span>
+      <a class="sh sh-wa" href="https://wa.me/?text={{ (title ~ ' – ' ~ canonical)|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} WhatsApp</a>
+      <a class="sh sh-fb" href="https://www.facebook.com/sharer/sharer.php?u={{ canonical|urlencode }}" target="_blank" rel="noopener">{{ icon('facebook') }} Facebook</a>
+      <button class="sh sh-copy" type="button" data-copy>{{ icon('link') }} <span class="copy-txt">{{ t('Copy link', 'लिंक कॉपी करें') }}</span></button>
+    </div>
+  </div>
+</article>
+
+{% if related %}
+<section class="section tint">
+  <div class="wrap">
+    <h2 class="mini-h">{{ icon('paper') }} {{ t('More from SWAPO Times', 'स्वापो टाइम्स से और') }}</h2>
+    <div class="news-row">{% for q in related %}{{ news_card(q, url, asset, 'ncard-sm') }}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+
+<div class="lightbox" hidden data-lb><button type="button" class="lb-close" aria-label="Close">{{ icon('close') }}</button><img alt=""></div>
+{% endblock %}

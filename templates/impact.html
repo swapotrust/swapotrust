@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, icon, sdg with context %}
+{% set title = "Impact" %}
+{% block main %}
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">{{ t('Impact', 'प्रभाव') }}</p>
+    <h1>{{ t('Measured in meals, water, warmth and dignity.', 'भोजन, पानी, गर्माहट और गरिमा में मापा गया प्रभाव।') }}</h1>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <ul class="stats stats-lg">
+      <li class="stat"><span class="stat-num" data-tb-months data-start="{{ tb_start }}">{{ tb_months }}</span><span class="stat-lbl">{{ t('consecutive months of TB nutrition', 'लगातार माह टीबी पोषाहार') }}</span></li>
+      {% for s in site.impact %}
+      <li class="stat"><span class="stat-num">{{ s.value }}</span><span class="stat-lbl">{{ t(s.label_en, s.label_hi) }}</span></li>
+      {% endfor %}
+      <li class="stat"><span class="stat-num">{{ posts|length }}</span><span class="stat-lbl">{{ t('stories in SWAPO Times', 'स्वापो टाइम्स में समाचार') }}</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section tint" id="map">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">{{ t('The Seva Map', 'सेवा मानचित्र') }}</p>
+      <h2>{{ t('Our work across Hathras', 'हाथरस में हमारा कार्य') }}</h2>
+      <p class="sec-sub">{{ t('Tap a marker to see what happens there.', 'जानकारी के लिए किसी निशान पर टैप करें।') }}</p>
+    </div>
+    <div class="map-box map-lg" data-map data-places='{{ site.places|tojson }}'></div>
+    <ul class="map-key">
+      <li><span class="mk mk-office"></span>{{ t('Office', 'कार्यालय') }}</li>
+      <li><span class="mk mk-water"></span>{{ t('Water tank', 'पेयजल टंकी') }}</li>
+      <li><span class="mk mk-health"></span>{{ t('Health & TB', 'स्वास्थ्य एवं टीबी') }}</li>
+      <li><span class="mk mk-relief"></span>{{ t('Bonfire / relief point', 'अलाव / राहत स्थल') }}</li>
+      <li><span class="mk mk-care"></span>{{ t('Care & dignity', 'सम्मान एवं संरक्षण') }}</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">{{ t('Global goals, local action', 'वैश्विक लक्ष्य, स्थानीय कार्य') }}</p>
+      <h2>{{ t('How our work maps to the UN Sustainable Development Goals', 'हमारा कार्य और संयुक्त राष्ट्र के सतत विकास लक्ष्य') }}</h2>
+    </div>
+    <div class="sdg-table">
+      {% for p in pillars %}
+      <div class="sdg-row" style="--pc: {{ p.color }}">
+        <span class="sdg-pillar">{{ icon(p.icon) }} {{ t(p.title_en, p.title_hi) }}</span>
+        <span class="sdgs">{% for n in p.sdgs %}{{ sdg(n) }}{% endfor %}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section tint calendar-sec">
+  <div class="wrap cal-grid">
+    <div class="cal-wheel">{{ seva_wheel }}</div>
+    <div>
+      <p class="eyebrow">{{ t('The Seva Calendar', 'सेवा पंचांग') }}</p>
+      <h2>{{ t('365 days of seva', '365 दिन सेवा') }}</h2>
+      <p class="sec-sub">{{ t('From summer water seva to winter blankets, our work follows the needs of each season. TB nutrition and food distribution never stop.', 'गर्मी की जल सेवा से सर्दी के कंबलों तक, हमारा काम हर मौसम की ज़रूरत के साथ चलता है। टीबी पोषाहार और भोजन वितरण कभी नहीं रुकते।') }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ t('Reports', 'रिपोर्ट') }}</p><h2>{{ t('Annual reports', 'वार्षिक रिपोर्ट') }}</h2></div>
+    <div class="note-card">{{ icon('doc') }}<p>{{ t('Our annual reports will be published here, in English and Hindi. For any information about our work or accounts, please write to us.', 'हमारी वार्षिक रिपोर्ट यहाँ अंग्रेज़ी और हिंदी में प्रकाशित होंगी। कार्य या लेखा संबंधी किसी भी जानकारी के लिए हमें लिखें।') }} <a href="mailto:{{ site.email }}">{{ site.email }}</a></p></div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+{% endblock %}

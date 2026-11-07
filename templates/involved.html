@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, icon with context %}
+{% set title = "Get involved" %}
+{% block main %}
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">{{ t('Get involved', 'जुड़ें') }}</p>
+    <h1>{{ t('There is a place for you in this seva.', 'इस सेवा में आपके लिए भी जगह है।') }}</h1>
+    <nav class="subnav" aria-label="On this page">
+      <a href="#volunteer">{{ t('Volunteer', 'स्वयंसेवक') }}</a>
+      <a href="#member">{{ t('Membership', 'सदस्यता') }}</a>
+      <a href="#partner">{{ t('Partner with us', 'साझेदारी') }}</a>
+      <a href="#contribute">{{ t('Contribute', 'सहयोग') }}</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section" id="volunteer">
+  <div class="wrap two-col">
+    <div>
+      <p class="eyebrow">{{ t('Volunteer', 'स्वयंसेवक बनें') }}</p>
+      <h2>{{ t('Give your time, gain a purpose', 'अपना समय दें, एक उद्देश्य पाएँ') }}</h2>
+      <p class="sec-sub">{{ t('Help at a health camp, pack TB nutrition kits, serve sharbat in summer, distribute blankets in winter, or plant trees in the monsoon. Students, professionals and retired people are all welcome.', 'स्वास्थ्य शिविर में सहायता करें, टीबी पोषाहार किट तैयार करें, गर्मी में शरबत सेवा, सर्दी में कंबल वितरण या वर्षा में वृक्षारोपण करें। विद्यार्थी, कामकाजी और सेवानिवृत्त – सभी का स्वागत है।') }}</p>
+      <ul class="ticks">
+        <li>{{ icon('check') }} {{ t('Meaningful, hands-on work in your own city', 'अपने ही शहर में सार्थक, प्रत्यक्ष सेवा') }}</li>
+        <li>{{ icon('check') }} {{ t('Connect with like-minded people and organisations', 'समान विचार वाले लोगों और संस्थाओं से जुड़ाव') }}</li>
+        <li>{{ icon('check') }} {{ t('Training, experience and personal growth', 'प्रशिक्षण, अनुभव और व्यक्तिगत विकास') }}</li>
+      </ul>
+    </div>
+    <form class="join-form" data-wa-form data-phone="{{ site.phone_raw }}">
+      <h3>{{ t('Tell us about yourself', 'अपने बारे में बताएँ') }}</h3>
+      <label>{{ t('Your name', 'आपका नाम') }}<input name="name" required autocomplete="name"></label>
+      <label>{{ t('Phone', 'फ़ोन') }}<input name="phone" type="tel" required autocomplete="tel"></label>
+      <label>{{ t('City', 'शहर') }}<input name="city" autocomplete="address-level2"></label>
+      <label>{{ t('I would like to', 'मैं चाहता/चाहती हूँ') }}
+        <select name="interest">
+          <option>Volunteer / स्वयंसेवक बनना</option>
+          <option>Become an individual member / व्यक्तिगत सदस्य बनना</option>
+          <option>Become an organisational member / संस्थागत सदस्य बनना</option>
+          <option>Partner or CSR support / साझेदारी या CSR सहयोग</option>
+          <option>Contribute materials or funds / सामग्री या धन से सहयोग</option>
+        </select>
+      </label>
+      <label>{{ t('Message (optional)', 'संदेश (वैकल्पिक)') }}<textarea name="message" rows="3"></textarea></label>
+      <button class="btn btn-gold btn-block" type="submit">{{ icon('whatsapp') }} {{ t('Send on WhatsApp', 'व्हाट्सऐप पर भेजें') }}</button>
+      <p class="form-note">{{ t('This opens WhatsApp with your details filled in. Nothing is stored on this website.', 'इससे आपकी जानकारी के साथ व्हाट्सऐप खुलेगा। इस वेबसाइट पर कुछ भी संग्रहित नहीं होता।') }}</p>
+    </form>
+  </div>
+</section>
+
+<section class="section tint" id="member">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ t('Membership', 'सदस्यता') }}</p><h2>{{ t('Three ways to belong', 'जुड़ने के तीन तरीके') }}</h2></div>
+    <div class="inv-cards">
+      <div class="inv static">{{ icon('users') }}<h3>{{ t('Individual member', 'व्यक्तिगत सदस्य') }}</h3><p>{{ t('For citizens who want to be part of SWAPO’s work and decisions.', 'उन नागरिकों के लिए जो स्वापो के कार्य और निर्णयों का हिस्सा बनना चाहते हैं।') }}</p></div>
+      <div class="inv static">{{ icon('hand') }}<h3>{{ t('Organisational member', 'संस्थागत सदस्य') }}</h3><p>{{ t('For schools, clubs, businesses and associations that want to work with us.', 'विद्यालयों, क्लबों, व्यापारिक प्रतिष्ठानों और संगठनों के लिए जो साथ कार्य करना चाहते हैं।') }}</p></div>
+      <div class="inv static">{{ icon('heart') }}<h3>{{ t('Special invited member', 'विशेष आमंत्रित सदस्य') }}</h3><p>{{ t('Advocates, journalists, doctors, writers and social workers who serve society with distinction.', 'समाज की उत्कृष्ट सेवा करने वाले अधिवक्ता, पत्रकार, चिकित्सक, लेखक और समाजसेवी।') }}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="partner">
+  <div class="wrap two-col">
+    <div>
+      <p class="eyebrow">{{ t('Partner with us', 'साझेदारी करें') }}</p>
+      <h2>{{ t('For companies, hospitals and institutions', 'कंपनियों, अस्पतालों और संस्थानों के लिए') }}</h2>
+      <p class="sec-sub">{{ t('We already work alongside the District TB Centre and local social organisations. We welcome partners for health camps, nutrition support, water seva, education sponsorship and CSR programmes – with regular reporting and photographs of every activity.', 'हम पहले से जिला क्षय रोग केंद्र और स्थानीय सामाजिक संगठनों के साथ कार्य करते हैं। स्वास्थ्य शिविर, पोषण सहायता, जल सेवा, शिक्षा प्रायोजन और CSR कार्यक्रमों के लिए साझेदारों का स्वागत है – हर गतिविधि की नियमित रिपोर्ट और तस्वीरों के साथ।') }}</p>
+      <a class="btn btn-teal" href="mailto:{{ site.email }}?subject={{ 'Partnership with SWAPO Trust'|urlencode }}">{{ icon('mail') }} {{ t('Write to us', 'हमें लिखें') }}</a>
+    </div>
+    <ul class="partner-list">
+      <li>{{ icon('health') }} {{ t('Sponsor a health camp or TB nutrition kits', 'स्वास्थ्य शिविर या टीबी पोषाहार किट प्रायोजित करें') }}</li>
+      <li>{{ icon('water') }} {{ t('Adopt a drinking-water tank', 'एक पेयजल टंकी गोद लें') }}</li>
+      <li>{{ icon('relief') }} {{ t('Fund a winter blanket drive', 'शीतकालीन कंबल अभियान में सहयोग दें') }}</li>
+      <li>{{ icon('education') }} {{ t('Sponsor a child’s education', 'किसी बच्चे की शिक्षा प्रायोजित करें') }}</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section contribute" id="contribute">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow eyebrow-light">{{ t('Contribute', 'सहयोग करें') }}</p><h2>{{ t('Every contribution reaches someone directly', 'हर सहयोग सीधे किसी ज़रूरतमंद तक पहुँचता है') }}</h2></div>
+    <div class="ways">
+      <div class="way">
+        <span class="way-n">1</span>
+        <h3>{{ t('Give in kind', 'सामग्री दें') }}</h3>
+        <p>{{ t('Food grains, pulses, blankets, warm clothes, medicines, books and school supplies.', 'अनाज, दालें, कंबल, गर्म कपड़े, दवाइयाँ, किताबें और स्कूल सामग्री।') }}</p>
+      </div>
+      <div class="way">
+        <span class="way-n">2</span>
+        <h3>{{ t('Visit our office', 'कार्यालय आएँ') }}</h3>
+        <p>{{ t(site.address_en, site.address_hi) }}</p>
+      </div>
+      <div class="way">
+        <span class="way-n">3</span>
+        <h3>{{ t('Contribute to the Trust', 'ट्रस्ट को आर्थिक सहयोग') }}</h3>
+        <p>{{ t('Call or message us for the Trust’s bank details. Every contribution is deposited in the Trust’s bank account and used only for its charitable objectives.', 'ट्रस्ट के बैंक विवरण के लिए कॉल या संदेश करें। प्रत्येक सहयोग ट्रस्ट के बैंक खाते में जमा होता है और केवल धर्मार्थ उद्देश्यों पर व्यय होता है।') }}</p>
+      </div>
+    </div>
+    <div class="btn-row center">
+      <a class="btn btn-gold" href="tel:+{{ site.phone_raw }}">{{ icon('phone') }} {{ site.phone }}</a>
+      <a class="btn btn-ghost" href="https://wa.me/{{ site.phone_raw }}?text={{ 'Namaste, I would like to contribute to SWAPO Trust.'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} WhatsApp</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

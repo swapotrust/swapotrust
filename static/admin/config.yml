@@ -1,0 +1,193 @@
+# SWAPO Times editor (Sveltia CMS)
+# Open https://swapotrust.github.io/swapotrust/admin/ on a phone or computer and sign in.
+backend:
+  name: github
+  repo: swapotrust/swapotrust
+  branch: main
+  commit_messages:
+    create: "News: add {{slug}}"
+    update: "News: update {{slug}}"
+    delete: "News: remove {{slug}}"
+    uploadMedia: "Upload {{path}}"
+    deleteMedia: "Delete {{path}}"
+
+site_url: https://swapotrust.github.io/swapotrust
+display_url: https://swapotrust.github.io/swapotrust
+logo_url: https://swapotrust.github.io/swapotrust/img/emblem.svg
+locale: en
+
+media_folder: static/uploads/news
+public_folder: /uploads/news
+
+# Phone photos are shrunk and converted to WebP before upload
+media_libraries:
+  default:
+    config:
+      multiple: true
+      max_file_size: 15000000
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 1600
+          height: 1600
+
+collections:
+  - name: news
+    label: "SWAPO Times – News / समाचार"
+    label_singular: "News story / समाचार"
+    description: "Write in Hindi or English. Add photos. Tap Save to publish – the story appears on the website in about 1–2 minutes."
+    folder: content/news
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}"
+    summary: "{{title}} — {{date | date('DD MMM YYYY')}}"
+    sortable_fields: [date, title, category]
+    view_filters:
+      - { label: "Lead stories", field: lead, pattern: true }
+    fields:
+      - label: "Headline / शीर्षक"
+        name: title
+        widget: string
+        hint: "Hindi or English – जैसे: टीबी मरीज़ों को पोषाहार वितरित"
+      - label: "Date / दिनांक"
+        name: date
+        widget: datetime
+        date_format: "DD MMM YYYY"
+        time_format: "HH:mm"
+        picker_utc: false
+      - label: "Category / श्रेणी"
+        name: category
+        widget: select
+        default: other
+        options:
+          - { label: "TB Seva / टीबी सेवा", value: tb-seva }
+          - { label: "Health Camp / स्वास्थ्य शिविर", value: health-camp }
+          - { label: "Blood Donation / रक्तदान", value: blood-donation }
+          - { label: "Anaemia Check / एनीमिया जाँच", value: anaemia-check }
+          - { label: "Water Seva / जल सेवा", value: water-seva }
+          - { label: "Plantation / वृक्षारोपण", value: plantation }
+          - { label: "Food Seva / भोजन सेवा", value: food }
+          - { label: "Winter Relief / शीत राहत", value: winter-relief }
+          - { label: "Kanya Vivah / कन्या विवाह", value: girls-marriage }
+          - { label: "Elders & Children / वृद्ध एवं बाल सेवा", value: elderly-orphans }
+          - { label: "Gau Seva / गौ सेवा", value: gau-seva }
+          - { label: "Education / शिक्षा", value: education }
+          - { label: "Yoga & Culture / योग एवं संस्कृति", value: spiritual }
+          - { label: "Public Issues / जनहित", value: public-issues }
+          - { label: "Announcement / सूचना", value: announcement }
+          - { label: "Other / अन्य", value: other }
+      - label: "Photos / फ़ोटो"
+        name: photos
+        widget: list
+        required: false
+        add_to_top: false
+        hint: "Tap Add, then choose one or more photos from the phone gallery. The first photo is the cover."
+        field: { label: "Photo", name: image, widget: image, choose_url: false }
+      - label: "Story / समाचार"
+        name: body
+        widget: markdown
+        buttons: [bold, italic, bulleted-list, numbered-list, link]
+        editor_components: []
+      - label: "Place (optional) / स्थान"
+        name: place
+        widget: string
+        required: false
+      - label: "Lead story of the month? / माह का मुख्य समाचार?"
+        name: lead
+        widget: boolean
+        default: false
+        hint: "Turn on for the most important story – it goes on top of the monthly e-paper."
+      - label: "Translation – headline (optional) / अनुवाद – शीर्षक"
+        name: title_alt
+        widget: string
+        required: false
+        hint: "If you wrote in Hindi, the English headline goes here (and vice versa). Can be left empty."
+      - label: "Translation – story (optional) / अनुवाद – समाचार"
+        name: body_alt
+        widget: text
+        required: false
+      - label: "Hide from website (draft) / ड्राफ़्ट"
+        name: draft
+        widget: boolean
+        default: false
+        required: false
+
+  - name: press
+    label: "Press coverage / समाचार पत्रों में"
+    label_singular: "Clipping / कतरन"
+    folder: content/press
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}"
+    media_folder: /static/uploads/press
+    public_folder: /uploads/press
+    summary: "{{newspaper}} — {{headline}}"
+    fields:
+      - { label: "Newspaper / समाचार पत्र", name: newspaper, widget: string, hint: "e.g. Dainik Jagran, Amar Ujala" }
+      - { label: "Headline / शीर्षक", name: headline, widget: string }
+      - { label: "Date / दिनांक", name: date, widget: datetime, time_format: false, date_format: "DD MMM YYYY" }
+      - { label: "Clipping photo / कतरन का फ़ोटो", name: clipping, widget: image, required: false }
+      - { label: "Online link (optional) / लिंक", name: link, widget: string, required: false }
+      - { label: "Note (optional) / टिप्पणी", name: body, widget: text, required: false }
+
+  - name: settings
+    label: "Website settings / वेबसाइट सेटिंग"
+    editor: { preview: false }
+    files:
+      - name: site
+        label: "Contact, registration & impact numbers"
+        file: content/site.yml
+        fields:
+          - { label: "Name (English)", name: name_en, widget: string }
+          - { label: "Name (Hindi)", name: name_hi, widget: string }
+          - { label: "Full name (English)", name: full_en, widget: string }
+          - { label: "Full name (Hindi)", name: full_hi, widget: string }
+          - { label: "Tagline (English)", name: tagline_en, widget: string }
+          - { label: "Tagline (Hindi)", name: tagline_hi, widget: string }
+          - { label: "Founder (English)", name: founder, widget: string }
+          - { label: "Founder (Hindi)", name: founder_hi, widget: string }
+          - { label: "Founder role (English)", name: founder_role_en, widget: string }
+          - { label: "Founder role (Hindi)", name: founder_role_hi, widget: string }
+          - { label: "TB programme start date (YYYY-MM-DD)", name: tb_start, widget: string }
+          - { label: "Year founded", name: founded_year, widget: string, required: false }
+          - { label: "Volunteer Google Form link", name: google_form_volunteer, widget: string, required: false }
+          - { label: "Phone (shown)", name: phone, widget: string }
+          - { label: "Phone for WhatsApp (digits only, with 91)", name: phone_raw, widget: string }
+          - { label: "Email", name: email, widget: string }
+          - { label: "Address (English)", name: address_en, widget: text }
+          - { label: "Address (Hindi)", name: address_hi, widget: text }
+          - { label: "Facebook page link", name: facebook, widget: string, required: false }
+          - { label: "YouTube link", name: youtube, widget: string, required: false }
+          - { label: "Instagram link", name: instagram, widget: string, required: false }
+          - { label: "WhatsApp Channel link", name: whatsapp_channel, widget: string, required: false }
+          - { label: "Founder photo", name: founder_photo, widget: image, required: false, media_folder: /static/uploads/site, public_folder: /uploads/site }
+          - { label: "Registration No.", name: registration_no, widget: string, required: false }
+          - { label: "PAN", name: pan, widget: string, required: false }
+          - { label: "12A No.", name: reg_12a, widget: string, required: false }
+          - { label: "80G No.", name: reg_80g, widget: string, required: false }
+          - { label: "NGO Darpan ID", name: darpan_id, widget: string, required: false }
+          - label: "Impact numbers (home page)"
+            name: impact
+            widget: list
+            fields:
+              - { label: "Number", name: value, widget: string }
+              - { label: "Label (English)", name: label_en, widget: string }
+              - { label: "Label (Hindi)", name: label_hi, widget: string }
+          - label: "Places on the Seva Map"
+            name: places
+            widget: list
+            hint: "Find a place on Google Maps, press and hold, and copy the two numbers (latitude, longitude)."
+            fields:
+              - { label: "Name (English)", name: name_en, widget: string }
+              - { label: "Name (Hindi)", name: name_hi, widget: string }
+              - label: "Type"
+                name: kind
+                widget: select
+                options: [office, water, health, relief, care, education, spirit]
+              - { label: "Latitude", name: lat, widget: number, value_type: float }
+              - { label: "Longitude", name: lng, widget: number, value_type: float }

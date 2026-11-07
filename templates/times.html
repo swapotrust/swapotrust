@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "_macros.html" import t, icon, news_card with context %}
+{% set title = "SWAPO Times" %}
+{% set description = "SWAPO Times – news, photos and the monthly e-paper of SWAPO Trust, Hathras." %}
+{% block main %}
+<header class="times-head">
+  <div class="wrap">
+    <div class="th-top">
+      <span>{{ t('Hathras · Uttar Pradesh', 'हाथरस · उत्तर प्रदेश') }}</span>
+      <span>{{ t('News of seva, from the ground', 'सेवा के समाचार, ज़मीन से') }}</span>
+    </div>
+    <h1 class="th-title">SWAPO Times</h1>
+    <p class="th-sub" lang="hi">स्वापो टाइम्स</p>
+    <nav class="th-nav" aria-label="SWAPO Times">
+      <a href="{{ url('times/') }}" aria-current="page">{{ t('Latest', 'ताज़ा') }}</a>
+      <a href="{{ url('times/epaper/') }}">{{ icon('paper') }} {{ t('E-paper', 'ई-पेपर') }}</a>
+      <a href="{{ url('times/press/') }}">{{ icon('press') }} {{ t('Press', 'प्रेस') }}</a>
+      <a href="{{ url('times/gallery/') }}">{{ icon('camera') }} {{ t('Gallery', 'गैलरी') }}</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section times-list">
+  <div class="wrap">
+    {% set used = [] %}
+    {% for p in posts %}{% if p.category not in used %}{% set _ = used.append(p.category) %}{% endif %}{% endfor %}
+    {% if used|length > 1 %}
+    <div class="chips" role="toolbar" aria-label="Filter by category" data-filter>
+      <button type="button" class="chip is-on" data-cat="all">{{ t('All', 'सभी') }}</button>
+      {% for c in used %}<button type="button" class="chip" data-cat="{{ c }}">{{ t(categories[c][0], categories[c][1]) }}</button>{% endfor %}
+    </div>
+    {% endif %}
+    <div class="news-grid all" data-filter-target>
+      {% for p in posts %}{{ news_card(p, url, asset, 'ncard-lg' if loop.first else '') }}{% endfor %}
+    </div>
+    {% if not posts %}<p class="empty">{{ t('The first stories are on their way.', 'पहले समाचार जल्द ही।') }}</p>{% endif %}
+  </div>
+</section>
+{% endblock %}

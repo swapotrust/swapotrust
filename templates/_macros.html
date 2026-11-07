@@ -1,0 +1,34 @@
+{% macro t(en, hi) -%}
+<span class="l-en" lang="en">{{ en }}</span><span class="l-hi" lang="hi">{{ hi }}</span>
+{%- endmacro %}
+
+{% macro tr(en, hi) -%}
+<span class="l-en" lang="en">{{ en|safe }}</span><span class="l-hi" lang="hi">{{ hi|safe }}</span>
+{%- endmacro %}
+
+{% macro block(en, hi, cls="") -%}
+<div class="l-en {{ cls }}" lang="en">{{ en|safe }}</div><div class="l-hi {{ cls }}" lang="hi">{{ hi|safe }}</div>
+{%- endmacro %}
+
+{% macro icon(name, cls="ico") -%}
+<svg class="{{ cls }}" aria-hidden="true"><use href="#i-{{ name }}"/></svg>
+{%- endmacro %}
+
+{% macro sdg(n) -%}
+{% set names = {1:"No Poverty",2:"Zero Hunger",3:"Good Health",4:"Quality Education",5:"Gender Equality",6:"Clean Water",8:"Decent Work",10:"Reduced Inequalities",13:"Climate Action",15:"Life on Land",16:"Peace & Justice"} %}
+<span class="sdg sdg-{{ n }}" title="UN Sustainable Development Goal {{ n }}: {{ names[n] }}"><b>{{ n }}</b>{{ names[n] }}</span>
+{%- endmacro %}
+
+{% macro news_card(p, url, asset, size="") -%}
+<a class="ncard {{ size }}" href="{{ url('times/' ~ p.slug ~ '/') }}" data-cat="{{ p.category }}">
+  <div class="ncard-img p-{{ p.pillar }}">
+    {% if p.cover %}<img src="{{ asset(p.cover) }}" alt="" loading="lazy">{% else %}<span class="ph">{{ icon(p.pillar, 'ico ph-ico') }}</span>{% endif %}
+    {% if p.photos|length > 1 %}<span class="ncount">{{ icon('camera') }} {{ p.photos|length }}</span>{% endif %}
+  </div>
+  <div class="ncard-body">
+    <p class="kicker"><span class="dot p-{{ p.pillar }}"></span>{{ t(p.cat_en, p.cat_hi) }} · <time datetime="{{ p.date.isoformat() }}">{{ t(p.date_en, p.date_hi) }}</time></p>
+    <h3>{{ t(p.title_en, p.title_hi) }}</h3>
+    <p class="excerpt">{{ t(p.excerpt_en, p.excerpt_hi) }}</p>
+  </div>
+</a>
+{%- endmacro %}
