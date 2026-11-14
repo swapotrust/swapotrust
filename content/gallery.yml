@@ -1,3 +1,12 @@
 # Running photo gallery on the home page (editable from the admin panel).
-# Photos from SWAPO Times stories are added automatically after these.
-photos: []
+# Photos from announcements and programme pages are added automatically after these.
+photos:
+  - image: /uploads/photos/ganga-leprosy-ashram-soron.jpg
+    caption_en: "SWAPO members at Ganga Leprosy Ashram, Soron Ji"
+    caption_hi: "सोरों जी स्थित गंगा कुष्ठ आश्रम में स्वापो सदस्य"
+  - image: /uploads/photos/hathras-branch-members.jpg
+    caption_en: "Members of the SWAPO Hathras branch"
+    caption_hi: "स्वापो हाथरस शाखा के सदस्य"
+  - image: /uploads/photos/schoolgirls-blood-test-camp.jpg
+    caption_en: "Blood test camp for schoolgirls"
+    caption_hi: "छात्राओं के लिए रक्त जाँच शिविर"

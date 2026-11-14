@@ -33,7 +33,7 @@
       title_hi: "एनीमिया मुक्त हाथरस"
       status: ongoing
       since: "2026"
-      photos: []
+      photos: [/uploads/photos/schoolgirls-blood-test-camp.jpg]
       text_en: "Haemoglobin tests for schoolgirls and young women, so that anaemia is caught early."
       text_hi: "छात्राओं और युवतियों की हीमोग्लोबिन जाँच, ताकि खून की कमी समय पर पकड़ी जा सके।"
       detail_en: "Anaemia is common among adolescent girls in India and often goes unnoticed. In 2026 we started the Anaemia Mukt Hathras campaign with testing camps in girls' schools, starting at the Government Girls Inter College, Rampur."
@@ -51,11 +51,11 @@
       title_en: "Leprosy Ashram Support"
       title_hi: "कुष्ठ आश्रम सेवा"
       status: ongoing
-      photos: []
+      photos: [/uploads/photos/ganga-leprosy-ashram-soron.jpg]
       text_en: "Medical supplies, food and daily essentials for residents of the leprosy ashram."
       text_hi: "कुष्ठ आश्रम के निवासियों के लिए दवाइयाँ, भोजन और दैनिक ज़रूरत का सामान।"
-      detail_en: "Our members visit the ashram, spend time with residents and bring what they need, from dressings and medicines to ration."
-      detail_hi: "हमारे सदस्य आश्रम जाते हैं, निवासियों के साथ समय बिताते हैं और ज़रूरत का सामान पहुँचाते हैं, पट्टियों और दवाइयों से लेकर राशन तक।"
+      detail_en: "Our members visit the Ganga Leprosy Ashram at Soron Ji, spend time with the residents and bring what they need, from dressings and medicines to ration and kitchen supplies."
+      detail_hi: "हमारे सदस्य सोरों जी स्थित गंगा कुष्ठ आश्रम जाते हैं, निवासियों के साथ समय बिताते हैं और ज़रूरत का सामान पहुँचाते हैं, पट्टियों और दवाइयों से लेकर राशन और रसोई के सामान तक।"
 
 - id: water
   icon: water

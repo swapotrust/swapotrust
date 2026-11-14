@@ -349,6 +349,14 @@ def main():
         if src and src not in seen:
             seen.add(src)
             reel.append({"src": src, "cap_en": en, "cap_hi": hi or en, "href": href})
+    # Photo uploads sent from the Google Form (content/gallery/*.md), newest first
+    gdir = os.path.join(CONTENT, "gallery")
+    for name in sorted(os.listdir(gdir), reverse=True) if os.path.isdir(gdir) else []:
+        if name.endswith(".md"):
+            meta, _ = read_md(os.path.join(gdir, name))
+            cap = str(meta.get("caption") or "").strip()
+            for ph in clean_photos(meta.get("photos")):
+                add(ph, cap, cap)
     for g in (gallery_cfg.get("photos") or []):
         add((g or {}).get("image"), g.get("caption_en") or "", g.get("caption_hi") or "")
     for p in posts:
