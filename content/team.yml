@@ -4,7 +4,7 @@ founder:
   name_hi: "कपिल अग्रवाल"
   role_en: "Founder & National President"
   role_hi: "संस्थापक एवं राष्ट्रीय अध्यक्ष"
-  photo: ""
+  photo: "/uploads/team/kapil-agrawal.jpg"
 
 branches:
   - id: hathras
